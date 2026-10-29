@@ -11,17 +11,22 @@
 #   한국어기초사전   krdict.korean.go.kr 전체 내려받기 JSON(최신만). 2026-10-28 이 노드의 curl 은 400 을 받았다 = 못 받으면
 #                    브라우저로 받은 zip 을 "$SRC/krdict-json.zip" 에 두면 다음 실행부터 쓴다(그때까지 한국어 사전 없이 빌드).
 #   학습용 어휘      국립국어원 누리집 파일(고정 이름 + sha256), NGSL 1.2 통계 · 교수용 낱말 꼴 CSV(고정 + sha256), wordfreq 3.1.1 휠(PyPI, 고정 + sha256).
+#   시험 목록        TSL 1.2 · BSL 1.2 · NAWL 1.2(newgeneralservicelist.com, CC BY-SA 4.0, 고정 + sha256) · HSK 2.0 급별(complete-hsk-vocabulary, MIT,
+#                    GitHub 커밋 고정 + sha256) · JLPT N5~N1(Jonathan Waller tanos.co.uk CC BY 의 JSON 사본 Bluskyo/JLPT_Vocabulary, 커밋 고정 + sha256).
+#   자막 빈도        hermitdave FrequencyWords 2018(OpenSubtitles, CC BY-SA 4.0) en · zh_cn · ja · ko(GitHub 커밋 고정 + sha256) = 회화 묶음 순서.
 #   예문             Tatoeba 주간 내보내기(per_language 문장 · 표시 · 번역 연결 + 사용자 언어 + 일본어 색인, CC BY 2.0 FR). 최신만 공개라
 #                    CC-CEDICT 처럼 처음 받은 판을 $SRC/tatoeba 에 두고 계속 쓴다(해시가 다르면 경고만, 받은 날 = 자료 출처 판).
 #   덧쓰기           Tools/pack_overrides/*.tsv = 사람이 검토한 뜻 · 읽기 · 빼기(저장소 안, 바뀌면 캐시 열쇠가 바뀐다).
+#   묶음 목록        Vocab/Packs/PackManifest.json = 앱이 보이는 묶음 40개(자주 쓰는 단어 12 · 회화 8 · 시험 20)의 단일 소스. build_packs.py PACK_IDS 와
+#                    같아야 하고(--check-manifest 가 먼저 막는다), 바뀌면 캐시 열쇠가 바뀐다.
 #
 # 못 받거나 못 만들면 그 자원 없이 빌드된다(앱은 사전 찾기가 비고 묶음 줄을 숨긴다, 단위 시험은 VocabTests/Fixtures 고정판만 쓴다).
-# 출시 빌드는 VOCAB_REQUIRE_LEXICON=1 = 사전 셋 · 예문 사전 · 묶음 열둘 중 하나라도 없으면 여기서 멈춘다.
+# 출시 빌드는 VOCAB_REQUIRE_LEXICON=1 = 사전 셋 · 예문 사전 · 매니페스트의 묶음 전부 중 하나라도 없으면 여기서 멈춘다.
 # 캐시 자리 = VOCAB_LEXICON_CACHE(기본 ~/Library/Caches/vocab-lexicon). 원자료를 새로 받으려면 VOCAB_LEXICON_REFRESH=1.
 set -euo pipefail
 cd "$(dirname "$0")"
 
-DATA_VERSION="2026-10-29.1"
+DATA_VERSION="2026-10-29.2"
 ROOT="${VOCAB_LEXICON_CACHE:-$HOME/Library/Caches/vocab-lexicon}"
 SRC="$ROOT/src"
 PY="${PYTHON:-python3}"
@@ -68,6 +73,36 @@ jpn_indices.tar.bz2 . 3e4fb8ad85fb71ed939091432c7b74c6951560c85c20cbd4738823cd83
 WORDFREQ_FILE="wordfreq-3.1.1-py3-none-any.whl"
 WORDFREQ_URL="https://files.pythonhosted.org/packages/24/61/62835c475d69872d30689f284497853fe33fe1d6dd18f57346d13305861d/$WORDFREQ_FILE"
 WORDFREQ_SHA="4b1c6ecffc6198be3396d5cf871c4423ca71c907c231348d352dd54d62b97473"
+# 시험 · 회화 묶음 원자료(D46 · D47). 전부 pinned(해시가 다르면 실패). GitHub 원자료는 커밋 SHA 주소 = 파일이 바뀌지 않는다.
+MANIFEST="Vocab/Packs/PackManifest.json"
+NGSL_SITE="https://www.newgeneralservicelist.com/s"
+TSL_FILE="TSL_12_stats.csv"
+TSL_SHA="2259df25a1077b04067ef0c0e9e4c98b46c91e4d539741dfaceba88651ff486d"             # TOEIC Service List 1.2, 1,250 표제어 · 순위
+TSL_FORMS_FILE="TSL_12_lemmatized_for_teaching.csv"
+TSL_FORMS_SHA="aca322f1e8b55c9c85e8b9f04ea384a2fcb069019e6e77fff3eb141ee2b67929"
+BSL_FILE="BSL_120_stats.csv"
+BSL_SHA="45055265eb4e74c65f5d26edabbc1a0da38c45bbb924cd9bd01fd391b74ff157"             # Business Service List 1.2, 1,700 표제어 · 순위
+BSL_FORMS_FILE="BSL_120_lemmatized_for_teaching.csv"
+BSL_FORMS_SHA="0073a91b4186dc0bba0960f2ed9486bd117177403f4e0ac9f3738474f2b2a3c9"
+NAWL_FILE="NAWL_12_lemmatized_for_teaching.csv"
+NAWL_SHA="1790b0fa22c5815ebf5a9a15c9363c03a6e906c77bf217f99033734f1459137b"            # New Academic Word List 1.2, 957 표제어(순위 없음 = wordfreq 순)
+HSK_COMMIT="7ac65bf1a6387d35f1ade478906172a19311c7f9"                                      # drkameleon/complete-hsk-vocabulary main 2026-03-23
+HSK_FILE="complete-hsk-vocabulary-${HSK_COMMIT:0:7}.min.json"
+HSK_URL="https://raw.githubusercontent.com/drkameleon/complete-hsk-vocabulary/$HSK_COMMIT/complete.min.json"
+HSK_SHA="52d8e64ba65a6db4a38ea34302c6de5df53cdb5145254b25edcbf93b80676434"
+JLPT_COMMIT="4358f932937ad0232194a36e9f4f875094910c6b"                                     # Bluskyo/JLPT_Vocabulary main 2026-07-15(tanos.co.uk 사본)
+JLPT_FILE="JLPT_vocab_ALL-${JLPT_COMMIT:0:7}.json"
+JLPT_URL="https://raw.githubusercontent.com/Bluskyo/JLPT_Vocabulary/$JLPT_COMMIT/data/vocab/results/JLPT_vocab_ALL.json"
+JLPT_SHA="7cccbbc9559d056526f122dff17c24dc80cfc4c607bdd1b26db0dc5238baabca"
+SUBS_COMMIT="525f9b560de45753a5ea01069454e72e9aa541c6"                                     # hermitdave/FrequencyWords master 2022-02-07
+SUBS_URL="https://raw.githubusercontent.com/hermitdave/FrequencyWords/$SUBS_COMMIT/content/2018"
+# 파일 이름 · 폴더 · sha256(build_packs.py SUBS_FILES 와 같은 이름). 일본어는 50k 판이 없어 full.
+SUBS_FILES="
+en_50k.txt en 5351ff405b1126ef555791dd4d9798a48e3e9a501a9fc481a9da957752cfb458
+zh_cn_50k.txt zh_cn 25599e00347b893e55c3058a748819b3fe19403291cd12f7c03af128e7f3fe45
+ja_full.txt ja 581dd106a134ff9f2706e23cde9fe95cd24d96ead6357cd3bd3bba9e166a764e
+ko_50k.txt ko 8d00401b6728c8d6feeaa5455583c1a33408dd020aae4aa55609b25004d1d99d
+"
 
 if command -v shasum >/dev/null 2>&1; then
   SHA=(shasum -a 256)
@@ -151,6 +186,20 @@ get "$NIKL_FILE" "$NIKL_URL" "$NIKL_SHA" pinned || { warn "학습용 어휘 목�
 get "$NGSL_FILE" "$NGSL_URL" "$NGSL_SHA" pinned || { warn "NGSL 을 받지 못했다"; have_packs=0; }
 get "$NGSL_FORMS_FILE" "$NGSL_FORMS_URL" "$NGSL_FORMS_SHA" pinned || { warn "NGSL 낱말 꼴을 받지 못했다"; have_packs=0; }
 get "$WORDFREQ_FILE" "$WORDFREQ_URL" "$WORDFREQ_SHA" pinned || { warn "wordfreq 를 받지 못했다"; have_packs=0; }
+# 시험 목록 · 자막 빈도(전부 pinned). 하나라도 없으면 묶음 전체를 만들지 않는다(매니페스트 묶음 40개는 한 번에 만든다).
+get "$TSL_FILE" "$NGSL_SITE/$TSL_FILE" "$TSL_SHA" pinned || { warn "TSL 을 받지 못했다"; have_packs=0; }
+get "$TSL_FORMS_FILE" "$NGSL_SITE/$TSL_FORMS_FILE" "$TSL_FORMS_SHA" pinned || { warn "TSL 낱말 꼴을 받지 못했다"; have_packs=0; }
+get "$BSL_FILE" "$NGSL_SITE/$BSL_FILE" "$BSL_SHA" pinned || { warn "BSL 을 받지 못했다"; have_packs=0; }
+get "$BSL_FORMS_FILE" "$NGSL_SITE/$BSL_FORMS_FILE" "$BSL_FORMS_SHA" pinned || { warn "BSL 낱말 꼴을 받지 못했다"; have_packs=0; }
+get "$NAWL_FILE" "$NGSL_SITE/$NAWL_FILE" "$NAWL_SHA" pinned || { warn "NAWL 을 받지 못했다"; have_packs=0; }
+get "$HSK_FILE" "$HSK_URL" "$HSK_SHA" pinned || { warn "HSK 목록을 받지 못했다"; have_packs=0; }
+get "$JLPT_FILE" "$JLPT_URL" "$JLPT_SHA" pinned || { warn "JLPT 목록을 받지 못했다"; have_packs=0; }
+while read -r name dir sha; do
+  [ -n "$name" ] || continue
+  get "subs/$name" "$SUBS_URL/$dir/$name" "$sha" pinned || { warn "자막 빈도 $name 을 받지 못했다"; have_packs=0; }
+done <<< "$SUBS_FILES"
+# 묶음 목록(앱 자원)이 build_packs.py 의 묶음 id 와 같은지 = 다르면 여기서 멈춘다(앱이 없는 묶음을 보이거나 만든 묶음을 숨기지 않게).
+"$PY" -I Tools/build_packs.py --check-manifest "$MANIFEST"
 # Tatoeba: 한 폴더(src/tatoeba)에 처음 받은 주간 판을 두고 계속 쓴다. 판 날짜 = 처음 받은 날(VERSION).
 have_tatoeba=1
 while read -r name dir sha; do
@@ -166,16 +215,27 @@ KEY="$({
   echo "$DATA_VERSION"
   hash_of Tools/build_lexicon.py
   hash_of Tools/build_packs.py
+  hash_of "$MANIFEST"
   for f in Tools/pack_overrides/*.tsv; do hash_of "$f"; done
-  for f in "$CEDICT_FILE" "$JMDICT_FILE" "$KRDICT_FILE" "$NIKL_FILE" "$NGSL_FILE" "$NGSL_FORMS_FILE" "$WORDFREQ_FILE"; do
+  for f in "$CEDICT_FILE" "$JMDICT_FILE" "$KRDICT_FILE" "$NIKL_FILE" "$NGSL_FILE" "$NGSL_FORMS_FILE" "$WORDFREQ_FILE" \
+           "$TSL_FILE" "$TSL_FORMS_FILE" "$BSL_FILE" "$BSL_FORMS_FILE" "$NAWL_FILE" "$HSK_FILE" "$JLPT_FILE"; do
     if [ -f "$SRC/$f" ]; then hash_of "$SRC/$f"; else echo "없음 $f"; fi
   done
+  while read -r name dir sha; do
+    [ -n "$name" ] || continue
+    if [ -f "$SRC/subs/$name" ]; then hash_of "$SRC/subs/$name"; else echo "없음 subs/$name"; fi
+  done <<< "$SUBS_FILES"
   while read -r name dir sha; do
     [ -n "$name" ] || continue
     if [ -f "$SRC/tatoeba/$name" ]; then hash_of "$SRC/tatoeba/$name"; else echo "없음 $name"; fi
   done <<< "$TATOEBA_FILES"
 } | "${SHA[@]}" | cut -c1-16)"
 BUILD="$ROOT/build-$DATA_VERSION-$KEY"
+
+# 매니페스트의 묶음 id 전부(한 줄, 공백 구분). 출시 빌드 필수 목록 · 캐시 완성 판정이 쓴다.
+manifest_ids() {
+  "$PY" -I -c 'import json, sys; print(" ".join(p["id"] for p in json.load(open(sys.argv[1], encoding="utf-8"))["packs"]))' "$MANIFEST"
+}
 
 if [ ! -f "$BUILD/.done" ]; then
   STAGE="$BUILD.part"
@@ -191,17 +251,23 @@ if [ ! -f "$BUILD/.done" ]; then
         --out "$STAGE/Lexicon" || { warn "사전을 만들지 못했다"; rm -rf "$STAGE/Lexicon"; mkdir -p "$STAGE/Lexicon"; }
     fi
   fi
-  # 묶음 · 예문 사전 = 원자료 넷(사전 셋 + Tatoeba)과 덧쓰기가 다 있어야 만든다(뜻 · 예문이 묶음 파일 안에 있다, 형식 2).
+  # 묶음 · 예문 사전 = 원자료(사전 셋 + 목록 + 자막 + Tatoeba)와 덧쓰기가 다 있어야 만든다(뜻 · 예문이 묶음 파일 안에 있다, 형식 2).
   if [ "$have_packs" = 1 ] && [ "$have_cedict$have_jmdict$have_krdict" = 111 ]; then
     "$PY" -I Tools/build_packs.py --cedict "$SRC/$CEDICT_FILE" --jmdict "$SRC/$JMDICT_FILE" --krdict "$SRC/$KRDICT_FILE" \
       --nikl "$SRC/$NIKL_FILE" --ngsl "$SRC/$NGSL_FILE" --ngsl-forms "$SRC/$NGSL_FORMS_FILE" --wordfreq "$SRC/$WORDFREQ_FILE" \
+      --tsl "$SRC/$TSL_FILE" --tsl-forms "$SRC/$TSL_FORMS_FILE" --bsl "$SRC/$BSL_FILE" --bsl-forms "$SRC/$BSL_FORMS_FILE" \
+      --nawl "$SRC/$NAWL_FILE" --hsk "$SRC/$HSK_FILE" --jlpt "$SRC/$JLPT_FILE" --subs "$SRC/subs" --manifest "$MANIFEST" \
       --tatoeba "$SRC/tatoeba" --tatoeba-version "$(cat "$SRC/tatoeba/VERSION" 2>/dev/null || echo "")" \
       --overrides Tools/pack_overrides --out "$STAGE/Packs" --examples-out "$STAGE/Lexicon" \
       || { warn "묶음을 만들지 못했다"; rm -rf "$STAGE/Packs" "$STAGE/Lexicon/examples.sqlite"; mkdir -p "$STAGE/Packs"; }
   fi
-  # 다 받아 만든 판만 캐시로 남긴다(빠진 원자료가 있으면 다음 실행이 다시 시도한다).
+  # 다 받아 만든 판만 캐시로 남긴다(빠진 원자료가 있으면 다음 실행이 다시 시도한다). 묶음은 매니페스트 전부가 있어야 한다.
+  packs_complete=1
+  for id in $(manifest_ids); do
+    [ -f "$STAGE/Packs/$id.json" ] || packs_complete=0
+  done
   if [ "$have_cedict$have_jmdict$have_krdict$have_packs" = 1111 ] && [ -f "$STAGE/Lexicon/krdict.sqlite" ] \
-     && [ -f "$STAGE/Lexicon/examples.sqlite" ] && [ -f "$STAGE/Packs/zh-1.json" ]; then
+     && [ -f "$STAGE/Lexicon/examples.sqlite" ] && [ "$packs_complete" = 1 ]; then
     touch "$STAGE/.done"
   fi
   rm -rf "$BUILD"
@@ -222,13 +288,11 @@ if [ "${VOCAB_REQUIRE_LEXICON:-0}" = 1 ]; then
   for f in cedict.sqlite jmdict.sqlite; do
     [ -f "$OUT_LEXICON/$f" ] || { echo "::error::출시 빌드에 $f 가 없다" >&2; exit 1; }
   done
-  # 한국어기초사전은 저장소 릴리스 첨부로 늘 받을 수 있다(2026-10-28) = 출시 빌드에서는 필수. 묶음 열둘 · 예문 사전도 필수.
+  # 한국어기초사전은 저장소 릴리스 첨부로 늘 받을 수 있다(2026-10-28) = 출시 빌드에서는 필수. 매니페스트의 묶음 전부 · 예문 사전도 필수.
   for f in cedict.sqlite jmdict.sqlite krdict.sqlite examples.sqlite; do
     [ -f "$OUT_LEXICON/$f" ] || { echo "::error::출시 빌드에 $f 가 없다" >&2; exit 1; }
   done
-  for lang in en zh ja ko; do
-    for level in 1 2 3; do
-      [ -f "$OUT_PACKS/$lang-$level.json" ] || { echo "::error::출시 빌드에 묶음 $lang-$level 이 없다" >&2; exit 1; }
-    done
+  for id in $(manifest_ids); do
+    [ -f "$OUT_PACKS/$id.json" ] || { echo "::error::출시 빌드에 묶음 $id 가 없다" >&2; exit 1; }
   done
 fi

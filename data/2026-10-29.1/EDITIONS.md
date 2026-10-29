@@ -1,6 +1,6 @@
 # Data version 2026-10-29.1
 
-Shipped in Saybit 1.0.0 (11) for iPhone. Built by the app's `fetch-lexicon.sh` from the sources below.
+Used in Saybit 1.0.0 TestFlight builds (11) to (17) for iPhone; not in an App Store release. Built by the app's `fetch-lexicon.sh` from the sources below.
 
 | Source | Edition | Source file sha256 |
 |---|---|---|

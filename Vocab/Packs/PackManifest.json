@@ -1,0 +1,1585 @@
+{
+ "format": 1,
+ "exams": [
+  {
+   "id": "toeic",
+   "lang": "en",
+   "name": "TOEIC"
+  },
+  {
+   "id": "toefl",
+   "lang": "en",
+   "name": "TOEFL"
+  },
+  {
+   "id": "hsk",
+   "lang": "zh",
+   "name": "HSK"
+  },
+  {
+   "id": "jlpt",
+   "lang": "ja",
+   "name": "JLPT"
+  },
+  {
+   "id": "topik",
+   "lang": "ko",
+   "name": "TOPIK"
+  }
+ ],
+ "sources": [
+  {
+   "id": "nikl",
+   "title": {
+    "ko": "한국어 학습용 어휘 목록 · 국립국어원",
+    "en": "Korean Learner Vocabulary List · NIKL"
+   },
+   "notice": {
+    "ko": "본 저작물은 '국립국어원'에서 '2003년' 작성하여 공공누리 제1유형으로 개방한 '한국어 학습용 어휘 목록'을 이용하였으며, 해당 저작물은 '국립국어원, korean.go.kr'에서 무료로 다운받으실 수 있습니다.",
+    "en": "This app uses the 'Korean Learner Vocabulary List' written in 2003 by the National Institute of Korean Language and released under KOGL Type 1. It can be downloaded for free from the National Institute of Korean Language, korean.go.kr."
+   },
+   "license": "KOGL Type 1",
+   "links": [
+    {
+     "label": {
+      "ko": "원문",
+      "en": "Source"
+     },
+     "url": "https://www.korean.go.kr/front_eng/down/down_02V.do?etc_seq=70"
+    },
+    {
+     "label": {
+      "ko": "공공누리 제1유형",
+      "en": "KOGL Type 1"
+     },
+     "url": "https://www.kogl.or.kr/info/licenseType1.do"
+    }
+   ]
+  },
+  {
+   "id": "ngsl",
+   "title": {
+    "ko": "New General Service List 1.2",
+    "en": "New General Service List 1.2"
+   },
+   "notice": {
+    "ko": "영어 묶음의 단어와 순서 · 낱말 꼴: Browne, C., Culligan, B., & Phillips, J. The New General Service List 1.2, CC BY-SA 4.0. 앱이 고친 묶음 파일은 같은 라이선스로 공개합니다.",
+    "en": "Words, order and word forms of the English lists: Browne, C., Culligan, B., & Phillips, J. The New General Service List 1.2, CC BY-SA 4.0. The list files the app adapted are published under the same license."
+   },
+   "license": "CC BY-SA 4.0",
+   "links": [
+    {
+     "label": {
+      "ko": "원문",
+      "en": "Source"
+     },
+     "url": "https://www.newgeneralservicelist.com/new-general-service-list"
+    },
+    {
+     "label": {
+      "ko": "라이선스",
+      "en": "License"
+     },
+     "url": "https://creativecommons.org/licenses/by-sa/4.0/"
+    }
+   ]
+  },
+  {
+   "id": "wordfreq",
+   "title": {
+    "ko": "wordfreq 3.1.1 · Robyn Speer",
+    "en": "wordfreq 3.1.1 · Robyn Speer"
+   },
+   "notice": {
+    "ko": "중국어 · 일본어 묶음과 TOEFL 대비 묶음의 빈도 순서: wordfreq(Robyn Speer) 자료, CC BY-SA 4.0. wordfreq 가 밝힌 원천 자료(SUBTLEX-CH: Cai & Brysbaert 2010 등 SUBTLEX 목록은 누구나 받을 수 있는 자료)를 포함합니다.",
+    "en": "Frequency order of the Chinese and Japanese lists and the TOEFL prep lists: wordfreq (Robyn Speer) data, CC BY-SA 4.0, including the sources wordfreq credits (SUBTLEX lists such as SUBTLEX-CH by Cai & Brysbaert 2010, which are freely available data)."
+   },
+   "license": "CC BY-SA 4.0",
+   "links": [
+    {
+     "label": {
+      "ko": "원문",
+      "en": "Source"
+     },
+     "url": "https://github.com/rspeer/wordfreq"
+    },
+    {
+     "label": {
+      "ko": "라이선스",
+      "en": "License"
+     },
+     "url": "https://creativecommons.org/licenses/by-sa/4.0/"
+    }
+   ]
+  },
+  {
+   "id": "subs",
+   "title": {
+    "ko": "FrequencyWords · hermitdave (OpenSubtitles 2018)",
+    "en": "FrequencyWords · hermitdave (OpenSubtitles 2018)"
+   },
+   "notice": {
+    "ko": "회화 묶음의 자막 빈도 순서: hermitdave FrequencyWords(OpenSubtitles 2018 자막 말뭉치의 낱말 빈도표, OPUS), CC BY-SA 4.0. 자막 문장은 싣지 않고 낱말이 얼마나 자주 쓰였는지만 순서에 씁니다.",
+    "en": "Subtitle frequency order of the conversation lists: hermitdave FrequencyWords (word counts from the OpenSubtitles 2018 corpus via OPUS), CC BY-SA 4.0. No subtitle text is included; only how often a word was used shapes the order."
+   },
+   "license": "CC BY-SA 4.0",
+   "links": [
+    {
+     "label": {
+      "ko": "원문",
+      "en": "Source"
+     },
+     "url": "https://github.com/hermitdave/FrequencyWords"
+    },
+    {
+     "label": {
+      "ko": "OpenSubtitles(OPUS)",
+      "en": "OpenSubtitles (OPUS)"
+     },
+     "url": "https://opus.nlpl.eu/OpenSubtitles.php"
+    },
+    {
+     "label": {
+      "ko": "라이선스",
+      "en": "License"
+     },
+     "url": "https://creativecommons.org/licenses/by-sa/4.0/"
+    }
+   ]
+  },
+  {
+   "id": "tsl",
+   "title": {
+    "ko": "TOEIC Service List 1.2 · Browne · Culligan",
+    "en": "TOEIC Service List 1.2 · Browne and Culligan"
+   },
+   "notice": {
+    "ko": "TOEIC 대비 묶음(기초 · 중급 · 실전)의 단어와 순서 · 낱말 꼴: Browne, C. & Culligan, B. The TOEIC Service List 1.2, CC BY-SA 4.0. 시험 주관 기관과 관계없는 공개 연구 목록이에요. 앱이 고친 묶음 파일은 같은 라이선스로 공개합니다.",
+    "en": "Words, order and word forms of the TOEIC prep lists (Basic, Intermediate, Advanced): Browne, C. & Culligan, B. The TOEIC Service List 1.2, CC BY-SA 4.0. An open research list unaffiliated with the exam's organizer. The list files the app adapted are published under the same license."
+   },
+   "license": "CC BY-SA 4.0",
+   "links": [
+    {
+     "label": {
+      "ko": "원문",
+      "en": "Source"
+     },
+     "url": "https://www.newgeneralservicelist.com/toeic-service-list"
+    },
+    {
+     "label": {
+      "ko": "라이선스",
+      "en": "License"
+     },
+     "url": "https://creativecommons.org/licenses/by-sa/4.0/"
+    }
+   ]
+  },
+  {
+   "id": "bsl",
+   "title": {
+    "ko": "Business Service List 1.2 · Browne · Culligan",
+    "en": "Business Service List 1.2 · Browne and Culligan"
+   },
+   "notice": {
+    "ko": "TOEIC 대비 비즈니스 묶음의 단어와 순서 · 낱말 꼴: Browne, C. & Culligan, B. The Business Service List 1.2, CC BY-SA 4.0. 앱이 고친 묶음 파일은 같은 라이선스로 공개합니다.",
+    "en": "Words, order and word forms of the TOEIC prep Business list: Browne, C. & Culligan, B. The Business Service List 1.2, CC BY-SA 4.0. The list files the app adapted are published under the same license."
+   },
+   "license": "CC BY-SA 4.0",
+   "links": [
+    {
+     "label": {
+      "ko": "원문",
+      "en": "Source"
+     },
+     "url": "https://www.newgeneralservicelist.com/business-service-list"
+    },
+    {
+     "label": {
+      "ko": "라이선스",
+      "en": "License"
+     },
+     "url": "https://creativecommons.org/licenses/by-sa/4.0/"
+    }
+   ]
+  },
+  {
+   "id": "nawl",
+   "title": {
+    "ko": "New Academic Word List 1.2 · Browne · Culligan · Phillips",
+    "en": "New Academic Word List 1.2 · Browne, Culligan and Phillips"
+   },
+   "notice": {
+    "ko": "TOEFL 대비 묶음의 단어 · 낱말 꼴: Browne, C., Culligan, B., & Phillips, J. The New Academic Word List 1.2, CC BY-SA 4.0. 순서는 wordfreq 빈도. 시험 주관 기관과 관계없는 공개 연구 목록이에요. 앱이 고친 묶음 파일은 같은 라이선스로 공개합니다.",
+    "en": "Words and word forms of the TOEFL prep lists: Browne, C., Culligan, B., & Phillips, J. The New Academic Word List 1.2, CC BY-SA 4.0. Ordered by wordfreq frequency. An open research list unaffiliated with the exam's organizer. The list files the app adapted are published under the same license."
+   },
+   "license": "CC BY-SA 4.0",
+   "links": [
+    {
+     "label": {
+      "ko": "원문",
+      "en": "Source"
+     },
+     "url": "https://www.newgeneralservicelist.com/new-academic-word-list"
+    },
+    {
+     "label": {
+      "ko": "라이선스",
+      "en": "License"
+     },
+     "url": "https://creativecommons.org/licenses/by-sa/4.0/"
+    }
+   ]
+  },
+  {
+   "id": "hsk",
+   "title": {
+    "ko": "complete-hsk-vocabulary · Yanis Zafirópulos",
+    "en": "complete-hsk-vocabulary · Yanis Zafirópulos"
+   },
+   "notice": {
+    "ko": "HSK 대비 묶음의 급별 단어 목록과 급 안 빈도: complete-hsk-vocabulary(Yanis Zafirópulos, MIT 라이선스)에 정리된 HSK 2.0 공개 급별 어휘. 읽기 · 영어 뜻은 CC-CEDICT 에서 다시 찾아 씁니다. 시험 주관 기관과 관계없는 공개 목록이에요.",
+    "en": "Level word lists and in-level frequency of the HSK prep lists: the HSK 2.0 level vocabulary as compiled in complete-hsk-vocabulary (Yanis Zafirópulos, MIT License). Readings and English glosses are looked up again in CC-CEDICT. An open list unaffiliated with the exam's organizer."
+   },
+   "license": "MIT",
+   "links": [
+    {
+     "label": {
+      "ko": "원문",
+      "en": "Source"
+     },
+     "url": "https://github.com/drkameleon/complete-hsk-vocabulary"
+    },
+    {
+     "label": {
+      "ko": "라이선스",
+      "en": "License"
+     },
+     "url": "https://github.com/drkameleon/complete-hsk-vocabulary/blob/main/LICENSE"
+    }
+   ]
+  },
+  {
+   "id": "jlpt",
+   "title": {
+    "ko": "JLPT 수준별 어휘 · Jonathan Waller (tanos.co.uk)",
+    "en": "JLPT level vocabulary · Jonathan Waller (tanos.co.uk)"
+   },
+   "notice": {
+    "ko": "JLPT 대비 묶음의 수준별 단어 목록: Jonathan Waller 가 tanos.co.uk 에 CC BY 로 공개한 비공식 목록(Bluskyo/JLPT_Vocabulary 가 옮긴 JSON 사본을 씁니다). 2010년 개정 뒤 공식 어휘 목록은 없으며, 이 목록은 시험 주관 기관과 관계없어요. 읽기 · 영어 뜻은 JMdict 에서 다시 찾아 씁니다.",
+    "en": "Level word lists of the JLPT prep lists: the unofficial lists Jonathan Waller published on tanos.co.uk under CC BY (the app uses the JSON copy converted by Bluskyo/JLPT_Vocabulary). There has been no official vocabulary list since the 2010 revision, and this list is unaffiliated with the exam's organizer. Readings and English glosses are looked up again in JMdict."
+   },
+   "license": "CC BY",
+   "links": [
+    {
+     "label": {
+      "ko": "원문",
+      "en": "Source"
+     },
+     "url": "https://www.tanos.co.uk/jlpt/sharing/"
+    },
+    {
+     "label": {
+      "ko": "옮긴 사본",
+      "en": "Converted copy"
+     },
+     "url": "https://github.com/Bluskyo/JLPT_Vocabulary"
+    },
+    {
+     "label": {
+      "ko": "라이선스",
+      "en": "License"
+     },
+     "url": "https://creativecommons.org/licenses/by/4.0/"
+    }
+   ]
+  }
+ ],
+ "packs": [
+  {
+   "id": "en-1",
+   "lang": "en",
+   "category": "common",
+   "level": 1,
+   "title": {
+    "ko": "영어 1",
+    "en": "English 1"
+   },
+   "levelTitle": {
+    "ko": "처음이에요",
+    "en": "Just starting"
+   },
+   "levelShort": {
+    "ko": "1",
+    "en": "1"
+   },
+   "size": {
+    "ko": "자주 쓰는 첫 500단어",
+    "en": "The first 500 everyday words"
+   },
+   "source": {
+    "ko": "NGSL 1.2 순서 · 한국어 뜻은 한국어기초사전 대역어를 사람이 검토 · 예문 Tatoeba",
+    "en": "Order: NGSL 1.2 · Korean meanings reviewed from the Basic Korean Dictionary · examples: Tatoeba"
+   },
+   "sources": [
+    "ngsl",
+    "krdict",
+    "tatoeba"
+   ]
+  },
+  {
+   "id": "en-2",
+   "lang": "en",
+   "category": "common",
+   "level": 2,
+   "title": {
+    "ko": "영어 2",
+    "en": "English 2"
+   },
+   "levelTitle": {
+    "ko": "조금 알아요",
+    "en": "Know a little"
+   },
+   "levelShort": {
+    "ko": "2",
+    "en": "2"
+   },
+   "size": {
+    "ko": "다음 1,000단어",
+    "en": "The next 1,000 words"
+   },
+   "source": {
+    "ko": "NGSL 1.2 순서 · 한국어 뜻은 한국어기초사전 대역어를 사람이 검토 · 예문 Tatoeba",
+    "en": "Order: NGSL 1.2 · Korean meanings reviewed from the Basic Korean Dictionary · examples: Tatoeba"
+   },
+   "sources": [
+    "ngsl",
+    "krdict",
+    "tatoeba"
+   ]
+  },
+  {
+   "id": "en-3",
+   "lang": "en",
+   "category": "common",
+   "level": 3,
+   "title": {
+    "ko": "영어 3",
+    "en": "English 3"
+   },
+   "levelTitle": {
+    "ko": "꽤 알아요",
+    "en": "Know quite a bit"
+   },
+   "levelShort": {
+    "ko": "3",
+    "en": "3"
+   },
+   "size": {
+    "ko": "그다음 1,500단어",
+    "en": "The 1,500 after that"
+   },
+   "source": {
+    "ko": "NGSL 1.2 순서 · 한국어 뜻은 한국어기초사전 대역어를 사람이 검토 · 예문 Tatoeba",
+    "en": "Order: NGSL 1.2 · Korean meanings reviewed from the Basic Korean Dictionary · examples: Tatoeba"
+   },
+   "sources": [
+    "ngsl",
+    "krdict",
+    "tatoeba"
+   ]
+  },
+  {
+   "id": "en-conv-1",
+   "lang": "en",
+   "category": "conversation",
+   "level": 1,
+   "title": {
+    "ko": "영어 회화 1",
+    "en": "English conversation 1"
+   },
+   "levelTitle": {
+    "ko": "처음이에요",
+    "en": "Just starting"
+   },
+   "levelShort": {
+    "ko": "1",
+    "en": "1"
+   },
+   "size": {
+    "ko": "자주 쓰는 회화 500단어",
+    "en": "The 500 most used conversation words"
+   },
+   "source": {
+    "ko": "자막 빈도(OpenSubtitles, hermitdave FrequencyWords) · 일상 문장 빈도(Tatoeba) 순서 · 한국어 뜻은 한국어기초사전 대역어를 사람이 검토 · 예문 Tatoeba",
+    "en": "Order: subtitle frequency (OpenSubtitles via hermitdave FrequencyWords) and everyday-sentence frequency (Tatoeba) · Korean meanings reviewed from the Basic Korean Dictionary · examples: Tatoeba"
+   },
+   "sources": [
+    "subs",
+    "krdict",
+    "tatoeba"
+   ]
+  },
+  {
+   "id": "en-conv-2",
+   "lang": "en",
+   "category": "conversation",
+   "level": 2,
+   "title": {
+    "ko": "영어 회화 2",
+    "en": "English conversation 2"
+   },
+   "levelTitle": {
+    "ko": "조금 알아요",
+    "en": "Know a little"
+   },
+   "levelShort": {
+    "ko": "2",
+    "en": "2"
+   },
+   "size": {
+    "ko": "다음 1,000단어",
+    "en": "The next 1,000 words"
+   },
+   "source": {
+    "ko": "자막 빈도(OpenSubtitles, hermitdave FrequencyWords) · 일상 문장 빈도(Tatoeba) 순서 · 한국어 뜻은 한국어기초사전 대역어를 사람이 검토 · 예문 Tatoeba",
+    "en": "Order: subtitle frequency (OpenSubtitles via hermitdave FrequencyWords) and everyday-sentence frequency (Tatoeba) · Korean meanings reviewed from the Basic Korean Dictionary · examples: Tatoeba"
+   },
+   "sources": [
+    "subs",
+    "krdict",
+    "tatoeba"
+   ]
+  },
+  {
+   "id": "en-toeic-1",
+   "lang": "en",
+   "category": "exam",
+   "level": 1,
+   "title": {
+    "ko": "TOEIC 대비 · 기초",
+    "en": "TOEIC prep · Basic"
+   },
+   "levelTitle": {
+    "ko": "기초",
+    "en": "Basic"
+   },
+   "levelShort": {
+    "ko": "기초",
+    "en": "Basic"
+   },
+   "size": {
+    "ko": "TOEIC Service List 1~400 · 자주 나오는 말부터",
+    "en": "TOEIC Service List 1 to 400 · most frequent first"
+   },
+   "source": {
+    "ko": "TOEIC Service List 1.2(Browne · Culligan, CC BY-SA 4.0) 빈도 순 · 한국어 뜻은 한국어기초사전 대역어를 사람이 검토 · 예문 Tatoeba",
+    "en": "Order: TOEIC Service List 1.2 (Browne and Culligan, CC BY-SA 4.0) · Korean meanings reviewed from the Basic Korean Dictionary · examples: Tatoeba"
+   },
+   "sources": [
+    "tsl",
+    "krdict",
+    "tatoeba"
+   ],
+   "exam": "toeic"
+  },
+  {
+   "id": "en-toeic-2",
+   "lang": "en",
+   "category": "exam",
+   "level": 2,
+   "title": {
+    "ko": "TOEIC 대비 · 중급",
+    "en": "TOEIC prep · Intermediate"
+   },
+   "levelTitle": {
+    "ko": "중급",
+    "en": "Intermediate"
+   },
+   "levelShort": {
+    "ko": "중급",
+    "en": "Mid"
+   },
+   "size": {
+    "ko": "TOEIC Service List 401~800",
+    "en": "TOEIC Service List 401 to 800"
+   },
+   "source": {
+    "ko": "TOEIC Service List 1.2(Browne · Culligan, CC BY-SA 4.0) 빈도 순 · 한국어 뜻은 한국어기초사전 대역어를 사람이 검토 · 예문 Tatoeba",
+    "en": "Order: TOEIC Service List 1.2 (Browne and Culligan, CC BY-SA 4.0) · Korean meanings reviewed from the Basic Korean Dictionary · examples: Tatoeba"
+   },
+   "sources": [
+    "tsl",
+    "krdict",
+    "tatoeba"
+   ],
+   "exam": "toeic"
+  },
+  {
+   "id": "en-toeic-3",
+   "lang": "en",
+   "category": "exam",
+   "level": 3,
+   "title": {
+    "ko": "TOEIC 대비 · 실전",
+    "en": "TOEIC prep · Advanced"
+   },
+   "levelTitle": {
+    "ko": "실전",
+    "en": "Advanced"
+   },
+   "levelShort": {
+    "ko": "실전",
+    "en": "Full"
+   },
+   "size": {
+    "ko": "TOEIC Service List 801~1,250",
+    "en": "TOEIC Service List 801 to 1,250"
+   },
+   "source": {
+    "ko": "TOEIC Service List 1.2(Browne · Culligan, CC BY-SA 4.0) 빈도 순 · 한국어 뜻은 한국어기초사전 대역어를 사람이 검토 · 예문 Tatoeba",
+    "en": "Order: TOEIC Service List 1.2 (Browne and Culligan, CC BY-SA 4.0) · Korean meanings reviewed from the Basic Korean Dictionary · examples: Tatoeba"
+   },
+   "sources": [
+    "tsl",
+    "krdict",
+    "tatoeba"
+   ],
+   "exam": "toeic"
+  },
+  {
+   "id": "en-toeic-4",
+   "lang": "en",
+   "category": "exam",
+   "level": 4,
+   "title": {
+    "ko": "TOEIC 대비 · 비즈니스",
+    "en": "TOEIC prep · Business"
+   },
+   "levelTitle": {
+    "ko": "비즈니스",
+    "en": "Business"
+   },
+   "levelShort": {
+    "ko": "비즈니스",
+    "en": "Business"
+   },
+   "size": {
+    "ko": "Business Service List 1.2 · 업무 영어 1,700단어 가운데 위 목록에 없는 말",
+    "en": "Business Service List 1.2 · business English words not already in the lists above"
+   },
+   "source": {
+    "ko": "Business Service List 1.2(Browne · Culligan, CC BY-SA 4.0) 빈도 순 · 한국어 뜻은 한국어기초사전 대역어를 사람이 검토 · 예문 Tatoeba",
+    "en": "Order: Business Service List 1.2 (Browne and Culligan, CC BY-SA 4.0) · Korean meanings reviewed from the Basic Korean Dictionary · examples: Tatoeba"
+   },
+   "sources": [
+    "bsl",
+    "krdict",
+    "tatoeba"
+   ],
+   "exam": "toeic"
+  },
+  {
+   "id": "en-toefl-1",
+   "lang": "en",
+   "category": "exam",
+   "level": 1,
+   "title": {
+    "ko": "TOEFL 대비 · 기초",
+    "en": "TOEFL prep · Basic"
+   },
+   "levelTitle": {
+    "ko": "기초",
+    "en": "Basic"
+   },
+   "levelShort": {
+    "ko": "기초",
+    "en": "Basic"
+   },
+   "size": {
+    "ko": "New Academic Word List 앞 절반 · 자주 쓰는 학술어부터",
+    "en": "First half of the New Academic Word List · most frequent academic words first"
+   },
+   "source": {
+    "ko": "New Academic Word List 1.2(Browne · Culligan · Phillips, CC BY-SA 4.0) 를 빈도(wordfreq) 순으로 · 한국어 뜻은 한국어기초사전 대역어를 사람이 검토 · 예문 Tatoeba",
+    "en": "New Academic Word List 1.2 (Browne, Culligan and Phillips, CC BY-SA 4.0) in wordfreq order · Korean meanings reviewed from the Basic Korean Dictionary · examples: Tatoeba"
+   },
+   "sources": [
+    "nawl",
+    "wordfreq",
+    "krdict",
+    "tatoeba"
+   ],
+   "exam": "toefl"
+  },
+  {
+   "id": "en-toefl-2",
+   "lang": "en",
+   "category": "exam",
+   "level": 2,
+   "title": {
+    "ko": "TOEFL 대비 · 실전",
+    "en": "TOEFL prep · Advanced"
+   },
+   "levelTitle": {
+    "ko": "실전",
+    "en": "Advanced"
+   },
+   "levelShort": {
+    "ko": "실전",
+    "en": "Full"
+   },
+   "size": {
+    "ko": "New Academic Word List 뒤 절반",
+    "en": "Second half of the New Academic Word List"
+   },
+   "source": {
+    "ko": "New Academic Word List 1.2(Browne · Culligan · Phillips, CC BY-SA 4.0) 를 빈도(wordfreq) 순으로 · 한국어 뜻은 한국어기초사전 대역어를 사람이 검토 · 예문 Tatoeba",
+    "en": "New Academic Word List 1.2 (Browne, Culligan and Phillips, CC BY-SA 4.0) in wordfreq order · Korean meanings reviewed from the Basic Korean Dictionary · examples: Tatoeba"
+   },
+   "sources": [
+    "nawl",
+    "wordfreq",
+    "krdict",
+    "tatoeba"
+   ],
+   "exam": "toefl"
+  },
+  {
+   "id": "zh-1",
+   "lang": "zh",
+   "category": "common",
+   "level": 1,
+   "title": {
+    "ko": "중국어 1",
+    "en": "Chinese 1"
+   },
+   "levelTitle": {
+    "ko": "처음이에요",
+    "en": "Just starting"
+   },
+   "levelShort": {
+    "ko": "1",
+    "en": "1"
+   },
+   "size": {
+    "ko": "자주 쓰는 첫 500단어",
+    "en": "The first 500 everyday words"
+   },
+   "source": {
+    "ko": "빈도(wordfreq) · 일상 문장 빈도(Tatoeba) 순서 · 읽기 · 영어 뜻 CC-CEDICT · 예문 Tatoeba",
+    "en": "Order: wordfreq and everyday-sentence frequency · readings and English: CC-CEDICT · examples: Tatoeba"
+   },
+   "sources": [
+    "wordfreq",
+    "cedict",
+    "krdict",
+    "tatoeba"
+   ]
+  },
+  {
+   "id": "zh-2",
+   "lang": "zh",
+   "category": "common",
+   "level": 2,
+   "title": {
+    "ko": "중국어 2",
+    "en": "Chinese 2"
+   },
+   "levelTitle": {
+    "ko": "조금 알아요",
+    "en": "Know a little"
+   },
+   "levelShort": {
+    "ko": "2",
+    "en": "2"
+   },
+   "size": {
+    "ko": "다음 1,000단어",
+    "en": "The next 1,000 words"
+   },
+   "source": {
+    "ko": "빈도(wordfreq) · 일상 문장 빈도(Tatoeba) 순서 · 읽기 · 영어 뜻 CC-CEDICT · 예문 Tatoeba",
+    "en": "Order: wordfreq and everyday-sentence frequency · readings and English: CC-CEDICT · examples: Tatoeba"
+   },
+   "sources": [
+    "wordfreq",
+    "cedict",
+    "krdict",
+    "tatoeba"
+   ]
+  },
+  {
+   "id": "zh-3",
+   "lang": "zh",
+   "category": "common",
+   "level": 3,
+   "title": {
+    "ko": "중국어 3",
+    "en": "Chinese 3"
+   },
+   "levelTitle": {
+    "ko": "꽤 알아요",
+    "en": "Know quite a bit"
+   },
+   "levelShort": {
+    "ko": "3",
+    "en": "3"
+   },
+   "size": {
+    "ko": "그다음 1,500단어",
+    "en": "The 1,500 after that"
+   },
+   "source": {
+    "ko": "빈도(wordfreq) · 일상 문장 빈도(Tatoeba) 순서 · 읽기 · 영어 뜻 CC-CEDICT · 예문 Tatoeba",
+    "en": "Order: wordfreq and everyday-sentence frequency · readings and English: CC-CEDICT · examples: Tatoeba"
+   },
+   "sources": [
+    "wordfreq",
+    "cedict",
+    "krdict",
+    "tatoeba"
+   ]
+  },
+  {
+   "id": "zh-conv-1",
+   "lang": "zh",
+   "category": "conversation",
+   "level": 1,
+   "title": {
+    "ko": "중국어 회화 1",
+    "en": "Chinese conversation 1"
+   },
+   "levelTitle": {
+    "ko": "처음이에요",
+    "en": "Just starting"
+   },
+   "levelShort": {
+    "ko": "1",
+    "en": "1"
+   },
+   "size": {
+    "ko": "자주 쓰는 회화 500단어",
+    "en": "The 500 most used conversation words"
+   },
+   "source": {
+    "ko": "자막 빈도(OpenSubtitles, hermitdave FrequencyWords) · 일상 문장 빈도(Tatoeba) 순서 · 읽기 · 영어 뜻 CC-CEDICT · 예문 Tatoeba",
+    "en": "Order: subtitle frequency (OpenSubtitles via hermitdave FrequencyWords) and everyday-sentence frequency (Tatoeba) · readings and English: CC-CEDICT · examples: Tatoeba"
+   },
+   "sources": [
+    "subs",
+    "cedict",
+    "krdict",
+    "tatoeba"
+   ]
+  },
+  {
+   "id": "zh-conv-2",
+   "lang": "zh",
+   "category": "conversation",
+   "level": 2,
+   "title": {
+    "ko": "중국어 회화 2",
+    "en": "Chinese conversation 2"
+   },
+   "levelTitle": {
+    "ko": "조금 알아요",
+    "en": "Know a little"
+   },
+   "levelShort": {
+    "ko": "2",
+    "en": "2"
+   },
+   "size": {
+    "ko": "다음 1,000단어",
+    "en": "The next 1,000 words"
+   },
+   "source": {
+    "ko": "자막 빈도(OpenSubtitles, hermitdave FrequencyWords) · 일상 문장 빈도(Tatoeba) 순서 · 읽기 · 영어 뜻 CC-CEDICT · 예문 Tatoeba",
+    "en": "Order: subtitle frequency (OpenSubtitles via hermitdave FrequencyWords) and everyday-sentence frequency (Tatoeba) · readings and English: CC-CEDICT · examples: Tatoeba"
+   },
+   "sources": [
+    "subs",
+    "cedict",
+    "krdict",
+    "tatoeba"
+   ]
+  },
+  {
+   "id": "zh-hsk-1",
+   "lang": "zh",
+   "category": "exam",
+   "level": 1,
+   "title": {
+    "ko": "HSK 대비 · 1급 수준",
+    "en": "HSK prep · Level 1"
+   },
+   "levelTitle": {
+    "ko": "1급 수준",
+    "en": "Level 1"
+   },
+   "levelShort": {
+    "ko": "1급",
+    "en": "L1"
+   },
+   "size": {
+    "ko": "HSK 2.0 1급 단어 · 급 안은 빈도 순",
+    "en": "HSK 2.0 level 1 words · frequency order within the level"
+   },
+   "source": {
+    "ko": "HSK 2.0 급별 공개 단어 목록(complete-hsk-vocabulary, MIT) · 급 안은 빈도 순 · 읽기 · 영어 뜻 CC-CEDICT · 예문 Tatoeba",
+    "en": "Open HSK 2.0 level word list (complete-hsk-vocabulary, MIT) · frequency order within the level · readings and English: CC-CEDICT · examples: Tatoeba"
+   },
+   "sources": [
+    "hsk",
+    "cedict",
+    "krdict",
+    "tatoeba"
+   ],
+   "exam": "hsk"
+  },
+  {
+   "id": "zh-hsk-2",
+   "lang": "zh",
+   "category": "exam",
+   "level": 2,
+   "title": {
+    "ko": "HSK 대비 · 2급 수준",
+    "en": "HSK prep · Level 2"
+   },
+   "levelTitle": {
+    "ko": "2급 수준",
+    "en": "Level 2"
+   },
+   "levelShort": {
+    "ko": "2급",
+    "en": "L2"
+   },
+   "size": {
+    "ko": "HSK 2.0 2급 단어 · 급 안은 빈도 순",
+    "en": "HSK 2.0 level 2 words · frequency order within the level"
+   },
+   "source": {
+    "ko": "HSK 2.0 급별 공개 단어 목록(complete-hsk-vocabulary, MIT) · 급 안은 빈도 순 · 읽기 · 영어 뜻 CC-CEDICT · 예문 Tatoeba",
+    "en": "Open HSK 2.0 level word list (complete-hsk-vocabulary, MIT) · frequency order within the level · readings and English: CC-CEDICT · examples: Tatoeba"
+   },
+   "sources": [
+    "hsk",
+    "cedict",
+    "krdict",
+    "tatoeba"
+   ],
+   "exam": "hsk"
+  },
+  {
+   "id": "zh-hsk-3",
+   "lang": "zh",
+   "category": "exam",
+   "level": 3,
+   "title": {
+    "ko": "HSK 대비 · 3급 수준",
+    "en": "HSK prep · Level 3"
+   },
+   "levelTitle": {
+    "ko": "3급 수준",
+    "en": "Level 3"
+   },
+   "levelShort": {
+    "ko": "3급",
+    "en": "L3"
+   },
+   "size": {
+    "ko": "HSK 2.0 3급 단어 · 급 안은 빈도 순",
+    "en": "HSK 2.0 level 3 words · frequency order within the level"
+   },
+   "source": {
+    "ko": "HSK 2.0 급별 공개 단어 목록(complete-hsk-vocabulary, MIT) · 급 안은 빈도 순 · 읽기 · 영어 뜻 CC-CEDICT · 예문 Tatoeba",
+    "en": "Open HSK 2.0 level word list (complete-hsk-vocabulary, MIT) · frequency order within the level · readings and English: CC-CEDICT · examples: Tatoeba"
+   },
+   "sources": [
+    "hsk",
+    "cedict",
+    "krdict",
+    "tatoeba"
+   ],
+   "exam": "hsk"
+  },
+  {
+   "id": "zh-hsk-4",
+   "lang": "zh",
+   "category": "exam",
+   "level": 4,
+   "title": {
+    "ko": "HSK 대비 · 4급 수준",
+    "en": "HSK prep · Level 4"
+   },
+   "levelTitle": {
+    "ko": "4급 수준",
+    "en": "Level 4"
+   },
+   "levelShort": {
+    "ko": "4급",
+    "en": "L4"
+   },
+   "size": {
+    "ko": "HSK 2.0 4급 단어 · 급 안은 빈도 순",
+    "en": "HSK 2.0 level 4 words · frequency order within the level"
+   },
+   "source": {
+    "ko": "HSK 2.0 급별 공개 단어 목록(complete-hsk-vocabulary, MIT) · 급 안은 빈도 순 · 읽기 · 영어 뜻 CC-CEDICT · 예문 Tatoeba",
+    "en": "Open HSK 2.0 level word list (complete-hsk-vocabulary, MIT) · frequency order within the level · readings and English: CC-CEDICT · examples: Tatoeba"
+   },
+   "sources": [
+    "hsk",
+    "cedict",
+    "krdict",
+    "tatoeba"
+   ],
+   "exam": "hsk"
+  },
+  {
+   "id": "zh-hsk-5",
+   "lang": "zh",
+   "category": "exam",
+   "level": 5,
+   "title": {
+    "ko": "HSK 대비 · 5급 수준",
+    "en": "HSK prep · Level 5"
+   },
+   "levelTitle": {
+    "ko": "5급 수준",
+    "en": "Level 5"
+   },
+   "levelShort": {
+    "ko": "5급",
+    "en": "L5"
+   },
+   "size": {
+    "ko": "HSK 2.0 5급 단어 · 급 안은 빈도 순",
+    "en": "HSK 2.0 level 5 words · frequency order within the level"
+   },
+   "source": {
+    "ko": "HSK 2.0 급별 공개 단어 목록(complete-hsk-vocabulary, MIT) · 급 안은 빈도 순 · 읽기 · 영어 뜻 CC-CEDICT · 예문 Tatoeba",
+    "en": "Open HSK 2.0 level word list (complete-hsk-vocabulary, MIT) · frequency order within the level · readings and English: CC-CEDICT · examples: Tatoeba"
+   },
+   "sources": [
+    "hsk",
+    "cedict",
+    "krdict",
+    "tatoeba"
+   ],
+   "exam": "hsk"
+  },
+  {
+   "id": "zh-hsk-6",
+   "lang": "zh",
+   "category": "exam",
+   "level": 6,
+   "title": {
+    "ko": "HSK 대비 · 6급 수준",
+    "en": "HSK prep · Level 6"
+   },
+   "levelTitle": {
+    "ko": "6급 수준",
+    "en": "Level 6"
+   },
+   "levelShort": {
+    "ko": "6급",
+    "en": "L6"
+   },
+   "size": {
+    "ko": "HSK 2.0 6급 단어 · 급 안은 빈도 순",
+    "en": "HSK 2.0 level 6 words · frequency order within the level"
+   },
+   "source": {
+    "ko": "HSK 2.0 급별 공개 단어 목록(complete-hsk-vocabulary, MIT) · 급 안은 빈도 순 · 읽기 · 영어 뜻 CC-CEDICT · 예문 Tatoeba",
+    "en": "Open HSK 2.0 level word list (complete-hsk-vocabulary, MIT) · frequency order within the level · readings and English: CC-CEDICT · examples: Tatoeba"
+   },
+   "sources": [
+    "hsk",
+    "cedict",
+    "krdict",
+    "tatoeba"
+   ],
+   "exam": "hsk"
+  },
+  {
+   "id": "ja-1",
+   "lang": "ja",
+   "category": "common",
+   "level": 1,
+   "title": {
+    "ko": "일본어 1",
+    "en": "Japanese 1"
+   },
+   "levelTitle": {
+    "ko": "처음이에요",
+    "en": "Just starting"
+   },
+   "levelShort": {
+    "ko": "1",
+    "en": "1"
+   },
+   "size": {
+    "ko": "자주 쓰는 첫 500단어",
+    "en": "The first 500 everyday words"
+   },
+   "source": {
+    "ko": "빈도(wordfreq) · 일상 문장 빈도(Tatoeba) 순서 · 읽기 · 영어 뜻 JMdict · 예문 Tatoeba",
+    "en": "Order: wordfreq and everyday-sentence frequency · readings and English: JMdict · examples: Tatoeba"
+   },
+   "sources": [
+    "wordfreq",
+    "jmdict",
+    "krdict",
+    "tatoeba"
+   ]
+  },
+  {
+   "id": "ja-2",
+   "lang": "ja",
+   "category": "common",
+   "level": 2,
+   "title": {
+    "ko": "일본어 2",
+    "en": "Japanese 2"
+   },
+   "levelTitle": {
+    "ko": "조금 알아요",
+    "en": "Know a little"
+   },
+   "levelShort": {
+    "ko": "2",
+    "en": "2"
+   },
+   "size": {
+    "ko": "다음 1,000단어",
+    "en": "The next 1,000 words"
+   },
+   "source": {
+    "ko": "빈도(wordfreq) · 일상 문장 빈도(Tatoeba) 순서 · 읽기 · 영어 뜻 JMdict · 예문 Tatoeba",
+    "en": "Order: wordfreq and everyday-sentence frequency · readings and English: JMdict · examples: Tatoeba"
+   },
+   "sources": [
+    "wordfreq",
+    "jmdict",
+    "krdict",
+    "tatoeba"
+   ]
+  },
+  {
+   "id": "ja-3",
+   "lang": "ja",
+   "category": "common",
+   "level": 3,
+   "title": {
+    "ko": "일본어 3",
+    "en": "Japanese 3"
+   },
+   "levelTitle": {
+    "ko": "꽤 알아요",
+    "en": "Know quite a bit"
+   },
+   "levelShort": {
+    "ko": "3",
+    "en": "3"
+   },
+   "size": {
+    "ko": "그다음 1,500단어",
+    "en": "The 1,500 after that"
+   },
+   "source": {
+    "ko": "빈도(wordfreq) · 일상 문장 빈도(Tatoeba) 순서 · 읽기 · 영어 뜻 JMdict · 예문 Tatoeba",
+    "en": "Order: wordfreq and everyday-sentence frequency · readings and English: JMdict · examples: Tatoeba"
+   },
+   "sources": [
+    "wordfreq",
+    "jmdict",
+    "krdict",
+    "tatoeba"
+   ]
+  },
+  {
+   "id": "ja-conv-1",
+   "lang": "ja",
+   "category": "conversation",
+   "level": 1,
+   "title": {
+    "ko": "일본어 회화 1",
+    "en": "Japanese conversation 1"
+   },
+   "levelTitle": {
+    "ko": "처음이에요",
+    "en": "Just starting"
+   },
+   "levelShort": {
+    "ko": "1",
+    "en": "1"
+   },
+   "size": {
+    "ko": "자주 쓰는 회화 500단어",
+    "en": "The 500 most used conversation words"
+   },
+   "source": {
+    "ko": "일상 문장 빈도(Tatoeba) · 자막 빈도(OpenSubtitles, hermitdave FrequencyWords) 순서 · 읽기 · 영어 뜻 JMdict · 예문 Tatoeba",
+    "en": "Order: everyday-sentence frequency (Tatoeba) and subtitle frequency (OpenSubtitles via hermitdave FrequencyWords) · readings and English: JMdict · examples: Tatoeba"
+   },
+   "sources": [
+    "subs",
+    "jmdict",
+    "krdict",
+    "tatoeba"
+   ]
+  },
+  {
+   "id": "ja-conv-2",
+   "lang": "ja",
+   "category": "conversation",
+   "level": 2,
+   "title": {
+    "ko": "일본어 회화 2",
+    "en": "Japanese conversation 2"
+   },
+   "levelTitle": {
+    "ko": "조금 알아요",
+    "en": "Know a little"
+   },
+   "levelShort": {
+    "ko": "2",
+    "en": "2"
+   },
+   "size": {
+    "ko": "다음 1,000단어",
+    "en": "The next 1,000 words"
+   },
+   "source": {
+    "ko": "일상 문장 빈도(Tatoeba) · 자막 빈도(OpenSubtitles, hermitdave FrequencyWords) 순서 · 읽기 · 영어 뜻 JMdict · 예문 Tatoeba",
+    "en": "Order: everyday-sentence frequency (Tatoeba) and subtitle frequency (OpenSubtitles via hermitdave FrequencyWords) · readings and English: JMdict · examples: Tatoeba"
+   },
+   "sources": [
+    "subs",
+    "jmdict",
+    "krdict",
+    "tatoeba"
+   ]
+  },
+  {
+   "id": "ja-jlpt-1",
+   "lang": "ja",
+   "category": "exam",
+   "level": 1,
+   "title": {
+    "ko": "JLPT 대비 · N5 수준",
+    "en": "JLPT prep · N5 level"
+   },
+   "levelTitle": {
+    "ko": "N5 수준",
+    "en": "N5 level"
+   },
+   "levelShort": {
+    "ko": "N5",
+    "en": "N5"
+   },
+   "size": {
+    "ko": "JLPT N5 수준 공개 단어 목록 · 쓰임 순",
+    "en": "Open JLPT N5 level list · usage order"
+   },
+   "source": {
+    "ko": "JLPT 수준별 공개 단어 목록(Jonathan Waller · tanos.co.uk, CC BY) · 수준 안은 쓰임 순 · 읽기 · 영어 뜻 JMdict · 예문 Tatoeba",
+    "en": "Open JLPT level word list (Jonathan Waller, tanos.co.uk, CC BY) · usage order within the level · readings and English: JMdict · examples: Tatoeba"
+   },
+   "sources": [
+    "jlpt",
+    "jmdict",
+    "krdict",
+    "tatoeba"
+   ],
+   "exam": "jlpt"
+  },
+  {
+   "id": "ja-jlpt-2",
+   "lang": "ja",
+   "category": "exam",
+   "level": 2,
+   "title": {
+    "ko": "JLPT 대비 · N4 수준",
+    "en": "JLPT prep · N4 level"
+   },
+   "levelTitle": {
+    "ko": "N4 수준",
+    "en": "N4 level"
+   },
+   "levelShort": {
+    "ko": "N4",
+    "en": "N4"
+   },
+   "size": {
+    "ko": "JLPT N4 수준 공개 단어 목록 · 쓰임 순",
+    "en": "Open JLPT N4 level list · usage order"
+   },
+   "source": {
+    "ko": "JLPT 수준별 공개 단어 목록(Jonathan Waller · tanos.co.uk, CC BY) · 수준 안은 쓰임 순 · 읽기 · 영어 뜻 JMdict · 예문 Tatoeba",
+    "en": "Open JLPT level word list (Jonathan Waller, tanos.co.uk, CC BY) · usage order within the level · readings and English: JMdict · examples: Tatoeba"
+   },
+   "sources": [
+    "jlpt",
+    "jmdict",
+    "krdict",
+    "tatoeba"
+   ],
+   "exam": "jlpt"
+  },
+  {
+   "id": "ja-jlpt-3",
+   "lang": "ja",
+   "category": "exam",
+   "level": 3,
+   "title": {
+    "ko": "JLPT 대비 · N3 수준",
+    "en": "JLPT prep · N3 level"
+   },
+   "levelTitle": {
+    "ko": "N3 수준",
+    "en": "N3 level"
+   },
+   "levelShort": {
+    "ko": "N3",
+    "en": "N3"
+   },
+   "size": {
+    "ko": "JLPT N3 수준 공개 단어 목록 · 쓰임 순",
+    "en": "Open JLPT N3 level list · usage order"
+   },
+   "source": {
+    "ko": "JLPT 수준별 공개 단어 목록(Jonathan Waller · tanos.co.uk, CC BY) · 수준 안은 쓰임 순 · 읽기 · 영어 뜻 JMdict · 예문 Tatoeba",
+    "en": "Open JLPT level word list (Jonathan Waller, tanos.co.uk, CC BY) · usage order within the level · readings and English: JMdict · examples: Tatoeba"
+   },
+   "sources": [
+    "jlpt",
+    "jmdict",
+    "krdict",
+    "tatoeba"
+   ],
+   "exam": "jlpt"
+  },
+  {
+   "id": "ja-jlpt-4",
+   "lang": "ja",
+   "category": "exam",
+   "level": 4,
+   "title": {
+    "ko": "JLPT 대비 · N2 수준",
+    "en": "JLPT prep · N2 level"
+   },
+   "levelTitle": {
+    "ko": "N2 수준",
+    "en": "N2 level"
+   },
+   "levelShort": {
+    "ko": "N2",
+    "en": "N2"
+   },
+   "size": {
+    "ko": "JLPT N2 수준 공개 단어 목록 · 쓰임 순",
+    "en": "Open JLPT N2 level list · usage order"
+   },
+   "source": {
+    "ko": "JLPT 수준별 공개 단어 목록(Jonathan Waller · tanos.co.uk, CC BY) · 수준 안은 쓰임 순 · 읽기 · 영어 뜻 JMdict · 예문 Tatoeba",
+    "en": "Open JLPT level word list (Jonathan Waller, tanos.co.uk, CC BY) · usage order within the level · readings and English: JMdict · examples: Tatoeba"
+   },
+   "sources": [
+    "jlpt",
+    "jmdict",
+    "krdict",
+    "tatoeba"
+   ],
+   "exam": "jlpt"
+  },
+  {
+   "id": "ja-jlpt-5",
+   "lang": "ja",
+   "category": "exam",
+   "level": 5,
+   "title": {
+    "ko": "JLPT 대비 · N1 수준",
+    "en": "JLPT prep · N1 level"
+   },
+   "levelTitle": {
+    "ko": "N1 수준",
+    "en": "N1 level"
+   },
+   "levelShort": {
+    "ko": "N1",
+    "en": "N1"
+   },
+   "size": {
+    "ko": "JLPT N1 수준 공개 단어 목록 · 쓰임 순",
+    "en": "Open JLPT N1 level list · usage order"
+   },
+   "source": {
+    "ko": "JLPT 수준별 공개 단어 목록(Jonathan Waller · tanos.co.uk, CC BY) · 수준 안은 쓰임 순 · 읽기 · 영어 뜻 JMdict · 예문 Tatoeba",
+    "en": "Open JLPT level word list (Jonathan Waller, tanos.co.uk, CC BY) · usage order within the level · readings and English: JMdict · examples: Tatoeba"
+   },
+   "sources": [
+    "jlpt",
+    "jmdict",
+    "krdict",
+    "tatoeba"
+   ],
+   "exam": "jlpt"
+  },
+  {
+   "id": "ko-1",
+   "lang": "ko",
+   "category": "common",
+   "level": 1,
+   "title": {
+    "ko": "한국어 1",
+    "en": "Korean 1"
+   },
+   "levelTitle": {
+    "ko": "처음이에요",
+    "en": "Just starting"
+   },
+   "levelShort": {
+    "ko": "1",
+    "en": "1"
+   },
+   "size": {
+    "ko": "자주 쓰는 첫 500단어",
+    "en": "The first 500 everyday words"
+   },
+   "source": {
+    "ko": "국립국어원 한국어 학습용 어휘 목록 순서 · 한국어기초사전 뜻 · 예문 Tatoeba · 한국어기초사전",
+    "en": "Order: NIKL Korean learner vocabulary · meanings: Basic Korean Dictionary · examples: Tatoeba, Basic Korean Dictionary"
+   },
+   "sources": [
+    "nikl",
+    "krdict",
+    "tatoeba"
+   ]
+  },
+  {
+   "id": "ko-2",
+   "lang": "ko",
+   "category": "common",
+   "level": 2,
+   "title": {
+    "ko": "한국어 2",
+    "en": "Korean 2"
+   },
+   "levelTitle": {
+    "ko": "조금 알아요",
+    "en": "Know a little"
+   },
+   "levelShort": {
+    "ko": "2",
+    "en": "2"
+   },
+   "size": {
+    "ko": "다음 1,000단어",
+    "en": "The next 1,000 words"
+   },
+   "source": {
+    "ko": "국립국어원 한국어 학습용 어휘 목록 순서 · 한국어기초사전 뜻 · 예문 Tatoeba · 한국어기초사전",
+    "en": "Order: NIKL Korean learner vocabulary · meanings: Basic Korean Dictionary · examples: Tatoeba, Basic Korean Dictionary"
+   },
+   "sources": [
+    "nikl",
+    "krdict",
+    "tatoeba"
+   ]
+  },
+  {
+   "id": "ko-3",
+   "lang": "ko",
+   "category": "common",
+   "level": 3,
+   "title": {
+    "ko": "한국어 3",
+    "en": "Korean 3"
+   },
+   "levelTitle": {
+    "ko": "꽤 알아요",
+    "en": "Know quite a bit"
+   },
+   "levelShort": {
+    "ko": "3",
+    "en": "3"
+   },
+   "size": {
+    "ko": "그다음 1,500단어",
+    "en": "The 1,500 after that"
+   },
+   "source": {
+    "ko": "국립국어원 한국어 학습용 어휘 목록 순서 · 한국어기초사전 뜻 · 예문 Tatoeba · 한국어기초사전",
+    "en": "Order: NIKL Korean learner vocabulary · meanings: Basic Korean Dictionary · examples: Tatoeba, Basic Korean Dictionary"
+   },
+   "sources": [
+    "nikl",
+    "krdict",
+    "tatoeba"
+   ]
+  },
+  {
+   "id": "ko-conv-1",
+   "lang": "ko",
+   "category": "conversation",
+   "level": 1,
+   "title": {
+    "ko": "한국어 회화 1",
+    "en": "Korean conversation 1"
+   },
+   "levelTitle": {
+    "ko": "처음이에요",
+    "en": "Just starting"
+   },
+   "levelShort": {
+    "ko": "1",
+    "en": "1"
+   },
+   "size": {
+    "ko": "자주 쓰는 회화 500단어",
+    "en": "The 500 most used conversation words"
+   },
+   "source": {
+    "ko": "자막 빈도(OpenSubtitles, hermitdave FrequencyWords)로 고른 국립국어원 학습용 어휘 · 한국어기초사전 뜻 · 예문 Tatoeba · 한국어기초사전",
+    "en": "NIKL learner vocabulary ordered by subtitle frequency (OpenSubtitles via hermitdave FrequencyWords) · meanings: Basic Korean Dictionary · examples: Tatoeba, Basic Korean Dictionary"
+   },
+   "sources": [
+    "subs",
+    "nikl",
+    "krdict",
+    "tatoeba"
+   ]
+  },
+  {
+   "id": "ko-conv-2",
+   "lang": "ko",
+   "category": "conversation",
+   "level": 2,
+   "title": {
+    "ko": "한국어 회화 2",
+    "en": "Korean conversation 2"
+   },
+   "levelTitle": {
+    "ko": "조금 알아요",
+    "en": "Know a little"
+   },
+   "levelShort": {
+    "ko": "2",
+    "en": "2"
+   },
+   "size": {
+    "ko": "다음 1,000단어",
+    "en": "The next 1,000 words"
+   },
+   "source": {
+    "ko": "자막 빈도(OpenSubtitles, hermitdave FrequencyWords)로 고른 국립국어원 학습용 어휘 · 한국어기초사전 뜻 · 예문 Tatoeba · 한국어기초사전",
+    "en": "NIKL learner vocabulary ordered by subtitle frequency (OpenSubtitles via hermitdave FrequencyWords) · meanings: Basic Korean Dictionary · examples: Tatoeba, Basic Korean Dictionary"
+   },
+   "sources": [
+    "subs",
+    "nikl",
+    "krdict",
+    "tatoeba"
+   ]
+  },
+  {
+   "id": "ko-topik-1",
+   "lang": "ko",
+   "category": "exam",
+   "level": 1,
+   "title": {
+    "ko": "TOPIK 대비 · TOPIK I 수준 · 초급",
+    "en": "TOPIK prep · TOPIK I level · beginner"
+   },
+   "levelTitle": {
+    "ko": "TOPIK I 수준 · 초급",
+    "en": "TOPIK I level · beginner"
+   },
+   "levelShort": {
+    "ko": "초급",
+    "en": "I"
+   },
+   "size": {
+    "ko": "국립국어원 학습용 어휘 초급 등급 · 약 980단어",
+    "en": "NIKL learner vocabulary, beginner grade · about 980 words"
+   },
+   "source": {
+    "ko": "국립국어원 한국어 학습용 어휘 목록의 등급(초급 · 중급 · 고급) · 한국어기초사전 뜻 · 예문 Tatoeba · 한국어기초사전",
+    "en": "Grades of the NIKL Korean learner vocabulary (beginner, intermediate, advanced) · meanings: Basic Korean Dictionary · examples: Tatoeba, Basic Korean Dictionary"
+   },
+   "sources": [
+    "nikl",
+    "krdict",
+    "tatoeba"
+   ],
+   "exam": "topik"
+  },
+  {
+   "id": "ko-topik-2",
+   "lang": "ko",
+   "category": "exam",
+   "level": 2,
+   "title": {
+    "ko": "TOPIK 대비 · TOPIK II 수준 · 중급",
+    "en": "TOPIK prep · TOPIK II level · intermediate"
+   },
+   "levelTitle": {
+    "ko": "TOPIK II 수준 · 중급",
+    "en": "TOPIK II level · intermediate"
+   },
+   "levelShort": {
+    "ko": "중급",
+    "en": "II mid"
+   },
+   "size": {
+    "ko": "국립국어원 학습용 어휘 중급 등급 · 약 2,100단어",
+    "en": "NIKL learner vocabulary, intermediate grade · about 2,100 words"
+   },
+   "source": {
+    "ko": "국립국어원 한국어 학습용 어휘 목록의 등급(초급 · 중급 · 고급) · 한국어기초사전 뜻 · 예문 Tatoeba · 한국어기초사전",
+    "en": "Grades of the NIKL Korean learner vocabulary (beginner, intermediate, advanced) · meanings: Basic Korean Dictionary · examples: Tatoeba, Basic Korean Dictionary"
+   },
+   "sources": [
+    "nikl",
+    "krdict",
+    "tatoeba"
+   ],
+   "exam": "topik"
+  },
+  {
+   "id": "ko-topik-3",
+   "lang": "ko",
+   "category": "exam",
+   "level": 3,
+   "title": {
+    "ko": "TOPIK 대비 · TOPIK II 수준 · 고급",
+    "en": "TOPIK prep · TOPIK II level · advanced"
+   },
+   "levelTitle": {
+    "ko": "TOPIK II 수준 · 고급",
+    "en": "TOPIK II level · advanced"
+   },
+   "levelShort": {
+    "ko": "고급",
+    "en": "II high"
+   },
+   "size": {
+    "ko": "국립국어원 학습용 어휘 고급 등급 · 약 2,900단어",
+    "en": "NIKL learner vocabulary, advanced grade · about 2,900 words"
+   },
+   "source": {
+    "ko": "국립국어원 한국어 학습용 어휘 목록의 등급(초급 · 중급 · 고급) · 한국어기초사전 뜻 · 예문 Tatoeba · 한국어기초사전",
+    "en": "Grades of the NIKL Korean learner vocabulary (beginner, intermediate, advanced) · meanings: Basic Korean Dictionary · examples: Tatoeba, Basic Korean Dictionary"
+   },
+   "sources": [
+    "nikl",
+    "krdict",
+    "tatoeba"
+   ],
+   "exam": "topik"
+  }
+ ]
+}

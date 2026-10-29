@@ -1,13 +1,27 @@
 #!/usr/bin/env python3
 """단어장(ios/vocab) 무료 묶음과 예문 사전을 만든다. 파이썬 표준 라이브러리만(맥 러너의 /usr/bin/python3 3.9 에서도 돈다).
 
-명세 = docs/claude/roadmap/vocab/02-engineering.md 6절 · 원장 D20 · D22 · D33 · 01-memory L22 · L23 · N1.
+명세 = docs/claude/roadmap/vocab/02-engineering.md 6절 · 원장 D20 · D22 · D33 · D46~D48 · 01-memory L22 · L23 · N1.
 
-묶음 = 언어마다 셋(1 = 자주 쓰는 첫 500 · 2 = 다음 1,000 · 3 = 그다음 1,500), 시험 이름 없음(D22).
-  en-1/2/3  NGSL 1.2(Browne · Culligan · Phillips, CC BY-SA 4.0) SFI 순, 영어 학습자용 = 한국어 뜻
-  zh-1/2/3  wordfreq 3.1.1 zh 빈도 × Tatoeba 일상 문장 빈도, CC-CEDICT 에 있는 말 = 한국어 · 영어 뜻
-  ja-1/2/3  wordfreq 3.1.1 ja 빈도 × Tatoeba 일본어 색인(사전형) 빈도, JMdict 흔한 말 = 한국어 · 영어 뜻
-  ko-1/2/3  국립국어원 한국어 학습용 어휘 목록(2003, 공공누리 제1유형) 등급 · 순위, 한국어기초사전 항목 = 영어 뜻(한국어 학습자용)
+묶음 = 셋 갈래(Vocab/Packs/PackManifest.json 이 앱에 보이는 이름 · 자료 줄 · 분류의 단일 소스, 여기 PACK_IDS 와 같아야 한다):
+  자주 쓰는 단어(언어마다 셋 = 1 자주 쓰는 첫 500 · 2 다음 1,000 · 3 그다음 1,500)
+    en-1/2/3  NGSL 1.2(Browne · Culligan · Phillips, CC BY-SA 4.0) SFI 순, 영어 학습자용 = 한국어 뜻
+    zh-1/2/3  wordfreq 3.1.1 zh 빈도 × Tatoeba 일상 문장 빈도, CC-CEDICT 에 있는 말 = 한국어 · 영어 뜻
+    ja-1/2/3  wordfreq 3.1.1 ja 빈도 × Tatoeba 일본어 색인(사전형) 빈도, JMdict 흔한 말 = 한국어 · 영어 뜻
+    ko-1/2/3  국립국어원 한국어 학습용 어휘 목록(2003, 공공누리 제1유형) 등급 · 순위, 한국어기초사전 항목 = 영어 뜻(한국어 학습자용)
+  회화(언어마다 둘 = 1 자주 쓰는 회화 500 · 2 다음 1,000, D46): 자막 빈도(hermitdave FrequencyWords, OpenSubtitles 2018, CC BY-SA 4.0)를
+    사전형으로 되돌려(영 = 낱말 꼴 표, 중 = 분절된 말 그대로, 일 = 사전형 · 활용 줄기, 한 = 학습용 어휘의 활용 꼴 맞추기) Tatoeba 일상 문장
+    빈도와 합친 순서. 이름 · 비속어 · 기능어 조각은 뺀다. 뜻 · 읽기 · 예문은 자주 쓰는 단어와 같은 길.
+    en-conv-1/2 · zh-conv-1/2 · ja-conv-1/2 · ko-conv-1/2
+  시험 대비(시험마다 단계, 이름은 '수준'을 말할 뿐 주관 기관과 무관, D47):
+    en-toeic-1/2/3  TOEIC Service List 1.2(Browne · Culligan, CC BY-SA 4.0) 순위 1~400 · 401~800 · 801~1,250
+    en-toeic-4      Business Service List 1.2(CC BY-SA 4.0) 순위 순, 위 셋 · NGSL 에 이미 있는 말은 뺀다
+    en-toefl-1/2    New Academic Word List 1.2(CC BY-SA 4.0) 를 wordfreq 빈도 순으로 둘로
+    zh-hsk-1~6      HSK 2.0 급별 목록(complete-hsk-vocabulary, MIT) 급 안 빈도 순, 읽기 · 영어 뜻은 CC-CEDICT 그 병음 항목
+    ja-jlpt-1~5     JLPT N5~N1 수준 공개 목록(Jonathan Waller tanos.co.uk, CC BY, Bluskyo/JLPT_Vocabulary JSON 사본) 수준 안 쓰임 순,
+                    JMdict 흔한 말에 있는 것만
+    ko-topik-1/2/3  학습용 어휘 등급 A(초급 = TOPIK I 수준) · B(중급) · C(고급)(TOPIK II 수준)
+  같은 말은 묶음이 달라도 한 번만 만들고(뜻 · 예문이 같다) 묶음마다 순위만 다르다.
 
 묶음 한 줄 = 단어 하나 = 뜻 하나(읽기 · 사전 항목이 정해져 있다, 추정 읽기 없음 D33):
   {id, term, alt?, reading?, dictRef, pos, ko?, en?, ex?, exKo?, exEn?, exRef?, cat?, ov?}
@@ -19,8 +33,11 @@
 덧쓰기 = Tools/pack_overrides/*.tsv(사람이 검토한 고침, 줄마다 근거 주석). 표 · 표본 = --report 폴더.
 
 실행: python3 -I build_packs.py --cedict … --jmdict … --krdict … --nikl … --ngsl … --ngsl-forms … --wordfreq … --tatoeba DIR
+                                 --tsl … --tsl-forms … --bsl … --bsl-forms … --nawl … --hsk complete.min.json --jlpt JLPT_vocab_ALL.json
+                                 --subs DIR(en_50k.txt · zh_cn_50k.txt · ja_full.txt · ko_50k.txt) --manifest Vocab/Packs/PackManifest.json
                                  --overrides Tools/pack_overrides --out DIR --examples-out DIR [--report DIR]
-      python3 -I build_packs.py --fixture lexicon_fixture.txt --fixture-lexicon FIXTURES --out FIXTURES  (fixture-pack-zh.json)
+      python3 -I build_packs.py --fixture Tools/pack_fixture.txt --from-packs DIR --from-examples DIR --out FIXTURES
+      python3 -I build_packs.py --check-manifest Vocab/Packs/PackManifest.json   (묶음 id · 글 규칙 검사, fetch-lexicon.sh 가 돈다)
 """
 from __future__ import annotations
 
@@ -45,6 +62,27 @@ import zipfile
 FORMAT = 2
 # 묶음 크기(1 · 2 · 3). 하루 새 단어 상한은 엔진(10)이 지킨다 = 1 은 약 50일 치.
 PACK_SIZES = (500, 1000, 1500)
+# 회화 묶음 크기(1 · 2, D46). 자막 빈도는 1,500 뒤로 이름 · 감탄 조각이 많아져 둘에서 멈춘다.
+CONV_SIZES = (500, 1000)
+LANGS = ("en", "zh", "ja", "ko")
+# 시험 묶음 recipe(D47). TOEIC = TSL 순위 구간 셋 + BSL · TOEFL = NAWL 둘 · HSK = 2.0 급 · JLPT = N5~N1 · TOPIK = 학습용 어휘 등급.
+TOEIC_TSL_BANDS = ((1, 400), (401, 800), (801, 1250))
+TOEFL_NAWL_PARTS = 2
+HSK_LEVELS = ("o1", "o2", "o3", "o4", "o5", "o6")
+JLPT_LEVELS = (5, 4, 3, 2, 1)
+TOPIK_GRADES = ("A", "B", "C")
+# 앱 PackManifest.json 과 같아야 하는 묶음 id 전부(--check-manifest · build_all 끝 확인).
+PACK_IDS = tuple(
+    [f"{lang}-{n}" for lang in LANGS for n in range(1, len(PACK_SIZES) + 1)]
+    + [f"{lang}-conv-{n}" for lang in LANGS for n in range(1, len(CONV_SIZES) + 1)]
+    + [f"en-toeic-{n}" for n in range(1, len(TOEIC_TSL_BANDS) + 2)]
+    + [f"en-toefl-{n}" for n in range(1, TOEFL_NAWL_PARTS + 1)]
+    + [f"zh-hsk-{n}" for n in range(1, len(HSK_LEVELS) + 1)]
+    + [f"ja-jlpt-{n}" for n in range(1, len(JLPT_LEVELS) + 1)]
+    + [f"ko-topik-{n}" for n in range(1, len(TOPIK_GRADES) + 1)]
+)
+# 자막 빈도 파일(hermitdave FrequencyWords content/2018, --subs 폴더 안 이름). 일본어는 50k 판이 없어 full.
+SUBS_FILES = {"en": "en_50k.txt", "zh": "zh_cn_50k.txt", "ja": "ja_full.txt", "ko": "ko_50k.txt"}
 # 예문 길이(L23 '한 문장'): 영어 = 낱말 10개까지 · 중 · 일 = 글자 20개까지(문장 부호 빼고) · 한국어 = 어절 8개 · 글자 24개까지.
 MAX_WORDS_EN = 10
 MAX_CHARS_CJK = 20
@@ -1252,6 +1290,177 @@ def declump(items: list, window: int = 10, most: int = 2) -> list:
     return out
 
 
+# ── 시험 · 회화 원자료 ───────────────────────────────────────────────────────
+
+def read_text_lines(path: str) -> list:
+    """목록 CSV 를 줄로. newgeneralservicelist.com 파일은 UTF-8(BOM) 이 기본인데 TSL stats 처럼 Latin-1 글자(résumé)가 섞인 파일이 있어
+    UTF-8 로 안 읽히면 cp1252 로 다시 읽는다."""
+    with open(path, "rb") as handle:
+        raw = handle.read()
+    try:
+        text = raw.decode("utf-8-sig")
+    except UnicodeDecodeError:
+        text = raw.decode("cp1252", errors="replace")
+    return text.splitlines()
+
+
+def read_forms(path: str | None) -> dict:
+    """교수용 낱말 꼴 CSV(표제어, 꼴, 꼴 …, # 주석) → {표제어: {꼴}}. NGSL · TSL · BSL · NAWL 이 같은 꼴이다."""
+    forms = collections.defaultdict(set)
+    if not path:
+        return forms
+    for line in read_text_lines(path):
+        if line.startswith("#") or not line.strip():
+            continue
+        parts = [p.strip().lower() for p in line.strip().split(",") if p.strip()]
+        if parts:
+            forms[parts[0]].update(parts)
+    return forms
+
+
+def read_service_list(stats_path: str, forms_path: str | None) -> tuple:
+    """TSL · BSL stats CSV(Word, <이름> Rank, …) → ([(순위, 표제어)] 순위 순, 낱말 꼴 표)."""
+    rows = []
+    if True:
+        reader = csv.DictReader(read_text_lines(stats_path))
+        rank_key = next((k for k in reader.fieldnames or () if k and "rank" in k.lower()), None)
+        if rank_key is None:
+            raise ValueError(f"{stats_path}: 순위 칸이 없다")
+        for row in reader:
+            word = (row.get("Word") or "").strip()
+            rank = (row.get(rank_key) or "").strip()
+            if word and rank.isdigit():
+                rows.append((int(rank), word.lower()))
+    rows.sort()
+    return rows, read_forms(forms_path)
+
+
+def read_nawl(forms_path: str, wf_ranks: dict) -> tuple:
+    """NAWL 교수용 CSV(순위 없음) → wordfreq 영어 빈도 순 [(순위, 표제어)] + 낱말 꼴."""
+    forms = read_forms(forms_path)
+    lemmas = sorted(forms, key=lambda w: (wf_ranks.get(w, 10 ** 6), w))
+    return [(i + 1, w) for i, w in enumerate(lemmas)], forms
+
+
+def read_hsk(path: str) -> dict:
+    """complete-hsk-vocabulary complete.min.json → {"o1": [(빈도, 간체, 번체, [숫자 성조 병음])], …} 급마다 빈도 순(작을수록 흔함)."""
+    with open(path, encoding="utf-8") as handle:
+        data = json.load(handle)
+    out = collections.defaultdict(list)
+    for entry in data:
+        forms = entry.get("f") or []
+        simplified = (entry.get("s") or "").strip()
+        if not forms or not simplified:
+            continue
+        pinyins = [((f.get("i") or {}).get("n") or "").strip() for f in forms]
+        trad = (forms[0].get("t") or simplified).strip()
+        for level in entry.get("l") or []:
+            if level in HSK_LEVELS:
+                out[level].append((entry.get("q") or 10 ** 6, simplified, trad, [p for p in pinyins if p]))
+    for level in out:
+        out[level].sort()
+    return out
+
+
+def read_jlpt(path: str) -> dict:
+    """Bluskyo/JLPT_Vocabulary JLPT_vocab_ALL.json({표기: [{reading, level}]}) → {N: [(표기, 가나)]}(파일 순서)."""
+    with open(path, encoding="utf-8") as handle:
+        data = json.load(handle)
+    out = collections.defaultdict(list)
+    for surface, rows in data.items():
+        for row in rows:
+            level = int(row.get("level") or 0)
+            if level in JLPT_LEVELS:
+                out[level].append((surface.strip(), (row.get("reading") or "").strip()))
+    return out
+
+
+def read_subs(folder: str, lang: str) -> list:
+    """자막 빈도 파일(hermitdave) 한 줄 = '낱말 빈도' → [(낱말, 빈도)] 파일 순서(= 빈도 순)."""
+    out = []
+    with open(os.path.join(folder, SUBS_FILES[lang]), encoding="utf-8", errors="replace") as handle:
+        for line in handle:
+            word, _, count = line.rstrip("\n").partition(" ")
+            count = count.strip()
+            if word and count.isdigit():
+                out.append((word, int(count)))
+    return out
+
+
+def en_proper_names(tat: Tatoeba, min_count: int = 5, share: float = 0.7) -> set:
+    """Tatoeba 영어 문장에서 문장 가운데(첫 낱말 빼고) 대문자로 쓰인 비율이 높은 낱말 = 이름(Tom · Boston). 회화 묶음에서 뺀다."""
+    upper = collections.Counter()
+    total = collections.Counter()
+    for sentence in tat.sentences.values():
+        if sentence.lang != "eng":
+            continue
+        for word in LATIN_WORD.findall(sentence.text)[1:]:
+            key = word.lower()
+            total[key] += 1
+            if word[:1].isupper():
+                upper[key] += 1
+    return {w for w, n in total.items() if n >= min_count and upper[w] >= share * n}
+
+
+def en_strip(word: str) -> list:
+    """규칙 꼴 벗기기 후보(running → runn · run, cities → city, loved → lov · love). 그럴듯한 것부터."""
+    out = []
+    for suffix in ("ies", "ied", "ing", "ed", "es", "s", "d"):
+        if not word.endswith(suffix) or len(word) - len(suffix) < 2:
+            continue
+        base = word[:-len(suffix)]
+        if suffix in ("ies", "ied"):
+            out.append(base + "y")
+            continue
+        out.append(base)
+        if suffix in ("ing", "ed", "d"):
+            out.append(base + "e")
+        if suffix in ("ing", "ed") and len(base) >= 3 and base[-1] == base[-2]:
+            out.append(base[:-1])
+    return out
+
+
+def en_subtitle_rows(subs: list, form_to_lemma: dict, known: set, names: set, wf_ranks: dict) -> list:
+    """자막 빈도(표면형) → 사전형 빈도 순위 [(순위, 표제어)]. 낱말 꼴 표로 되돌리고, 표에 없으면 규칙 꼴을 벗겨 아는 말인지 본다.
+    아는 말(목록 표제어 · 한국어기초사전 대역어 · wordfreq 상위)만 = 오타 · 조각('s · don)을 거른다. Tatoeba 가 이름으로 보는 말도 뺀다."""
+    counts = collections.Counter()
+    for token, count in subs:
+        word = token.lower()
+        if not re.fullmatch(r"[a-z]+", word) or (len(word) < 2 and word not in ("i", "a")):
+            continue
+        lemma = form_to_lemma.get(word)
+        if lemma is None:
+            lemma = word if word in known else next((base for base in en_strip(word) if base in known), None)
+        if lemma is None or lemma in names:
+            continue
+        counts[lemma] += count
+    ordered = sorted(counts.items(), key=lambda kv: (-kv[1], wf_ranks.get(kv[0], 10 ** 6), kv[0]))
+    return [(i + 1, lemma) for i, (lemma, _) in enumerate(ordered)]
+
+
+def ko_subtitle_scores(items: list, subs: list) -> dict:
+    """학습용 어휘 말마다 자막 어절 빈도 합(활용 꼴 맞추기 = ko_matches). 한 글자 줄기(가다 · 보다 · 수)는 어미 · 조사가 붙은 어절만 센다
+    (조사 '가' 를 '가다'로, '수' 한 글자를 수(數)로 세지 않게). 열쇠 = id(item)."""
+    by_first = collections.defaultdict(list)
+    for eojeol, count in subs:
+        word = eojeol.strip(".,!?\"'“”‘’…()~·")
+        if word and HANGUL.match(word[0]):
+            by_first[word[0]].append((word, count))
+    scores = {}
+    for item in items:
+        forms = item.forms or {item.term}
+        short = min(len(f) for f in forms) <= 1
+        total = 0
+        for first in {f[:1] for f in forms if f}:
+            for word, count in by_first.get(first, ()):
+                if short and word in forms:
+                    continue
+                if ko_matches(word, forms, item.pos):
+                    total += count
+        scores[id(item)] = total
+    return scores
+
+
 # ── 영어 묶음 ──────────────────────────────────────────────────────────────
 
 def read_ngsl(stats: str, forms_path: str | None) -> tuple:
@@ -1271,7 +1480,43 @@ def read_ngsl(stats: str, forms_path: str | None) -> tuple:
     return rows, forms
 
 
-def build_en(rows: list, forms: dict, koidx: KoIndex, kr: dict, ov: Overrides, examples: Examples = None) -> list:
+def en_item(lemma: str, forms: dict, koidx: KoIndex, kr: dict, ov: Overrides, examples: Examples = None):
+    """영어 표제어 하나 → 묶음 줄(한국어 뜻은 한국어기초사전 거꾸로 찾기 + Tatoeba 번역 투표). 빼는 말 · 뜻 없는 말 = None."""
+    key = lemma.lower()
+    item = Item("en", lemma)
+    row = ov.get("en", lemma)
+    if "drop" in row or key in ov.block["en"]:
+        return None
+    cands = koidx.candidates("en", [key], set())
+    word_forms = (forms.get(key) or set()) | en_inflections(key)
+    if examples is not None:
+        ids = sorted(set(sid for form in word_forms for sid in examples.en.get(form, ()) if examples.tat.sentences[sid].ko))
+        cands = ko_translation_vote(cands, ko_texts_for(ids, examples.tat), kr)
+    item.ko, chosen = choose_korean(cands, kr)
+    forms_of = {kr[w].form: kr[w] for _, w, _ in cands}
+    item.ko = [ko_attributive(m) if forms_of.get(m) is not None and forms_of[m].pos == "형용사"
+               else m + "인" if m.endswith("적") and len(m) >= 3 and forms_of.get(m) is not None and forms_of[m].pos in ("관형사", "명사")
+               else m for m in item.ko]
+    item.why = " | ".join(f"{s:.1f} {w}" for s, _, w in cands[:4])
+    item.pos = KR_POS.get(chosen.pos, "n") if chosen else "n"
+    item.category = kr_category(chosen)
+    if not apply_override(item, row):
+        return None
+    if "ko" in row and chosen is not None and row["ko"].split(";")[0].strip() != chosen.form:
+        first = next((kr[w] for _, w, _ in cands if kr[w].form == split_meanings(row["ko"])[0]), None)
+        item.category = kr_category(first)
+        if first is not None and "pos" not in row:
+            item.pos = KR_POS.get(first.pos, item.pos)
+    item.forms = word_forms
+    item.ko_stems = [ko_stem(m) for m in item.ko]
+    item.ref = None
+    # 영어 묶음은 한국어 뜻이 곧 카드 뜻이다 = 한국어 뜻이 없는 말은 싣지 않는다(영어 뜻으로 대신할 수 없다).
+    return item if item.ko else None
+
+
+def build_en(rows: list, forms: dict, koidx: KoIndex, kr: dict, ov: Overrides, examples: Examples = None,
+             cache: dict = None) -> list:
+    """[(순위, 표제어)] 순서대로 묶음 줄. cache(표제어 → Item 또는 None)가 있으면 같은 말은 한 번만 만든다(묶음 사이 공유)."""
     items = []
     seen = set()
     for rank, lemma in rows:
@@ -1279,35 +1524,16 @@ def build_en(rows: list, forms: dict, koidx: KoIndex, kr: dict, ov: Overrides, e
         if key in seen:
             continue
         seen.add(key)
-        item = Item("en", lemma)
-        row = ov.get("en", lemma)
-        if "drop" in row or key in ov.block["en"]:
-            continue
-        cands = koidx.candidates("en", [key], set())
-        if examples is not None:
-            word_forms = (forms.get(key) or set()) | en_inflections(key)
-            ids = sorted(set(sid for form in word_forms for sid in examples.en.get(form, ()) if examples.tat.sentences[sid].ko))
-            cands = ko_translation_vote(cands, ko_texts_for(ids, examples.tat), kr)
-        item.ko, chosen = choose_korean(cands, kr)
-        forms_of = {kr[w].form: kr[w] for _, w, _ in cands}
-        item.ko = [ko_attributive(m) if forms_of.get(m) is not None and forms_of[m].pos == "형용사"
-                   else m + "인" if m.endswith("적") and len(m) >= 3 and forms_of.get(m) is not None and forms_of[m].pos in ("관형사", "명사")
-                   else m for m in item.ko]
-        item.why = " | ".join(f"{s:.1f} {w}" for s, _, w in cands[:4])
-        item.pos = KR_POS.get(chosen.pos, "n") if chosen else "n"
-        item.category = kr_category(chosen)
-        if not apply_override(item, row):
-            continue
-        if "ko" in row and chosen is not None and row["ko"].split(";")[0].strip() != chosen.form:
-            first = next((kr[w] for _, w, _ in cands if kr[w].form == split_meanings(row["ko"])[0]), None)
-            item.category = kr_category(first)
-            if first is not None and "pos" not in row:
-                item.pos = KR_POS.get(first.pos, item.pos)
-        item.forms = (forms.get(key) or set()) | en_inflections(key)
-        item.ko_stems = [ko_stem(m) for m in item.ko]
-        item.useful = rank
-        item.ref = None
-        items.append(item)
+        if cache is not None and key in cache:
+            item = cache[key]
+        else:
+            item = en_item(lemma, forms, koidx, kr, ov, examples)
+            if item is not None:
+                item.useful = rank
+            if cache is not None:
+                cache[key] = item
+        if item is not None:
+            items.append(item)
     return items
 
 
@@ -1461,9 +1687,46 @@ def zh_pick_glosses(entry: CedictEntry, sets: list, count: int = 3, total: int =
     return out
 
 
-def build_zh(wf: WordFreq, cedict: dict, jieba_pos: dict, examples: Examples, tat: Tatoeba, koidx: KoIndex, kr: dict,
-             ov: Overrides, limit: int) -> list:
-    ranks = wf.ranks("zh")
+def zh_item(word: str, entries: list, tag: str, row: dict, examples: Examples, tat: Tatoeba, koidx: KoIndex, kr: dict,
+            wanted: str | None, why: str = ""):
+    """중국어 말 하나 → 묶음 줄. 항목 = 덧쓰기 · 시험 목록이 준 병음(`wanted`), 아니면 Tatoeba 번역 투표. 뜻 없음 · 빼기 = None."""
+    sets = zh_english_sets(word, examples, tat)
+    entry, how = zh_choose_entry(word, entries, sets, wanted)
+    item = Item("zh", word)
+    item.ref = entry.key
+    item.reading = entry.pinyin
+    item.alt = entry.trad if entry.trad != word else None
+    item.en = zh_pick_glosses(entry, sets)
+    if not item.en:
+        return None
+    item.gloss_words = en_words(" ".join(g for g in entry.glosses if not g.startswith("CL:")))
+    item.pos = zh_pos(entry, tag, item.en)
+    cands = koidx.candidates("zh", [word], en_words(" ".join(item.en)), item.pos, (entry.trad, word))
+    cands = ko_translation_vote(cands, ko_texts_for(examples.zh.get(word, ()), tat), kr)
+    item.ko, chosen = choose_korean(cands, kr)
+    item.category = kr_category(chosen)
+    item.why = f"{why} {tag} {how} || " + " | ".join(f"{s:.1f} {w}" for s, _, w in cands[:4])
+    if "reading" in row:
+        item.overridden.append("reading")
+    if not apply_override(item, row):
+        return None
+    item.ko_stems = [ko_stem(m) for m in item.ko]
+    return item
+
+
+def zh_cached(cache: dict, word: str, wanted: str | None):
+    """같은 말 · 같은 병음으로 이미 만든 줄(없으면 None). 병음을 묻지 않은 열쇠(word, "")의 줄도 병음이 맞으면 같은 말이다."""
+    for key in ((word, wanted or ""), (word, "")):
+        if key in cache:
+            hit = cache[key]
+            if hit is None or wanted is None or hit.reading == wanted:
+                return True, hit
+    return False, None
+
+
+def build_zh(ranks: dict, cedict: dict, jieba_pos: dict, examples: Examples, tat: Tatoeba, koidx: KoIndex, kr: dict,
+             ov: Overrides, limit: int, cache: dict = None, label: str = "wf") -> list:
+    """빈도 순위(`ranks`: wordfreq 또는 자막) × Tatoeba 문장 빈도의 로그 합 순서로 `limit` 개. 한자만 · 네 글자까지 · 기능어 · 숫자 빼고."""
     counts = collections.Counter()
     for sid, tokens in examples.zh_tokens.items():
         for token in set(tokens):
@@ -1495,34 +1758,66 @@ def build_zh(wf: WordFreq, cedict: dict, jieba_pos: dict, examples: Examples, ta
         count_rank[index] = position if pool[index][2] > 0 else len(pool)
     order = sorted(range(len(pool)), key=lambda i: (math.log(i + 1) + math.log(count_rank[i]), pool[i][1]))
     items = []
+    taken = set()
     for index in order:
         word, rank, count, tag, entries, row = pool[index]
-        sets = zh_english_sets(word, examples, tat)
-        entry, how = zh_choose_entry(word, entries, sets, row.get("reading"))
-        item = Item("zh", word)
-        item.ref = entry.key
-        item.reading = entry.pinyin
-        item.alt = entry.trad if entry.trad != word else None
-        item.en = zh_pick_glosses(entry, sets)
-        if not item.en:
+        wanted = row.get("reading")
+        found, item = zh_cached(cache, word, wanted) if cache is not None else (False, None)
+        if not found:
+            item = zh_item(word, entries, tag, row, examples, tat, koidx, kr, wanted, f"{label}{rank} tat{count}")
+            if cache is not None:
+                cache[(word, wanted or "")] = item
+        if item is None or id(item) in taken:
             continue
-        item.gloss_words = en_words(" ".join(g for g in entry.glosses if not g.startswith("CL:")))
-        item.pos = zh_pos(entry, tag, item.en)
-        cands = koidx.candidates("zh", [word], en_words(" ".join(item.en)), item.pos, (entry.trad, word))
-        cands = ko_translation_vote(cands, ko_texts_for(examples.zh.get(word, ()), tat), kr)
-        item.ko, chosen = choose_korean(cands, kr)
-        item.category = kr_category(chosen)
-        item.why = f"wf{rank} tat{count} {tag} {how} || " + " | ".join(f"{s:.1f} {w}" for s, _, w in cands[:4])
-        if "reading" in row:
-            item.overridden.append("reading")
-        if not apply_override(item, row):
-            continue
-        item.ko_stems = [ko_stem(m) for m in item.ko]
-        item.useful = len(items)
+        taken.add(id(item))
+        item.useful = item.useful or len(items)
         items.append(item)
         if len(items) >= limit:
             break
     return items
+
+
+def build_hsk(levels: dict, cedict: dict, jieba_pos: dict, examples: Examples, tat: Tatoeba, koidx: KoIndex, kr: dict,
+              ov: Overrides, cache: dict) -> dict:
+    """HSK 2.0 급별 목록 → {급 표시: [줄]} 급 안 빈도 순. 항목 = 목록의 병음과 같은 CC-CEDICT 항목(없으면 투표), 고유 명사(北京)도 싣는다.
+    같은 말이 여러 급에 있으면 낮은 급에만. 사전에 없는 말 · 뜻 없는 말은 뺀다(수를 log 에 적는다)."""
+    out = {}
+    seen = set()
+    dropped = collections.Counter()
+    for level in HSK_LEVELS:
+        items = []
+        for _q, simp, _trad, pinyins in levels.get(level, ()):
+            row = ov.get("zh", simp)
+            if "drop" in row or simp in ov.block["zh"]:
+                continue
+            plain = [e for e in cedict.get(simp, []) if not e.weak and not e.surname_only]
+            entries = [e for e in plain if not all(CEDICT_BAD.search(g) or ZH_BOUND.match(g) for g in e.glosses if not g.startswith("CL:"))]
+            if not entries:
+                dropped[level] += 1
+                continue
+            wanted = None
+            for text in [row.get("reading")] + list(pinyins):
+                if not text:
+                    continue
+                normalized = " ".join(text.replace("u:", "ü").replace("U:", "Ü").lower().split())
+                if any(e.pinyin == normalized for e in entries):
+                    wanted = normalized
+                    break
+            found, item = zh_cached(cache, simp, wanted)
+            if not found:
+                item = zh_item(simp, entries, jieba_pos.get(simp, ""), row, examples, tat, koidx, kr, wanted, f"hsk-{level}")
+                cache[(simp, wanted or "")] = item
+            if item is None:
+                dropped[level] += 1
+                continue
+            if id(item) in seen:
+                continue
+            seen.add(id(item))
+            items.append(item)
+        out[level] = items
+    if dropped:
+        log("HSK 에서 뺀 말(사전에 없음 · 뜻 없음): " + ", ".join(f"{k} {v}" for k, v in sorted(dropped.items())))
+    return out
 
 
 # ── 일본어 묶음 ────────────────────────────────────────────────────────────
@@ -1531,8 +1826,9 @@ GODAN_STEMS = {"う": "わいっえお", "く": "かきいけこ", "ぐ": "が�
                "ぶ": "ばびんべぼ", "む": "まみんめも", "る": "らりっれろ"}
 
 
-def ja_surfaces(term: str, tags: list) -> set:
-    """wordfreq(MeCab 표면형) 에서 이 말을 찾을 꼴: 사전형 + 활용 줄기(思う → 思っ · 思い · 思わ)."""
+def ja_surfaces(term: str, tags: list, bare_stem: bool = False) -> set:
+    """wordfreq(MeCab 표면형) 에서 이 말을 찾을 꼴: 사전형 + 활용 줄기(思う → 思っ · 思い · 思わ).
+    bare_stem = 자막 빈도표(hermitdave ja, 한자와 가나를 가른 조각: 言 · 分か · 聞)용으로 마지막 가나를 뗀 줄기도."""
     out = {term}
     # 가나만 된 활용어의 줄기(それる → それ)는 다른 말과 겹쳐 빈도를 부풀린다 = 한자 든 말만 줄기를 센다.
     if not HAN.search(term):
@@ -1542,6 +1838,8 @@ def ja_surfaces(term: str, tags: list) -> set:
     if any(t.startswith("v5") for t in tags) and term[-1:] in GODAN_STEMS:
         for kana in GODAN_STEMS[term[-1]]:
             out.add(term[:-1] + kana)
+        if bare_stem and len(term) >= 2:
+            out.add(term[:-1])
     if "adj-i" in tags and term.endswith("い"):
         out |= {term[:-1], term[:-1] + "く", term[:-1] + "かっ"}
     if "vs-i" in tags and term.endswith("する"):
@@ -1592,9 +1890,27 @@ def ja_form_index(entries: list) -> dict:
             for form, rows in index.items()}
 
 
-def build_ja(wf: WordFreq, entries: list, examples: Examples, koidx: KoIndex, kr: dict, ov: Overrides, limit: int) -> list:
-    ranks = wf.ranks("ja")
-    pool = []
+class JaRow:
+    """JMdict 항목 하나의 묶음 재료(ja_pool): 대표 가나 · 표기 · 대표 뜻 · 품사 · Tatoeba 색인 수 · 빈도 순위(wordfreq · 자막)."""
+    __slots__ = ("entry", "term", "kana", "primary", "pos_tags", "misc", "count", "rank", "rank_subs", "senses")
+
+    def __init__(self, entry, term, kana, primary, pos_tags, misc, count, rank, rank_subs, senses):
+        self.entry, self.term, self.kana, self.primary, self.pos_tags = entry, term, kana, primary, pos_tags
+        self.misc, self.count, self.rank, self.rank_subs, self.senses = misc, count, rank, rank_subs, senses
+
+
+def ja_term_for(entry: JaEntry, kana_form: tuple, misc: set) -> str:
+    """그 가나로 읽는 표기: 보통 가나로 쓰는 말(uk) · 한자 표기가 없는 말은 가나, 아니면 그 가나에 맞는 흔한 한자 표기."""
+    usually_kana = "uk" in misc or not entry.kanji
+    kanji_ok = [k for k in entry.kanji if applies(kana_form[3], k[0]) and not set(k[2]) & {"rK", "iK", "oK", "ateji"}]
+    kanji_ok = [k for k in kanji_ok if k[1]] or kanji_ok
+    return kana_form[0] if usually_kana or not kanji_ok else kanji_ok[0][0]
+
+
+def ja_pool(entries: list, examples: Examples, wf_ranks: dict, subs_ranks: dict = None) -> dict:
+    """JMdict 흔한 말 전부 → {항목 번호: JaRow}. 대표 가나 = Tatoeba 색인에 가장 많이 쓰인 읽기(없으면 흔한 첫 가나),
+    대표 뜻 = 색인의 뜻 번호 투표(다른 뜻이 첫 뜻의 두 배 넘게 쓰였을 때만 바꾼다). 순위는 wordfreq · 자막 둘 다 적어 둔다."""
+    pool = {}
     for entry in entries:
         rows = examples.ja.get(entry.seq, ())
         by_kana = collections.Counter(r[1] for r in rows)
@@ -1604,7 +1920,6 @@ def build_ja(wf: WordFreq, entries: list, examples: Examples, koidx: KoIndex, kr
         senses = [s for s in entry.senses if applies(s[4], kana_form[0])]
         if not senses:
             continue
-        # 색인 줄의 뜻 번호(번호 없음 = 첫 뜻). 다른 뜻이 첫 뜻보다 두 배 넘게 쓰였을 때만 그 뜻을 대표로.
         sense_votes = collections.Counter(r[2] for r in rows if r[1] == kana)
         primary = senses[0]
         if sense_votes:
@@ -1613,75 +1928,157 @@ def build_ja(wf: WordFreq, entries: list, examples: Examples, koidx: KoIndex, kr
                 primary = entry.senses[top - 1]
         pos_tags = primary[0] or next((s[0] for s in senses if s[0]), [])
         misc = set(primary[1])
-        usually_kana = "uk" in misc or not entry.kanji
-        kanji_ok = [k for k in entry.kanji if applies(kana_form[3], k[0]) and not set(k[2]) & {"rK", "iK", "oK", "ateji"}]
-        kanji_ok = [k for k in kanji_ok if k[1]] or kanji_ok
-        term = kana_form[0] if usually_kana or not kanji_ok else kanji_ok[0][0]
-        surfaces = ja_surfaces(term, pos_tags)
-        rank = min((ranks.get(s, 10 ** 6) for s in surfaces), default=10 ** 6)
-        if not rows and rank > 30000:
-            continue
-        pool.append((entry, term, kana, primary, pos_tags, misc, len(rows), rank, senses))
-    by_count = sorted(range(len(pool)), key=lambda i: (-pool[i][6], pool[i][7]))
-    count_rank = {index: (position if pool[index][6] else len(pool)) for position, index in enumerate(by_count, 1)}
-    by_rank = sorted(range(len(pool)), key=lambda i: pool[i][7])
+        term = ja_term_for(entry, kana_form, misc)
+        rank = min((wf_ranks.get(s, 10 ** 6) for s in ja_surfaces(term, pos_tags)), default=10 ** 6)
+        rank_subs = 10 ** 6
+        if subs_ranks:
+            rank_subs = min((subs_ranks.get(s, 10 ** 6) for s in ja_surfaces(term, pos_tags, bare_stem=True)), default=10 ** 6)
+        pool[entry.seq] = JaRow(entry, term, kana, primary, pos_tags, misc, len(rows), rank, rank_subs, senses)
+    return pool
+
+
+def ja_order(rows: list, use_subs: bool = False) -> list:
+    """Tatoeba 색인 수 순위와 빈도 순위(wordfreq 또는 자막)의 로그 합이 작은 것부터. 색인 0 이고 빈도 30,000 밖인 말은 뺀다."""
+    def freq(row):
+        return row.rank_subs if use_subs else row.rank
+    rows = [r for r in rows if r.count or freq(r) <= 30000]
+    by_count = sorted(range(len(rows)), key=lambda i: (-rows[i].count, freq(rows[i])))
+    count_rank = {index: (position if rows[index].count else len(rows)) for position, index in enumerate(by_count, 1)}
+    by_rank = sorted(range(len(rows)), key=lambda i: freq(rows[i]))
     freq_rank = {index: position for position, index in enumerate(by_rank, 1)}
-    order = sorted(range(len(pool)), key=lambda i: math.log(freq_rank[i]) + math.log(count_rank[i]))
+    order = sorted(range(len(rows)), key=lambda i: math.log(freq_rank[i]) + math.log(count_rank[i]))
+    return [rows[i] for i in order]
+
+
+def ja_item(prow: JaRow, ov: Overrides, koidx: KoIndex, kr: dict, examples: Examples, kana_override: str = None,
+            keep: bool = False, why: str = ""):
+    """일본어 항목 하나 → 묶음 줄. 가나 = 덧쓰기 reading → 시험 목록이 준 가나(`kana_override`) → 대표 가나.
+    keep = 시험 목록의 말이라 기능어 · 고유 명사 걸러내기를 건너뛴다(덧쓰기 keep 과 같다). 뜻 없음 · 빼기 = None."""
+    entry, term, kana, primary, pos_tags, misc, senses = prow.entry, prow.term, prow.kana, prow.primary, prow.pos_tags, prow.misc, prow.senses
+    row = ov.get("ja", term, str(entry.seq))
+    if "drop" in row or term in ov.block["ja"]:
+        return None
+    wanted = hiragana(row["reading"]) if "reading" in row else kana_override
+    if wanted and wanted != kana:
+        form = next((k for k in entry.kana if hiragana(k[0]) == wanted), None)
+        if form is None:
+            if "reading" in row:
+                raise ValueError(f"덧쓰기 가나 {wanted} 가 JMdict {entry.seq} {term} 에 없다")
+            return None
+        kana = wanted
+        senses = [s for s in entry.senses if applies(s[4], form[0])] or senses
+        primary = senses[0]
+        pos_tags = primary[0] or pos_tags
+        misc = set(primary[1])
+        term = ja_term_for(entry, form, misc)
+        row = ov.get("ja", term, str(entry.seq)) or row
+    if "keep" not in row and not keep:
+        if not pos_tags or set(pos_tags) <= JA_EXCLUDED_POS or pos_tags[0] in JA_EXCLUDED_POS:
+            return None
+        if misc & JA_BAD_MISC or any(CEDICT_BAD.search(g) for g in primary[2]):
+            return None
+        # 고유 명사(풀이가 다 대문자로 시작: Japan · Tokyo) · 숫자만 · 한 글자 가나.
+        if primary[2] and all(g[:1].isupper() and g not in ("I",) for g in primary[2]):
+            return None
+        if re.match(r"^[〇一二三四五六七八九十百千万億]{2,}$", term) or (KANA_ONLY.match(term) and len(term) == 1):
+            return None
+    elif misc & {"vulg", "X", "derog"} or any(CEDICT_BAD.search(g) for g in primary[2]):
+        return None
+    item = Item("ja", term)
+    item.ref = str(entry.seq)
+    item.reading = kana if HAN.search(term) else None
+    item.en = pick_glosses(primary[2])
+    if not item.en:
+        return None
+    item.gloss_words = en_words(" ".join(primary[2]))
+    item.pos = ja_pos_code(pos_tags)
+    keys = [k[0] for k in entry.kanji] + [k[0] for k in entry.kana]
+    if term.endswith("する"):
+        keys.append(term[:-2])
+    cands = koidx.candidates("ja", keys, item.gloss_words, item.pos, tuple(k[0] for k in entry.kanji))
+    cands = ko_translation_vote(cands, ko_texts_for([r[0] for r in examples.ja.get(entry.seq, ()) if r[1] == kana], examples.tat), kr)
+    item.ko, chosen = choose_korean(cands, kr)
+    item.category = kr_category(chosen)
+    item.why = f"{why} wf{prow.rank} tat{prow.count} {','.join(pos_tags)} || " + " | ".join(f"{s:.1f} {w}" for s, _, w in cands[:4])
+    if "reading" in row:
+        item.overridden.append("reading")
+    if not apply_override(item, row):
+        return None
+    item.ko_stems = [ko_stem(m) for m in item.ko]
+    return item
+
+
+def build_ja(pool: dict, ov: Overrides, koidx: KoIndex, kr: dict, examples: Examples, limit: int, cache: dict,
+             use_subs: bool = False) -> list:
+    """쓰임 순(ja_order)으로 `limit` 개. cache = {(항목 번호, 가나): Item 또는 None}(묶음 사이 공유). 같은 표기 · 가나는 한 번."""
     items = []
     seen_terms = set()
-    for index in order:
-        entry, term, kana, primary, pos_tags, misc, count, rank, senses = pool[index]
-        row = ov.get("ja", term, str(entry.seq))
-        if "drop" in row or term in ov.block["ja"]:
+    taken = set()
+    for prow in ja_order(list(pool.values()), use_subs):
+        key = (prow.entry.seq, prow.kana)
+        if key in cache:
+            item = cache[key]
+        else:
+            item = ja_item(prow, ov, koidx, kr, examples, why="subs" if use_subs else "")
+            cache[key] = item
+        if item is None or id(item) in taken or (item.term, item.reading) in seen_terms:
             continue
-        if "reading" in row:
-            wanted = hiragana(row["reading"])
-            form = next((k for k in entry.kana if hiragana(k[0]) == wanted), None)
-            if form is None:
-                raise ValueError(f"덧쓰기 가나 {wanted} 가 JMdict {entry.seq} {term} 에 없다")
-            kana = wanted
-            senses = [s for s in entry.senses if applies(s[4], form[0])] or senses
-            primary = senses[0]
-            pos_tags = primary[0] or pos_tags
-        if "keep" not in row:
-            if not pos_tags or set(pos_tags) <= JA_EXCLUDED_POS or pos_tags[0] in JA_EXCLUDED_POS:
-                continue
-            if misc & JA_BAD_MISC or any(CEDICT_BAD.search(g) for g in primary[2]):
-                continue
-            # 고유 명사(풀이가 다 대문자로 시작: Japan · Tokyo) · 숫자만 · 한 글자 가나.
-            if primary[2] and all(g[:1].isupper() and g not in ("I",) for g in primary[2]):
-                continue
-            if re.match(r"^[〇一二三四五六七八九十百千万億]{2,}$", term) or (KANA_ONLY.match(term) and len(term) == 1):
-                continue
-        if (term, kana) in seen_terms:
-            continue
-        seen_terms.add((term, kana))
-        item = Item("ja", term)
-        item.ref = str(entry.seq)
-        item.reading = kana if HAN.search(term) else None
-        item.en = pick_glosses(primary[2])
-        if not item.en:
-            continue
-        item.gloss_words = en_words(" ".join(primary[2]))
-        item.pos = ja_pos_code(pos_tags)
-        keys = [k[0] for k in entry.kanji] + [k[0] for k in entry.kana]
-        if term.endswith("する"):
-            keys.append(term[:-2])
-        cands = koidx.candidates("ja", keys, item.gloss_words, item.pos, tuple(k[0] for k in entry.kanji))
-        cands = ko_translation_vote(cands, ko_texts_for([r[0] for r in examples.ja.get(entry.seq, ()) if r[1] == kana], examples.tat), kr)
-        item.ko, chosen = choose_korean(cands, kr)
-        item.category = kr_category(chosen)
-        item.why = f"wf{rank} tat{count} {','.join(pos_tags)} || " + " | ".join(f"{s:.1f} {w}" for s, _, w in cands[:4])
-        if "reading" in row:
-            item.overridden.append("reading")
-        if not apply_override(item, row):
-            continue
-        item.ko_stems = [ko_stem(m) for m in item.ko]
-        item.useful = len(items)
+        taken.add(id(item))
+        seen_terms.add((item.term, item.reading))
         items.append(item)
         if len(items) >= limit:
             break
     return items
+
+
+def build_jlpt(levels: dict, ja_forms: dict, pool: dict, ov: Overrides, koidx: KoIndex, kr: dict, examples: Examples,
+               cache: dict) -> dict:
+    """JLPT N5~N1 목록(표기 · 가나) → {N: [줄]} 수준 안 쓰임 순(ja_order). 표기 → JMdict 항목은 꼴 색인에서 그 가나를 가진 항목.
+    흔한 말 사전에 없는 말은 뺀다(수를 log 에). 같은 항목 · 가나가 여러 수준에 있으면 낮은 수준(N5 쪽)에만."""
+    out = {}
+    seen = set()
+    dropped = collections.Counter()
+    for level in JLPT_LEVELS:
+        chosen = []
+        for surface, reading in levels.get(level, ()):
+            wanted = hiragana(reading) if reading else None
+            pick = None
+            candidates = list(ja_forms.get(surface, [])) + list(ja_forms.get(hiragana(surface), []))
+            for seq, default_kana, kana_all in candidates:
+                if seq not in pool:
+                    continue
+                if wanted is None or wanted in kana_all:
+                    pick = (seq, wanted or hiragana(default_kana))
+                    break
+            if pick is None:
+                dropped[level] += 1
+                continue
+            if pick in seen:
+                continue
+            seen.add(pick)
+            prow = pool[pick[0]]
+            if pick in cache:
+                item = cache[pick]
+            else:
+                item = ja_item(prow, ov, koidx, kr, examples, kana_override=pick[1] if pick[1] != prow.kana else None,
+                               keep=True, why=f"jlpt-n{level}")
+                cache[pick] = item
+            if item is None:
+                dropped[level] += 1
+                continue
+            chosen.append((prow, item))
+        by_row = {id(prow): item for prow, item in chosen}
+        ordered = []
+        taken = set()
+        for prow in ja_order([prow for prow, _ in chosen]) + [prow for prow, _ in chosen]:
+            item = by_row.get(id(prow))
+            if item is not None and id(item) not in taken:
+                taken.add(id(item))
+                ordered.append(item)
+        out[level] = ordered
+    if dropped:
+        log("JLPT 에서 뺀 말(흔한 말 사전에 없음 · 뜻 없음): " + ", ".join(f"N{k} {v}" for k, v in sorted(dropped.items())))
+    return out
 
 
 # ── 한국어 묶음(한국어를 배우는 사람, 뜻 = 영어) ──────────────────────────────────
@@ -1792,6 +2189,8 @@ def build_ko(rows: list, kr: dict, ov: Overrides) -> list:
         item.forms = ko_forms(term, item.pos)
         item.useful = len(items)
         item.kr_word = word
+        # 학습용 어휘 등급(A 초급 · B 중급 · C 고급) = TOPIK 대비 묶음의 단계(ko-topik-1/2/3).
+        item.grade = grade
         items.append(item)
     return items
 
@@ -1912,19 +2311,111 @@ def print_table(rows: list) -> str:
     return "\n".join(lines)
 
 
-def split_packs(lang: str, items: list) -> list:
+def split_sized(prefix: str, items: list, sizes: tuple) -> list:
+    """[(묶음 id, 줄들)] = 크기 표대로 앞에서부터 자른다(모자라면 있는 만큼, 빈 묶음은 만들지 않는다)."""
     out = []
     start = 0
-    for index, size in enumerate(PACK_SIZES):
+    for index, size in enumerate(sizes):
         chunk = items[start:start + size]
         start += size
         if chunk:
-            out.append((f"{lang}-{index + 1}", chunk))
+            out.append((f"{prefix}-{index + 1}", chunk))
     return out
+
+
+def split_packs(lang: str, items: list) -> list:
+    return split_sized(lang, items, PACK_SIZES)
+
+
+def load_manifest(path: str) -> dict:
+    with open(path, encoding="utf-8") as handle:
+        return json.load(handle)
+
+
+MANIFEST_TEXT_KEYS = ("title", "levelTitle", "levelShort", "size", "source")
+MANIFEST_CATEGORIES = ("common", "conversation", "exam")
+# 사전 쪽 자료 id(앱 SourcesView 가 코드로 보이는 것). 묶음의 sources 는 이것 또는 매니페스트 sources 표의 id.
+DICT_SOURCE_IDS = {"cedict", "jmdict", "krdict", "tatoeba"}
+
+
+def check_manifest(path: str) -> list:
+    """앱 PackManifest.json 검사: 묶음 id 가 PACK_IDS 와 같다 · 글 칸 한 · 영 다 있음 · 줄표 0 · 자료 id 가 표에 있음 · 단계가 1 부터 이어진다.
+    돌려주는 값 = 문제 목록(비면 통과)."""
+    problems = []
+    try:
+        data = load_manifest(path)
+    except (OSError, ValueError) as error:
+        return [f"{path}: 읽지 못했다({error})"]
+    text = json.dumps(data, ensure_ascii=False)
+    if EM_DASH in text or "―" in text:
+        problems.append("줄표가 있다")
+    if data.get("format") != 1:
+        problems.append("format 은 1 이어야 한다")
+    exams = {e.get("id"): e for e in data.get("exams", [])}
+    for exam_id, exam in exams.items():
+        if exam.get("lang") not in LANGS or not exam.get("name"):
+            problems.append(f"시험 {exam_id}: lang · name 이 없다")
+    source_ids = {s.get("id") for s in data.get("sources", [])}
+    for source in data.get("sources", []):
+        for key in ("title", "notice"):
+            value = source.get(key) or {}
+            if not value.get("ko") or not value.get("en"):
+                problems.append(f"자료 {source.get('id')}: {key} 한 · 영이 비었다")
+        if not source.get("license") or not source.get("links"):
+            problems.append(f"자료 {source.get('id')}: license · links 가 없다")
+    packs = data.get("packs", [])
+    ids = [p.get("id") for p in packs]
+    if len(set(ids)) != len(ids):
+        problems.append("묶음 id 가 겹친다")
+    if set(ids) != set(PACK_IDS):
+        problems.append(f"묶음 id 가 build_packs.PACK_IDS 와 다르다: 빠진 {sorted(set(PACK_IDS) - set(ids))} · 남는 {sorted(set(ids) - set(PACK_IDS))}")
+    levels = collections.defaultdict(list)
+    for pack in packs:
+        pid = pack.get("id")
+        if pack.get("lang") not in LANGS:
+            problems.append(f"{pid}: lang 이 틀렸다")
+        if pack.get("category") not in MANIFEST_CATEGORIES:
+            problems.append(f"{pid}: category 가 틀렸다")
+        if not isinstance(pack.get("level"), int) or pack["level"] < 1:
+            problems.append(f"{pid}: level 은 1 이상 정수")
+        for key in MANIFEST_TEXT_KEYS:
+            value = pack.get(key) or {}
+            if not value.get("ko") or not value.get("en"):
+                problems.append(f"{pid}: {key} 한 · 영이 비었다")
+        if not pack.get("sources") or any(s not in source_ids | DICT_SOURCE_IDS for s in pack["sources"]):
+            problems.append(f"{pid}: sources 가 비었거나 표에 없는 id 가 있다")
+        exam = pack.get("exam")
+        if pack.get("category") == "exam":
+            if exam not in exams or exams[exam].get("lang") != pack.get("lang"):
+                problems.append(f"{pid}: exam 이 시험 표에 없거나 언어가 다르다")
+        elif exam:
+            problems.append(f"{pid}: 시험 묶음이 아닌데 exam 이 있다")
+        levels[(pack.get("lang"), pack.get("category"), exam)].append(pack.get("level"))
+        if pack.get("category") != "exam":
+            for banned in ("HSK", "JLPT", "TOPIK", "TOEIC", "TOEFL"):
+                if any(banned in (pack.get(key) or {}).get(side, "") for key in ("title", "levelTitle", "size") for side in ("ko", "en")):
+                    problems.append(f"{pid}: 시험 묶음이 아닌 이름에 시험 이름 {banned}")
+    for key, found in levels.items():
+        if sorted(found) != list(range(1, len(found) + 1)):
+            problems.append(f"{key}: 단계가 1 부터 이어지지 않는다 {sorted(found)}")
+    return problems
+
+
+def manifest_pack_sources(manifest_path: str | None) -> dict:
+    """묶음 id → 매니페스트 sources 목록(묶음 파일 sources 에 'manifest' 로 적어 두면 앱 밖(saybit-data)에서도 출처를 안다)."""
+    if not manifest_path:
+        return {}
+    return {p["id"]: p.get("sources", []) for p in load_manifest(manifest_path).get("packs", [])}
 
 
 def build_all(args) -> int:
     ov = Overrides(args.overrides)
+    if args.manifest:
+        problems = check_manifest(args.manifest)
+        if problems:
+            for problem in problems:
+                log("::error::" + problem)
+            return 1
     log("사전 읽기")
     cedict, cedict_version = load_cedict(args.cedict)
     jm = load_jmdict(args.jmdict)
@@ -1945,23 +2436,92 @@ def build_all(args) -> int:
     jieba_freq, jieba_pos = wf.jieba()
     segmenter = ZhSegmenter(jieba_freq)
     simplify = wf.simplify_map()
+    wf_en = wf.ranks("en")
     log("Tatoeba 읽기")
     tat = Tatoeba(args.tatoeba, lambda text: len(text.split()) <= MAX_WORDS_EN)
     examples = Examples(tat, ov.block, segmenter, simplify, ja_forms)
     EN_COMMON.update(common_english(tat))
     log(f"흔한 영어 낱말(투표 제외) {len(EN_COMMON)}개")
+    log("목록 읽기")
     ngsl_rows, ngsl_forms = read_ngsl(args.ngsl, args.ngsl_forms)
+    tsl_rows, tsl_forms = read_service_list(args.tsl, args.tsl_forms)
+    bsl_rows, bsl_forms = read_service_list(args.bsl, args.bsl_forms)
+    nawl_rows, nawl_forms = read_nawl(args.nawl, wf_en)
+    # 낱말 꼴 표는 네 목록을 합친 하나(영어 줄은 묶음이 달라도 같은 꼴 표로 만든다 = 캐시가 맞다).
+    en_forms = collections.defaultdict(set)
+    for table in (ngsl_forms, tsl_forms, bsl_forms, nawl_forms):
+        for lemma, forms in table.items():
+            en_forms[lemma] |= forms
+    hsk_levels = read_hsk(args.hsk)
+    jlpt_levels = read_jlpt(args.jlpt)
+    subs = {lang: read_subs(args.subs, lang) for lang in LANGS}
+    log("목록 크기: " + " · ".join([f"NGSL {len(ngsl_rows)}", f"TSL {len(tsl_rows)}", f"BSL {len(bsl_rows)}", f"NAWL {len(nawl_rows)}",
+                                  "HSK " + "/".join(str(len(hsk_levels.get(l, ()))) for l in HSK_LEVELS),
+                                  "JLPT " + "/".join(str(len(jlpt_levels.get(l, ()))) for l in JLPT_LEVELS),
+                                  "자막 " + "/".join(str(len(subs[l])) for l in LANGS)]))
     total = sum(PACK_SIZES)
-    log("묶음 고르기")
+    conv_total = sum(CONV_SIZES)
+    caches = {"en": {}, "zh": {}, "ja": {}}
+
+    log("묶음 고르기: 자주 쓰는 단어")
+    subs_ja_ranks = {word: index + 1 for index, (word, _) in enumerate(subs["ja"])}
+    pool = ja_pool(jm_entries, examples, wf.ranks("ja"), subs_ja_ranks)
     built = {
-        "en": build_en(ngsl_rows, ngsl_forms, koidx, kr, ov, examples),
-        "zh": build_zh(wf, cedict, jieba_pos, examples, tat, koidx, kr, ov, EXAMPLE_TERMS),
-        "ja": build_ja(wf, jm_entries, examples, koidx, kr, ov, EXAMPLE_TERMS),
+        "en": build_en(ngsl_rows, en_forms, koidx, kr, ov, examples, caches["en"]),
+        "zh": build_zh(wf.ranks("zh"), cedict, jieba_pos, examples, tat, koidx, kr, ov, EXAMPLE_TERMS, caches["zh"]),
+        "ja": build_ja(pool, ov, koidx, kr, examples, EXAMPLE_TERMS, caches["ja"]),
         "ko": build_ko(nikl_rows, kr, ov),
     }
+
+    log("묶음 고르기: 회화")
+    names = en_proper_names(tat)
+    form_to_lemma = {}
+    for lemma, forms in en_forms.items():
+        for form in forms:
+            form_to_lemma.setdefault(form, lemma)
+    known = set(en_forms) | {k for k in koidx.index["en"] if re.fullmatch(r"[a-z]+", k)} \
+        | {w for w, r in wf_en.items() if r <= 20000 and re.fullmatch(r"[a-z]+", w)}
+    conv_rows_en = en_subtitle_rows(subs["en"], form_to_lemma, known, names, wf_en)
+    subs_zh_ranks = {}
+    for word, _ in subs["zh"]:
+        if ZH_WORD.match(word) and word not in subs_zh_ranks:
+            subs_zh_ranks[word] = len(subs_zh_ranks) + 1
+    ko_scores = ko_subtitle_scores(built["ko"], subs["ko"])
+    ko_position = {id(item): index for index, item in enumerate(built["ko"])}
+    ko_conv = sorted((i for i in built["ko"] if ko_scores.get(id(i), 0) > 0),
+                     key=lambda i: (-ko_scores[id(i)], ko_position[id(i)]))
+    conv = {
+        "en": build_en(conv_rows_en[:conv_total * 2], en_forms, koidx, kr, ov, examples, caches["en"])[:conv_total],
+        "zh": build_zh(subs_zh_ranks, cedict, jieba_pos, examples, tat, koidx, kr, ov, conv_total, caches["zh"], label="subs"),
+        "ja": build_ja(pool, ov, koidx, kr, examples, conv_total, caches["ja"], use_subs=True),
+        "ko": ko_conv[:conv_total],
+    }
+
+    log("묶음 고르기: 시험 대비")
+    exam = {}
+    tsl_items = build_en(tsl_rows, en_forms, koidx, kr, ov, examples, caches["en"])
+    tsl_rank = {lemma: rank for rank, lemma in tsl_rows}
+    for index, (low, high) in enumerate(TOEIC_TSL_BANDS):
+        exam[f"en-toeic-{index + 1}"] = [i for i in tsl_items if low <= tsl_rank.get(i.term.lower(), 0) <= high]
+    already = {lemma for _, lemma in ngsl_rows} | set(tsl_rank)
+    exam[f"en-toeic-{len(TOEIC_TSL_BANDS) + 1}"] = [i for i in build_en(bsl_rows, en_forms, koidx, kr, ov, examples, caches["en"])
+                                                   if i.term.lower() not in already]
+    nawl_items = build_en(nawl_rows, en_forms, koidx, kr, ov, examples, caches["en"])
+    half = math.ceil(len(nawl_items) / TOEFL_NAWL_PARTS)
+    for index in range(TOEFL_NAWL_PARTS):
+        exam[f"en-toefl-{index + 1}"] = nawl_items[index * half:(index + 1) * half]
+    hsk_items = build_hsk(hsk_levels, cedict, jieba_pos, examples, tat, koidx, kr, ov, caches["zh"])
+    for index, level in enumerate(HSK_LEVELS):
+        exam[f"zh-hsk-{index + 1}"] = hsk_items.get(level, [])
+    jlpt_items = build_jlpt(jlpt_levels, ja_forms, pool, ov, koidx, kr, examples, caches["ja"])
+    for index, level in enumerate(JLPT_LEVELS):
+        exam[f"ja-jlpt-{index + 1}"] = jlpt_items.get(level, [])
+    for index, grade in enumerate(TOPIK_GRADES):
+        exam[f"ko-topik-{index + 1}"] = [i for i in built["ko"] if getattr(i, "grade", "") == grade]
+
     if len(kr_version) == 8 and kr_version.isdigit():
         kr_version = f"{kr_version[:4]}-{kr_version[4:6]}-{kr_version[6:]}"
-    sources = {
+    base_sources = {
         "en": {"list": "NGSL 1.2", "meaning": f"krdict {kr_version}", "examples": "Tatoeba"},
         "zh": {"list": "wordfreq 3.1.1 + Tatoeba", "dict": f"CC-CEDICT {cedict_version}", "meaning": f"krdict {kr_version}",
                "examples": "Tatoeba"},
@@ -1969,40 +2529,90 @@ def build_all(args) -> int:
                "examples": "Tatoeba"},
         "ko": {"list": "NIKL 2003", "dict": f"krdict {kr_version}", "examples": "Tatoeba + krdict"},
     }
+    list_names = {
+        "conv": "hermitdave FrequencyWords 2018 (OpenSubtitles) + Tatoeba",
+        "en-toeic-1": "TSL 1.2", "en-toeic-2": "TSL 1.2", "en-toeic-3": "TSL 1.2", "en-toeic-4": "BSL 1.2",
+        "en-toefl-1": "NAWL 1.2 + wordfreq 3.1.1", "en-toefl-2": "NAWL 1.2 + wordfreq 3.1.1",
+        "zh-hsk": "HSK 2.0 (complete-hsk-vocabulary)", "ja-jlpt": "JLPT (Jonathan Waller tanos.co.uk, Bluskyo/JLPT_Vocabulary)",
+        "ko-topik": "NIKL 2003 grades",
+    }
+    manifest_sources = manifest_pack_sources(args.manifest)
+
+    def sources_for(pack_id: str, lang: str) -> dict:
+        out = dict(base_sources[lang])
+        if "-conv-" in pack_id:
+            out["list"] = list_names["conv"]
+        elif pack_id in list_names:
+            out["list"] = list_names[pack_id]
+        else:
+            stem = pack_id.rsplit("-", 1)[0]
+            if stem in list_names:
+                out["list"] = list_names[stem]
+        if pack_id in manifest_sources:
+            out["manifest"] = ", ".join(manifest_sources[pack_id])
+        return out
+
+    # 예문 = 자주 쓰는 묶음 → 회화 → 시험 → 예문 사전용 나머지(앞 단어가 좋은 문장을 먼저 가진다). 같은 줄은 한 번만 찾는다.
+    log("예문 고르기")
+    tried = set()
+
+    def assign_example(item: Item) -> None:
+        if id(item) in tried:
+            return
+        tried.add(id(item))
+        item.example = examples.find(item, ko_target=item.lang != "ko")
+        if item.example is None and item.lang == "ko":
+            item.example = ko_dictionary_example(item)
+
+    packs_by_lang = collections.OrderedDict()
+    for lang in LANGS:
+        common = built[lang][:total]
+        for item in common:
+            assign_example(item)
+        for item in conv[lang]:
+            assign_example(item)
+        exam_ids = [pid for pid in PACK_IDS if pid.startswith(f"{lang}-") and pid in exam]
+        for pid in exam_ids:
+            for item in exam.get(pid, []):
+                assign_example(item)
+        packs = split_packs(lang, declump(common)) + split_sized(f"{lang}-conv", declump(conv[lang]), CONV_SIZES)
+        packs += [(pid, declump(exam.get(pid, []))) for pid in exam_ids]
+        packs_by_lang[lang] = packs
+
     os.makedirs(args.out, exist_ok=True)
     table = []
     example_rows = []
-    for lang, items in built.items():
-        # 영어 묶음은 한국어 뜻이 곧 카드 뜻이다 = 한국어 뜻이 없는 말은 싣지 않는다(영어 뜻으로 대신할 수 없다).
-        if lang == "en":
-            items = [i for i in items if i.ko]
-        pack_items = items[:total]
-        # 예문은 묶음 단어부터(쓰임 순 = 앞 단어가 좋은 문장을 먼저 가진다), 그다음 예문 사전용 나머지.
-        for item in pack_items:
-            item.example = examples.find(item, ko_target=lang != "ko")
-            if item.example is None and lang == "ko":
-                item.example = ko_dictionary_example(item)
-        ordered = declump(pack_items)
-        packs = split_packs(lang, ordered)
+    written = set()
+    for lang, packs in packs_by_lang.items():
         for pack_id, chunk in packs:
-            write_pack(args.out, pack_id, lang, chunk, sources[lang])
+            if not chunk:
+                log(f"::warning::{pack_id} 가 비어서 만들지 않는다")
+                continue
+            write_pack(args.out, pack_id, lang, chunk, sources_for(pack_id, lang))
+            written.add(pack_id)
         if args.report:
-            table += write_report(args.report, lang, packs)
-        rest = items[total:]
+            table += write_report(args.report, lang, [(pid, chunk) for pid, chunk in packs if chunk])
+        rest = built[lang][total:]
         if lang == "en":
-            rest = en_extra_terms(wf, {f for i in items for f in i.forms}, koidx, kr, ov, EXAMPLE_TERMS - len(items))
+            rest = en_extra_terms(wf, {f for i in built["en"] for f in i.forms}, koidx, kr, ov, EXAMPLE_TERMS - len(built["en"]))
         for item in rest:
-            item.example = examples.find(item, ko_target=lang != "ko")
-            if item.example is None and lang == "ko":
-                item.example = ko_dictionary_example(item)
-        for item in pack_items + rest:
-            if item.example:
+            assign_example(item)
+        seen_examples = set()
+        for _, chunk in packs:
+            for item in chunk:
+                if item.example and id(item) not in seen_examples:
+                    seen_examples.add(id(item))
+                    text, ko, en, source, _ = item.example
+                    example_rows.append((lang, item.term, (item.reading or "") if lang in ("zh", "ja") else "", text, ko or "",
+                                         en or "", source))
+        for item in rest:
+            if item.example and id(item) not in seen_examples:
+                seen_examples.add(id(item))
                 text, ko, en, source, _ = item.example
                 example_rows.append((lang, item.term, (item.reading or "") if lang in ("zh", "ja") else "", text, ko or "",
                                      en or "", source))
     if args.examples_out:
         os.makedirs(args.examples_out, exist_ok=True)
-        tatoeba_dates = sorted({os.path.getmtime(os.path.join(args.tatoeba, f)) for f in TATOEBA_FILES})
         write_examples(os.path.join(args.examples_out, "examples.sqlite"), example_rows, {
             "format": "1", "source": "Tatoeba", "license": "CC BY 2.0 FR",
             "license_url": "https://creativecommons.org/licenses/by/2.0/fr/", "url": "https://tatoeba.org",
@@ -2017,23 +2627,33 @@ def build_all(args) -> int:
     if args.report:
         with open(os.path.join(args.report, "coverage.md"), "w", encoding="utf-8") as handle:
             handle.write(print_table(table) + "\n")
+    missing = [pid for pid in PACK_IDS if pid not in written]
+    if missing:
+        log("::error::만들지 못한 묶음: " + ", ".join(missing))
+        return 1
+    log(f"묶음 {len(written)}개 · 합 {sum(os.path.getsize(os.path.join(args.out, f'{p}.json')) for p in written) / 1e6:.2f}MB")
     return 0
 
 
 def build_fixture(args) -> int:
-    """단위 시험용 작은 묶음 = 만든 묶음에서 고정 단어만 골라 VocabTests/Fixtures 에(커밋한다)."""
-    wanted = collections.defaultdict(list)
+    """단위 시험용 작은 묶음 = 만든 묶음에서 고정 단어만 골라 VocabTests/Fixtures 에(커밋한다).
+    줄 = '<언어> <단어>'(그 언어 자주 쓰는 묶음 1 · 2 · 3 에서 찾아 fixture-pack-<언어>.json) 또는
+    '<묶음 id> <단어>'(그 묶음 파일에서만 찾아 fixture-pack-<묶음 id>.json, 회화 · 시험 묶음 고정판)."""
+    wanted = collections.OrderedDict()
     with open(args.fixture, encoding="utf-8") as handle:
         for line in handle:
             line = line.split("#", 1)[0].strip()
-            lang, _, term = line.partition(" ")
-            if lang and term:
-                wanted[lang].append(term.strip())
-    for lang, terms in wanted.items():
+            head, _, term = line.partition(" ")
+            if head and term:
+                wanted.setdefault(head, []).append(term.strip())
+    example_rows = []
+    for head, terms in wanted.items():
+        lang = head.split("-")[0]
+        files = [f"{head}.json"] if "-" in head else [f"{lang}-{index + 1}.json" for index in range(len(PACK_SIZES))]
         found = {}
         sources = {}
-        for index in range(len(PACK_SIZES)):
-            path = os.path.join(args.from_packs, f"{lang}-{index + 1}.json")
+        for name in files:
+            path = os.path.join(args.from_packs, name)
             if not os.path.exists(path):
                 continue
             with open(path, encoding="utf-8") as handle:
@@ -2044,19 +2664,20 @@ def build_fixture(args) -> int:
         items = []
         for number, term in enumerate(terms, 1):
             if term not in found:
-                raise ValueError(f"고정 단어 {lang} {term} 가 묶음에 없다")
+                raise ValueError(f"고정 단어 {head} {term} 가 묶음에 없다")
             row = dict(found[term])
             row["rank"] = number
             items.append(row)
-        payload = {"format": FORMAT, "id": f"fixture-pack-{lang}", "lang": lang, "sources": sources, "items": items}
-        with open(os.path.join(args.out, f"fixture-pack-{lang}.json"), "w", encoding="utf-8") as handle:
+        payload = {"format": FORMAT, "id": f"fixture-pack-{head}", "lang": lang, "sources": sources, "items": items}
+        with open(os.path.join(args.out, f"fixture-pack-{head}.json"), "w", encoding="utf-8") as handle:
             json.dump(payload, handle, ensure_ascii=False, indent=1)
             handle.write("\n")
-        log(f"fixture-pack-{lang}.json: {len(items)}개")
+        log(f"fixture-pack-{head}.json: {len(items)}개")
+        example_rows.append((lang, terms))
     if args.from_examples:
         source = sqlite3.connect(os.path.join(args.from_examples, "examples.sqlite"))
         rows = []
-        for lang, terms in wanted.items():
+        for lang, terms in example_rows:
             for term in terms:
                 rows += source.execute("SELECT * FROM example WHERE lang = ? AND term = ?", (lang, term)).fetchall()
         meta = dict(source.execute("SELECT key, value FROM meta").fetchall())
@@ -2072,22 +2693,41 @@ def main() -> int:
     parser.add_argument("--nikl")
     parser.add_argument("--ngsl")
     parser.add_argument("--ngsl-forms", help="NGSL_12_lemmatized_for_teaching.csv(낱말 꼴)")
+    parser.add_argument("--tsl", help="TSL_12_stats.csv(TOEIC Service List 순위)")
+    parser.add_argument("--tsl-forms", help="TSL_12_lemmatized_for_teaching.csv")
+    parser.add_argument("--bsl", help="BSL_120_stats.csv(Business Service List 순위)")
+    parser.add_argument("--bsl-forms", help="BSL_120_lemmatized_for_teaching.csv")
+    parser.add_argument("--nawl", help="NAWL_12_lemmatized_for_teaching.csv(순위 없음 = wordfreq 순)")
+    parser.add_argument("--hsk", help="complete-hsk-vocabulary complete.min.json")
+    parser.add_argument("--jlpt", help="Bluskyo/JLPT_Vocabulary JLPT_vocab_ALL.json")
+    parser.add_argument("--subs", help="hermitdave FrequencyWords 2018 폴더(en_50k.txt · zh_cn_50k.txt · ja_full.txt · ko_50k.txt)")
+    parser.add_argument("--manifest", help="Vocab/Packs/PackManifest.json(묶음 id 가 같은지 먼저 검사한다)")
     parser.add_argument("--wordfreq", help="wordfreq-3.1.1-py3-none-any.whl")
     parser.add_argument("--tatoeba", help="Tatoeba 내보내기 파일 폴더(TATOEBA_FILES)")
     parser.add_argument("--tatoeba-version", help="Tatoeba 내보내기 날짜(자료 출처 화면)")
     parser.add_argument("--overrides", help="Tools/pack_overrides")
-    parser.add_argument("--out", required=True, help="묶음 json 폴더")
+    parser.add_argument("--out", help="묶음 json 폴더")
     parser.add_argument("--examples-out", help="examples.sqlite 를 둘 폴더(사전 폴더)")
     parser.add_argument("--report", help="검토 표 · 범위 표를 둘 폴더")
     parser.add_argument("--strict", action="store_true", help="쓰이지 않은 덧쓰기가 있으면 실패")
     parser.add_argument("--fixture", help="단위 시험용 단어 목록(Tools/pack_fixture.txt)")
     parser.add_argument("--from-packs", help="--fixture: 만든 묶음 폴더")
     parser.add_argument("--from-examples", help="--fixture: 만든 examples.sqlite 폴더")
+    parser.add_argument("--check-manifest", help="PackManifest.json 만 검사하고 끝낸다(fetch-lexicon.sh · CI)")
     args = parser.parse_args()
+    if args.check_manifest:
+        problems = check_manifest(args.check_manifest)
+        for problem in problems:
+            log("::error::" + problem)
+        if not problems:
+            log(f"매니페스트 통과: 묶음 {len(PACK_IDS)}개")
+        return 1 if problems else 0
+    if not args.out:
+        parser.error("--out 이 필요하다")
     os.makedirs(args.out, exist_ok=True)
     if args.fixture:
         return build_fixture(args)
-    needed = ("cedict", "jmdict", "krdict", "nikl", "ngsl", "wordfreq", "tatoeba")
+    needed = ("cedict", "jmdict", "krdict", "nikl", "ngsl", "wordfreq", "tatoeba", "tsl", "bsl", "nawl", "hsk", "jlpt", "subs")
     missing = [n for n in needed if not getattr(args, n)]
     if missing:
         parser.error("다 있어야 한다: " + ", ".join("--" + n for n in missing))

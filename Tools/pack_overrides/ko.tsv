@@ -1,0 +1,158 @@
+# 한국어 묶음 덧쓰기(build_packs.py Overrides, 한국어를 배우는 사람용 = 영어 뜻). 사람이 한 줄씩 검토한 고침이다(2026-10-28).
+# 줄 = 키 <TAB> 칸 <TAB> 값 <TAB> 근거. 키 = 표기 · 학습용 어휘 원래 꼴(배02 = 동형어 번호까지) · 표기@한국어기초사전 항목 번호.
+# 칸: drop · keep · en(영어 뜻) · pos · ex(Tatoeba 문장 번호 · none) · ref(한국어기초사전 항목 번호 = 다른 동형어로 바꿔 고름).
+# 뜻 기준 = 한국어기초사전 그 뜻의 영어 대역어. 첫 뜻 대역어가 일상 뜻이 아니거나(마음 = personality) 로마자 표기뿐인
+# 의존 명사(년 = nyeon)는 영한 사전의 일상 뜻으로 고친다.
+것	en	thing; that which	한국어 1 검토
+있다@68797	en	be; exist; have	한국어 1 검토
+수	en	way; possibility (can)	한국어 1 검토
+없다	en	not exist; not have	한국어 1 검토
+사람	en	person; people	한국어 1 검토
+아니다	en	be not; no	한국어 1 검토
+거	en	thing (casual)	한국어 1 검토
+년	en	year (counter)	한국어 1 검토
+일07	en	day (counter)	한국어 1 검토
+일01	en	work; job; matter	한국어 1 검토
+씨	en	Mr.; Ms. (after a name)	한국어 1 검토
+그렇다	en	be so; be like that	한국어 1 검토
+또	en	again; also	한국어 1 검토
+속	en	inside	한국어 1 검토
+어떤	en	what kind of; some	한국어 1 검토
+원	en	won (Korean money)	한국어 1 검토
+어떻다	en	how (is it)	한국어 1 검토
+명	en	person (counter)	한국어 1 검토
+개	en	piece; item (counter)	한국어 1 검토
+들다	en	enter; go in	한국어 1 검토
+나다	en	come out; happen; break out	한국어 1 검토
+전	en	before; ago	한국어 1 검토
+위	en	top; above; up	한국어 1 검토
+가장	en	most	한국어 1 검토
+바로	en	right (away); directly	한국어 1 검토
+번	en	time(s); number	한국어 1 검토
+모두01	en	all; everyone	한국어 1 검토
+마음	en	mind; heart	한국어 1 검토
+후	en	after; later	한국어 1 검토
+내다	en	put out; pay; make	한국어 1 검토
+사이	en	between; relationship	한국어 1 검토
+처음	en	first; beginning	한국어 1 검토
+몇	en	how many; some	한국어 1 검토
+책	en	book	한국어 1 검토
+일어나다	en	get up; happen	한국어 1 검토
+부르다	en	call; sing	한국어 1 검토
+자리	en	seat; place	한국어 1 검토
+내리다	en	get off; come down; fall (rain)	한국어 1 검토
+생기다	en	happen; be formed; look (like)	한국어 1 검토
+타다02	ref	17160
+타다02	en	ride; get on	한국어 1 검토
+다니다	en	go to (regularly); attend	한국어 1 검토
+분08	ref	70891
+분08	en	minute	한국어 1 검토
+곧	en	soon; right away	한국어 1 검토
+웃다	en	laugh; smile	한국어 1 검토
+밥	en	rice; meal	한국어 1 검토
+혼자	en	alone; by oneself	한국어 1 검토
+교수	en	professor	한국어 1 검토
+한번	en	once; (just) try	한국어 1 검토
+커피	en	coffee	한국어 1 검토
+얼마	en	how much	한국어 1 검토
+계속	en	continuously; keep (doing)	한국어 1 검토
+놓다	en	put; place	한국어 1 검토
+어	en	oh; uh	한국어 1 검토
+아래	en	below; under	한국어 1 검토
+그럼	en	then; well then	한국어 1 검토
+배02	ref	29729
+배02	en	ship; boat	한국어 1 검토
+잘하다	en	do well; be good at	한국어 1 검토
+힘들다	en	hard; tiring	한국어 1 검토
+돌아가다	en	go back; return	한국어 1 검토
+말다	en	don't; stop (doing)	한국어 1 검토
+아프다	en	hurt; be sick	한국어 1 검토
+적다02	en	few; little	한국어 1 검토
+지내다	en	spend (time); get along	한국어 1 검토
+동생	en	younger sibling	한국어 1 검토
+아저씨	en	mister; middle-aged man	한국어 1 검토
+참	en	really; truly	한국어 1 검토
+그러면	en	then; if so	한국어 1 검토
+넓다	en	wide; broad	한국어 1 검토
+밑	en	under; bottom	한국어 1 검토
+담배	en	cigarette; tobacco	한국어 1 검토
+벌써	en	already	한국어 1 검토
+제일	en	the most; first	한국어 1 검토
+싫다	en	dislike; not want	한국어 1 검토
+닦다	en	wipe; brush (teeth)	한국어 1 검토
+말씀	en	words (honorific); speech	한국어 1 검토
+괜찮다	en	okay; fine; all right	한국어 1 검토
+아니	en	no; not	한국어 1 검토
+반11	en	class (group)	한국어 1 검토
+어떠하다	drop		어떻다 의 본딧말(같은 말)
+내려오다	en	come down	한국어 1 검토
+층	en	floor; layer	한국어 1 검토
+안다	en	hug; hold in one's arms	한국어 1 검토
+세13	en	years old (counter)	한국어 1 검토
+과10	en	lesson (counter); department	한국어 1 검토
+나중	en	later	한국어 1 검토
+며칠	en	a few days; what date	한국어 1 검토
+계시다	en	be; stay (honorific)	한국어 1 검토
+마리	en	(counter for animals)	한국어 1 검토
+찍다	en	take (a photo); stamp	한국어 1 검토
+인사	en	greeting	한국어 1 검토
+피우다	en	smoke (a cigarette); make bloom	한국어 1 검토
+가을	en	autumn; fall	한국어 1 검토
+급	en	grade; level	한국어 1 검토
+내일	en	tomorrow	한국어 1 검토
+밝다	en	bright	한국어 1 검토
+그02	drop		감탄사 그(망설임 소리)
+술06	drop		한국어 1 검토
+아무@71326	drop		한국어 1 검토
+있다@68796	drop		한국어 1 검토
+바람@58172	en	as a result of (~는 바람에)	한국어 2 · 3 검토
+자기@57310	en	oneself; (to a partner) honey	한국어 2 · 3 검토
+자기@57311	drop		자기(대명사) 와 같은 말
+적@71232	en	time (when); ever (~ㄴ 적 있다)	한국어 2 · 3 검토
+식@66276	en	style; way (of doing)	한국어 2 · 3 검토
+말@53070	en	end (of a period)	한국어 2 · 3 검토
+편@71324	en	piece; volume (of writing)	한국어 2 · 3 검토
+대@40639	en	(counter for cars, machines)	한국어 2 · 3 검토
+대@39567	en	one's (20s, 30s); decade of age	한국어 2 · 3 검토
+죽@91773	en	rice porridge	한국어 2 · 3 검토
+거리@64727	en	material; things (to do, eat)	한국어 2 · 3 검토
+면@16109	en	township (myeon)	한국어 2 · 3 검토
+호@26911	en	number (No.); issue	한국어 2 · 3 검토
+그분	en	that person (honorific)	한국어 2 · 3 검토
+뿐	en	only; just	한국어 2 · 3 검토
+년대	en	decade (the 1990s)	한국어 2 · 3 검토
+만큼	en	as much as; as ~ as	한국어 2 · 3 검토
+그래도	en	still; even so	한국어 2 · 3 검토
+번째	en	-th (ordinal)	한국어 2 · 3 검토
+모양	en	shape; appearance	한국어 2 · 3 검토
+듯이	en	as if; like	한국어 2 · 3 검토
+걔	en	that kid (casual)	한국어 2 · 3 검토
+녀석	en	guy; fellow	한국어 2 · 3 검토
+안방	en	main bedroom	한국어 2 · 3 검토
+어떡하다	en	what to do	한국어 2 · 3 검토
+년도	en	year (of)	한국어 2 · 3 검토
+인분	en	serving; portion	한국어 2 · 3 검토
+어때	en	how is it?	한국어 2 · 3 검토
+쟤	en	that kid (over there)	한국어 2 · 3 검토
+듯	en	as if	한국어 2 · 3 검토
+대로	en	as; according to	한국어 2 · 3 검토
+시민	en	citizen	한국어 2 · 3 검토
+서양	en	the West	한국어 2 · 3 검토
+한복	en	hanbok (Korean dress)	한국어 2 · 3 검토
+김밥	en	gimbap (seaweed rice roll)	한국어 2 · 3 검토
+갈비	en	galbi (ribs)	한국어 2 · 3 검토
+불고기	en	bulgogi (grilled beef)	한국어 2 · 3 검토
+비빔밥	en	bibimbap (mixed rice)	한국어 2 · 3 검토
+자장면	en	jajangmyeon (black bean noodles)	한국어 2 · 3 검토
+소주	en	soju (Korean liquor)	한국어 2 · 3 검토
+만두	en	dumplings	한국어 2 · 3 검토
+떡볶이	en	tteokbokki (spicy rice cakes)	한국어 2 · 3 검토
+씨름	en	ssireum (Korean wrestling)	한국어 2 · 3 검토
+갈비탕	en	galbitang (beef rib soup)	한국어 2 · 3 검토
+인삼차	en	ginseng tea	한국어 2 · 3 검토
+종합	en	overall; comprehensive	한국어 2 · 3 검토
+늘다	en	increase; grow	한국어 2 · 3 검토
+켜다	en	turn on; light	한국어 2 · 3 검토
+진짜	en	real; really	한국어 2 · 3 검토
+겨우	en	barely; only	한국어 2 · 3 검토
+뜨다	en	open (eyes); rise; float	한국어 2 · 3 검토

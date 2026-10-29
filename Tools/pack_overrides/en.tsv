@@ -1,0 +1,2435 @@
+# 영어 묶음 덧쓰기(build_packs.py Overrides). 사람이 한 줄씩 검토한 고침이다(2026-10-28, Saybit 단어장 품질 라운드).
+# 줄 = 표기 <TAB> 칸 <TAB> 값 <TAB> 근거. 칸: drop(묶음에서 뺌) · keep(빼기 규칙 무시) · ko(한국어 뜻, '; ' 로 1~3개, 쓰는 뜻 먼저)
+#      · en(영어 뜻) · pos(n v adj adv pron num cl prep conj intj det phr) · ex(Tatoeba 문장 번호 · none) · reading(zh 병음 · ja 가나).
+# 뜻 기준 = 한국어기초사전 대역어 · 영한 사전의 일상 뜻(run = 달리다, bank = 은행). 영어 형용사는 영어 단어장 관례대로 꾸미는 꼴(큰 · 중요한).
+# 근거가 비면 '사전 후보 순위가 일상 뜻이 아니어서 고침'이다. 바꾸면 fetch-lexicon.sh 캐시 열쇠가 바뀌어 다시 만든다.
+the	drop		관사(카드로 외울 뜻이 없다)
+a	drop		관사
+be	ko	~이다; 있다	영어 1 검토
+be	pos	v
+and	ko	그리고; ~와	영어 1 검토
+and	pos	conj
+of	ko	~의	영어 1 검토
+of	pos	prep
+to	ko	~에; ~로; ~에게	영어 1 검토
+to	pos	prep
+in	ko	~안에; ~에	영어 1 검토
+in	pos	prep
+have	ko	가지다; 있다	영어 1 검토
+have	pos	v
+it	ko	그것	영어 1 검토
+it	pos	pron
+you	ko	너; 당신	영어 1 검토
+you	pos	pron
+he	ko	그; 그 남자	영어 1 검토
+he	pos	pron
+for	ko	~을 위해; ~동안	영어 1 검토
+for	pos	prep
+they	ko	그들	영어 1 검토
+they	pos	pron
+not	ko	~않다; ~아니다	영어 1 검토
+not	pos	adv
+on	ko	~위에; ~에	영어 1 검토
+on	pos	prep
+with	ko	~와 함께; ~로	영어 1 검토
+with	pos	prep
+that	ko	그것; 저것; 그	영어 1 검토
+that	pos	pron
+as	ko	~처럼; ~로서	영어 1 검토
+as	pos	prep
+at	ko	~에; ~에서	영어 1 검토
+at	pos	prep
+this	ko	이것; 이	영어 1 검토
+this	pos	pron
+but	ko	그러나; 하지만	영어 1 검토
+but	pos	conj
+from	ko	~에서; ~부터	영어 1 검토
+from	pos	prep
+by	ko	~옆에; ~에 의해; ~까지	영어 1 검토
+by	pos	prep
+will	ko	~할 것이다; 의지	영어 1 검토
+will	pos	v
+or	ko	또는; 아니면	영어 1 검토
+or	pos	conj
+say	ko	말하다	영어 1 검토
+say	pos	v
+all	ko	모든; 모두	영어 1 검토
+all	pos	det
+if	ko	만약 ~라면	영어 1 검토
+if	pos	conj
+so	ko	그래서; 아주	영어 1 검토
+so	pos	adv
+one	ko	하나; 한	영어 1 검토
+one	pos	num
+would	ko	~할 것이다; ~하곤 했다	영어 1 검토
+would	pos	v
+about	ko	~에 대해; 약	영어 1 검토
+about	pos	prep
+can	ko	~할 수 있다; 캔	영어 1 검토
+can	pos	v
+which	ko	어느 것; 어느	영어 1 검토
+which	pos	pron
+more	ko	더; 더 많은	영어 1 검토
+more	pos	adv
+get	ko	얻다; 받다; 되다	영어 1 검토
+get	pos	v
+who	ko	누구	영어 1 검토
+who	pos	pron
+like	ko	좋아하다; ~처럼	영어 1 검토
+like	pos	v
+when	ko	언제; ~할 때	영어 1 검토
+when	pos	adv
+make	ko	만들다; ~하게 하다	영어 1 검토
+make	pos	v
+time	ko	시간; 때; 번	영어 1 검토
+time	pos	n
+see	ko	보다; 알다	영어 1 검토
+see	pos	v
+what	ko	무엇; 무슨	영어 1 검토
+what	pos	pron
+up	ko	위로; 위에	영어 1 검토
+up	pos	adv
+other	ko	다른; 다른 것	영어 1 검토
+other	pos	adj
+out	ko	밖으로; 밖에	영어 1 검토
+out	pos	adv
+some	ko	약간의; 몇몇	영어 1 검토
+some	pos	det
+people	ko	사람들	영어 1 검토
+people	pos	n
+year	ko	해; 년	영어 1 검토
+year	pos	n
+take	ko	가져가다; 잡다; 타다	영어 1 검토
+take	pos	v
+no	ko	아니; 없는	영어 1 검토
+no	pos	intj
+well	ko	잘; 글쎄	영어 1 검토
+well	pos	adv
+because	ko	왜냐하면; ~때문에	영어 1 검토
+because	pos	conj
+just	ko	그냥; 막; 단지	영어 1 검토
+just	pos	adv
+could	ko	~할 수 있었다; ~해도 될까요	영어 1 검토
+could	pos	v
+work	ko	일하다; 일; 작동하다	영어 1 검토
+work	pos	v
+use	ko	쓰다; 사용하다	영어 1 검토
+use	pos	v
+than	ko	~보다	영어 1 검토
+than	pos	conj
+now	ko	지금; 이제	영어 1 검토
+now	pos	adv
+then	ko	그때; 그러면; 그다음에	영어 1 검토
+then	pos	adv
+also	ko	또한; 역시	영어 1 검토
+also	pos	adv
+into	ko	~안으로; ~으로	영어 1 검토
+into	pos	prep
+only	ko	오직; 유일한	영어 1 검토
+only	pos	adv
+look	ko	보다; ~해 보이다	영어 1 검토
+look	pos	v
+want	ko	원하다; 바라다	영어 1 검토
+want	pos	v
+first	ko	첫째; 처음; 먼저	영어 1 검토
+first	pos	num
+new	ko	새로운; 새	영어 1 검토
+new	pos	adj
+way	ko	길; 방법	영어 1 검토
+way	pos	n
+over	ko	~위에; ~넘어; 끝난	영어 1 검토
+over	pos	prep
+any	ko	어떤; 아무	영어 1 검토
+any	pos	det
+after	ko	~후에; ~뒤에	영어 1 검토
+after	pos	prep
+day	ko	날; 하루	영어 1 검토
+day	pos	n
+thing	ko	것; 물건; 일	영어 1 검토
+thing	pos	n
+most	ko	가장; 대부분	영어 1 검토
+most	pos	adv
+should	ko	~해야 한다	영어 1 검토
+should	pos	v
+need	ko	필요하다; 필요	영어 1 검토
+need	pos	v
+much	ko	많이; 많은	영어 1 검토
+much	pos	adv
+right	ko	옳은; 오른쪽; 바로	영어 1 검토
+right	pos	adj
+back	ko	뒤로; 등; 돌아가서	영어 1 검토
+back	pos	adv
+even	ko	~조차; 훨씬	영어 1 검토
+even	pos	adv
+may	ko	~해도 된다; ~일지도 모른다	영어 1 검토
+may	pos	v
+such	ko	그런; 그렇게	영어 1 검토
+such	pos	det
+how	ko	어떻게; 얼마나	영어 1 검토
+how	pos	adv
+last	ko	마지막의; 지난	영어 1 검토
+last	pos	adj
+many	ko	많은	영어 1 검토
+many	pos	adj
+child	ko	아이; 어린이	영어 1 검토
+child	pos	n
+tell	ko	말하다; 이야기하다	영어 1 검토
+tell	pos	v
+call	ko	부르다; 전화하다	영어 1 검토
+call	pos	v
+before	ko	~전에; 이전에	영어 1 검토
+before	pos	prep
+company	ko	회사; 동료	영어 1 검토
+company	pos	n
+through	ko	~을 통해; ~을 지나	영어 1 검토
+through	pos	prep
+down	ko	아래로	영어 1 검토
+down	pos	adv
+show	ko	보여 주다; 쇼	영어 1 검토
+show	pos	v
+life	ko	삶; 생명; 생활	영어 1 검토
+life	pos	n
+man	ko	남자; 사람	영어 1 검토
+man	pos	n
+change	ko	바꾸다; 변하다; 변화	영어 1 검토
+change	pos	v
+place	ko	곳; 장소; 놓다	영어 1 검토
+place	pos	n
+long	ko	긴; 오래	영어 1 검토
+long	pos	adj
+between	ko	~사이에	영어 1 검토
+between	pos	prep
+too	ko	너무; ~도	영어 1 검토
+too	pos	adv
+still	ko	아직; 여전히	영어 1 검토
+still	pos	adv
+same	ko	같은	영어 1 검토
+same	pos	adj
+lot	ko	많음; 많이	영어 1 검토
+lot	pos	n
+great	ko	훌륭한; 큰; 대단한	영어 1 검토
+great	pos	adj
+try	ko	노력하다; 해 보다	영어 1 검토
+try	pos	v
+leave	ko	떠나다; 남기다	영어 1 검토
+leave	pos	v
+number	ko	수; 숫자; 번호	영어 1 검토
+number	pos	n
+both	ko	둘 다; 양쪽	영어 1 검토
+both	pos	det
+own	ko	자신의; 소유하다	영어 1 검토
+own	pos	adj
+point	ko	점; 요점; 가리키다	영어 1 검토
+point	pos	n
+little	ko	작은; 조금	영어 1 검토
+little	pos	adj
+help	ko	돕다; 도움	영어 1 검토
+help	pos	v
+start	ko	시작하다	영어 1 검토
+start	pos	v
+talk	ko	말하다; 이야기하다	영어 1 검토
+talk	pos	v
+something	ko	어떤 것; 무언가	영어 1 검토
+something	pos	pron
+put	ko	놓다; 두다; 넣다	영어 1 검토
+put	pos	v
+another	ko	또 하나의; 다른	영어 1 검토
+another	pos	det
+interest	ko	관심; 흥미; 이자	영어 1 검토
+interest	pos	n
+country	ko	나라; 시골	영어 1 검토
+country	pos	n
+old	ko	늙은; 오래된; 옛	영어 1 검토
+old	pos	adj
+each	ko	각각의; 각자	영어 1 검토
+each	pos	det
+school	ko	학교	영어 1 검토
+school	pos	n
+late	ko	늦은; 늦게	영어 1 검토
+late	pos	adj
+high	ko	높은; 높이	영어 1 검토
+high	pos	adj
+different	ko	다른	영어 1 검토
+different	pos	adj
+off	ko	떨어져; 꺼진	영어 1 검토
+off	pos	adv
+next	ko	다음의; 다음에	영어 1 검토
+next	pos	adj
+end	ko	끝; 끝나다	영어 1 검토
+end	pos	n
+while	ko	~하는 동안; 잠시	영어 1 검토
+while	pos	conj
+world	ko	세계; 세상	영어 1 검토
+world	pos	n
+play	ko	놀다; 경기하다; 연극	영어 1 검토
+play	pos	v
+might	ko	~일지도 모른다	영어 1 검토
+might	pos	v
+must	ko	~해야 한다	영어 1 검토
+must	pos	v
+home	ko	집; 가정; 집으로	영어 1 검토
+home	pos	n
+never	ko	결코 ~않다; 한 번도 ~않다	영어 1 검토
+never	pos	adv
+include	ko	포함하다	영어 1 검토
+include	pos	v
+course	ko	강좌; 과정; 코스	영어 1 검토
+course	pos	n
+report	ko	보고서; 보도; 보고하다	영어 1 검토
+report	pos	n
+group	ko	무리; 그룹; 집단	영어 1 검토
+group	pos	n
+case	ko	경우; 사건; 상자	영어 1 검토
+case	pos	n
+around	ko	주위에; 약	영어 1 검토
+around	pos	prep
+book	ko	책; 예약하다	영어 1 검토
+book	pos	n
+seem	ko	~처럼 보이다; ~인 것 같다	영어 1 검토
+seem	pos	v
+let	ko	~하게 하다; 허락하다	영어 1 검토
+let	pos	v
+kind	ko	종류; 친절한	영어 1 검토
+kind	pos	n
+keep	ko	유지하다; 계속하다; 보관하다	영어 1 검토
+keep	pos	v
+system	ko	체계; 시스템	영어 1 검토
+system	pos	n
+every	ko	모든; 매	영어 1 검토
+every	pos	det
+question	ko	질문; 문제	영어 1 검토
+question	pos	n
+during	ko	~동안	영어 1 검토
+during	pos	prep
+set	ko	놓다; 정하다; 한 벌	영어 1 검토
+set	pos	v
+study	ko	공부하다; 공부; 연구	영어 1 검토
+study	pos	v
+follow	ko	따르다; 따라가다	영어 1 검토
+follow	pos	v
+begin	ko	시작하다	영어 1 검토
+begin	pos	v
+important	ko	중요한	영어 1 검토
+important	pos	adj
+since	ko	~이후로; ~때문에	영어 1 검토
+since	pos	prep
+run	ko	달리다; 운영하다	영어 1 검토
+run	pos	v
+under	ko	~아래에	영어 1 검토
+under	pos	prep
+turn	ko	돌다; 돌리다; 차례	영어 1 검토
+turn	pos	v
+few	ko	거의 없는; 몇몇	영어 1 검토
+few	pos	adj
+bring	ko	가져오다; 데려오다	영어 1 검토
+bring	pos	v
+early	ko	일찍; 이른	영어 1 검토
+early	pos	adv
+state	ko	상태; 국가; 주	영어 1 검토
+state	pos	n
+move	ko	움직이다; 이사하다	영어 1 검토
+move	pos	v
+fact	ko	사실	영어 1 검토
+fact	pos	n
+however	ko	그러나; 아무리 ~해도	영어 1 검토
+however	pos	adv
+area	ko	지역; 분야	영어 1 검토
+area	pos	n
+provide	ko	제공하다; 주다	영어 1 검토
+provide	pos	v
+month	ko	달; 월	영어 1 검토
+month	pos	n
+large	ko	큰; 넓은	영어 1 검토
+large	pos	adj
+business	ko	사업; 일; 회사	영어 1 검토
+business	pos	n
+without	ko	~없이	영어 1 검토
+without	pos	prep
+open	ko	열다; 열린	영어 1 검토
+open	pos	v
+order	ko	주문; 명령; 순서	영어 1 검토
+order	pos	n
+word	ko	단어; 말	영어 1 검토
+word	pos	n
+issue	ko	문제; 쟁점; 발행하다	영어 1 검토
+issue	pos	n
+pay	ko	지불하다; 내다; 급여	영어 1 검토
+pay	pos	v
+build	ko	짓다; 세우다	영어 1 검토
+build	pos	v
+hold	ko	잡다; 쥐다; 열다	영어 3 검토
+hold	pos	v
+against	ko	~에 반대하여; ~에 기대어	영어 1 검토
+against	pos	prep
+second	ko	두 번째; 초	영어 1 검토
+second	pos	num
+though	ko	~이지만; 그래도	영어 1 검토
+though	pos	conj
+love	ko	사랑; 사랑하다	영어 1 검토
+love	pos	n
+increase	ko	늘리다; 증가하다; 증가	영어 1 검토
+increase	pos	v
+job	ko	일; 직업; 일자리	영어 1 검토
+job	pos	n
+away	ko	떨어져; 멀리	영어 1 검토
+away	pos	adv
+example	ko	예; 보기	영어 1 검토
+example	pos	n
+plan	ko	계획; 계획하다	영어 1 검토
+plan	pos	n
+happen	ko	일어나다; 생기다	영어 1 검토
+happen	pos	v
+offer	ko	제안하다; 제공하다; 제안	영어 1 검토
+offer	pos	v
+young	ko	어린; 젊은	영어 1 검토
+young	pos	adj
+close	ko	닫다; 가까운	영어 1 검토
+close	pos	v
+lead	ko	이끌다; 안내하다	영어 1 검토
+lead	pos	v
+far	ko	멀리; 먼	영어 1 검토
+far	pos	adv
+hour	ko	시간; 한 시간	영어 1 검토
+hour	pos	n
+thank	ko	감사하다; 고마워하다	영어 1 검토
+thank	pos	v
+hope	ko	희망; 바라다	영어 1 검토
+hope	pos	n
+idea	ko	생각; 아이디어	영어 1 검토
+idea	pos	n
+cost	ko	비용; 값; (비용이) 들다	영어 1 검토
+cost	pos	n
+until	ko	~까지	영어 1 검토
+until	pos	prep
+reason	ko	이유	영어 1 검토
+reason	pos	n
+form	ko	형태; 양식; 형성하다	영어 1 검토
+form	pos	n
+spend	ko	(돈을) 쓰다; (시간을) 보내다	영어 1 검토
+spend	pos	v
+car	ko	차; 자동차	영어 1 검토
+car	pos	n
+level	ko	수준; 단계	영어 1 검토
+level	pos	n
+person	ko	사람	영어 1 검토
+person	pos	n
+once	ko	한 번; 한때	영어 1 검토
+once	pos	adv
+member	ko	회원; 구성원	영어 1 검토
+member	pos	n
+enough	ko	충분한; 충분히	영어 1 검토
+enough	pos	adj
+able	ko	~할 수 있는; 유능한	영어 1 검토
+able	pos	adj
+support	ko	지원; 지지; 지지하다	영어 1 검토
+support	pos	n
+whether	ko	~인지 (아닌지)	영어 1 검토
+whether	pos	conj
+line	ko	선; 줄	영어 1 검토
+line	pos	n
+present	ko	현재의; 선물; 출석한	영어 1 검토
+present	pos	adj
+side	ko	옆; 쪽; 측면	영어 1 검토
+side	pos	n
+quite	ko	꽤; 상당히	영어 1 검토
+quite	pos	adv
+although	ko	비록 ~이지만	영어 1 검토
+although	pos	conj
+sure	ko	확실한; 물론	영어 1 검토
+sure	pos	adj
+term	ko	용어; 기간	영어 1 검토
+term	pos	n
+least	ko	가장 적은; 최소	영어 1 검토
+least	pos	adj
+speak	ko	말하다; 이야기하다	영어 1 검토
+speak	pos	v
+within	ko	~안에; ~이내에	영어 1 검토
+within	pos	prep
+process	ko	과정; 처리하다	영어 1 검토
+process	pos	n
+public	ko	대중; 공공의	영어 1 검토
+public	pos	n
+actually	ko	실제로; 사실은	영어 1 검토
+actually	pos	adv
+rather	ko	오히려; 꽤	영어 1 검토
+rather	pos	adv
+view	ko	견해; 경치; 보다	영어 1 검토
+view	pos	n
+consider	ko	고려하다; 여기다	영어 1 검토
+consider	pos	v
+parent	ko	부모	영어 1 검토
+parent	pos	n
+hard	ko	어려운; 단단한; 열심히	영어 1 검토
+hard	pos	adj
+party	ko	파티; 정당	영어 1 검토
+party	pos	n
+local	ko	지역의; 현지의	영어 1 검토
+local	pos	adj
+control	ko	통제하다; 조절하다; 통제	영어 1 검토
+control	pos	v
+concern	ko	걱정; 관심사; 관련되다	영어 1 검토
+concern	pos	n
+product	ko	제품; 상품	영어 1 검토
+product	pos	n
+lose	ko	잃다; 지다	영어 1 검토
+lose	pos	v
+story	ko	이야기	영어 1 검토
+story	pos	n
+almost	ko	거의	영어 1 검토
+almost	pos	adv
+continue	ko	계속하다; 계속되다	영어 1 검토
+continue	pos	v
+stand	ko	서다; 참다	영어 1 검토
+stand	pos	v
+whole	ko	전체; 전부의	영어 1 검토
+whole	pos	n
+yet	ko	아직; 그러나	영어 1 검토
+yet	pos	adv
+rate	ko	비율; 속도; 요금	영어 1 검토
+rate	pos	n
+care	ko	돌봄; 관심; 신경 쓰다	영어 1 검토
+care	pos	n
+expect	ko	기대하다; 예상하다	영어 1 검토
+expect	pos	v
+effect	ko	효과; 영향	영어 1 검토
+effect	pos	n
+sort	ko	종류; 분류하다	영어 1 검토
+sort	pos	n
+ever	ko	언제나; 한 번이라도	영어 1 검토
+ever	pos	adv
+anything	ko	무엇이든; 아무것도	영어 1 검토
+anything	pos	pron
+cause	ko	원인; 일으키다	영어 1 검토
+cause	pos	n
+fall	ko	떨어지다; 넘어지다; 가을	영어 1 검토
+fall	pos	v
+deal	ko	거래; 다루다	영어 1 검토
+deal	pos	n
+allow	ko	허락하다; 허용하다	영어 1 검토
+allow	pos	v
+soon	ko	곧	영어 1 검토
+soon	pos	adv
+watch	ko	보다; 지켜보다; 시계	영어 1 검토
+watch	pos	v
+base	ko	기초; 기지; 근거를 두다	영어 1 검토
+base	pos	n
+probably	ko	아마	영어 1 검토
+probably	pos	adv
+suggest	ko	제안하다; 시사하다	영어 1 검토
+suggest	pos	v
+past	ko	과거; 지난	영어 1 검토
+past	pos	n
+power	ko	힘; 권력; 전력	영어 1 검토
+power	pos	n
+visit	ko	방문하다; 방문	영어 1 검토
+visit	pos	v
+grow	ko	자라다; 기르다; 커지다	영어 1 검토
+grow	pos	v
+nothing	ko	아무것도 (~않다)	영어 1 검토
+nothing	pos	pron
+return	ko	돌아오다; 돌려주다	영어 1 검토
+return	pos	v
+mother	ko	어머니; 엄마	영어 1 검토
+mother	pos	n
+walk	ko	걷다; 산책	영어 1 검토
+walk	pos	v
+matter	ko	문제; 일; 중요하다	영어 1 검토
+matter	pos	n
+mind	ko	마음; 정신; 꺼리다	영어 1 검토
+mind	pos	n
+office	ko	사무실	영어 1 검토
+office	pos	n
+record	ko	기록; 녹음하다	영어 1 검토
+record	pos	n
+stay	ko	머무르다; 지내다	영어 1 검토
+stay	pos	v
+force	ko	힘; 강요하다	영어 1 검토
+force	pos	n
+stop	ko	멈추다; 그만두다; 정류장	영어 1 검토
+stop	pos	v
+several	ko	몇몇의; 여러	영어 1 검토
+several	pos	det
+light	ko	빛; 불; 가벼운	영어 1 검토
+light	pos	n
+develop	ko	발전시키다; 개발하다	영어 1 검토
+develop	pos	v
+bit	ko	조금; 약간	영어 1 검토
+bit	pos	n
+share	ko	나누다; 공유하다; 몫	영어 1 검토
+share	pos	v
+real	ko	진짜의; 실제의	영어 1 검토
+real	pos	adj
+answer	ko	대답; 답; 대답하다	영어 1 검토
+answer	pos	n
+figure	ko	수치; 인물; 모양	영어 1 검토
+figure	pos	n
+class	ko	수업; 반; 계층	영어 1 검토
+class	pos	n
+development	ko	발전; 개발	영어 1 검토
+development	pos	n
+town	ko	도시; 마을	영어 1 검토
+town	pos	n
+half	ko	반; 절반	영어 1 검토
+half	pos	n
+break	ko	깨다; 부수다; 휴식	영어 1 검토
+break	pos	v
+clear	ko	분명한; 맑은; 치우다	영어 1 검토
+clear	pos	adj
+either	ko	둘 중 하나; ~도 (아니다)	영어 1 검토
+either	pos	det
+ago	ko	~전에	영어 1 검토
+ago	pos	adv
+per	ko	~당; ~마다	영어 1 검토
+per	pos	prep
+remain	ko	남다; 여전히 ~이다	영어 1 검토
+remain	pos	v
+top	ko	꼭대기; 위; 최고의	영어 1 검토
+top	pos	n
+among	ko	~사이에; ~중에	영어 1 검토
+among	pos	prep
+win	ko	이기다; 얻다	영어 1 검토
+win	pos	v
+color	ko	색; 색깔	영어 1 검토
+color	pos	n
+involve	ko	포함하다; 관련시키다	영어 1 검토
+involve	pos	v
+reach	ko	~에 이르다; 손을 뻗다	영어 1 검토
+reach	pos	v
+across	ko	~을 가로질러; 건너편에	영어 1 검토
+across	pos	prep
+note	ko	메모; 주목하다	영어 1 검토
+note	pos	n
+create	ko	만들다; 창조하다	영어 1 검토
+create	pos	v
+drive	ko	운전하다; 몰다	영어 1 검토
+drive	pos	v
+social	ko	사회의; 사회적인	영어 1 검토
+social	pos	adj
+along	ko	~을 따라	영어 1 검토
+along	pos	prep
+type	ko	유형; 종류; 입력하다	영어 1 검토
+type	pos	n
+sound	ko	소리; ~처럼 들리다	영어 1 검토
+sound	pos	n
+game	ko	게임; 경기	영어 1 검토
+game	pos	n
+political	ko	정치의; 정치적인	영어 1 검토
+political	pos	adj
+free	ko	자유로운; 무료의	영어 1 검토
+free	pos	adj
+moment	ko	순간; 잠깐	영어 1 검토
+moment	pos	n
+sale	ko	판매; 할인 판매	영어 1 검토
+sale	pos	n
+policy	ko	정책; 방침	영어 1 검토
+policy	pos	n
+further	ko	더; 더 멀리	영어 1 검토
+further	pos	adv
+require	ko	필요로 하다; 요구하다	영어 1 검토
+require	pos	v
+general	ko	일반적인; 장군	영어 1 검토
+general	pos	adj
+appear	ko	나타나다; ~처럼 보이다	영어 1 검토
+appear	pos	v
+toward	ko	~쪽으로; ~을 향해	영어 1 검토
+toward	pos	prep
+individual	ko	개인; 개인의	영어 1 검토
+individual	pos	n
+full	ko	가득 찬; 배부른	영어 1 검토
+full	pos	adj
+black	ko	검은; 검은색	영어 1 검토
+black	pos	adj
+sense	ko	감각; 느낌; 의미	영어 1 검토
+sense	pos	n
+perhaps	ko	아마; 어쩌면	영어 1 검토
+perhaps	pos	adv
+add	ko	더하다; 추가하다	영어 1 검토
+add	pos	v
+pass	ko	지나가다; 건네주다; 통과하다	영어 1 검토
+pass	pos	v
+produce	ko	생산하다; 만들다	영어 1 검토
+produce	pos	v
+agree	ko	동의하다; 찬성하다	영어 1 검토
+agree	pos	v
+everything	ko	모든 것	영어 1 검토
+everything	pos	pron
+cover	ko	덮다; 다루다; 표지	영어 1 검토
+cover	pos	v
+paper	ko	종이; 신문; 논문	영어 1 검토
+paper	pos	n
+position	ko	위치; 자리; 입장	영어 1 검토
+position	pos	n
+near	ko	가까운; ~근처에	영어 1 검토
+near	pos	adj
+human	ko	인간; 인간의	영어 1 검토
+human	pos	n
+situation	ko	상황; 처지	영어 1 검토
+situation	pos	n
+staff	ko	직원	영어 1 검토
+staff	pos	n
+morning	ko	아침; 오전	영어 1 검토
+morning	pos	n
+account	ko	계좌; 설명; 계정	영어 1 검토
+account	pos	n
+shop	ko	가게; 쇼핑하다	영어 1 검토
+shop	pos	n
+major	ko	주요한; 전공	영어 1 검토
+major	pos	adj
+someone	ko	누군가	영어 1 검토
+someone	pos	pron
+above	ko	~위에; 위의	영어 1 검토
+above	pos	prep
+event	ko	행사; 사건	영어 1 검토
+event	pos	n
+special	ko	특별한	영어 1 검토
+special	pos	adj
+condition	ko	상태; 조건	영어 1 검토
+condition	pos	n
+carry	ko	나르다; 가지고 다니다	영어 1 검토
+carry	pos	v
+father	ko	아버지; 아빠	영어 1 검토
+father	pos	n
+table	ko	탁자; 식탁; 표	영어 1 검토
+table	pos	n
+certain	ko	확실한; 어떤	영어 1 검토
+certain	pos	adj
+forward	ko	앞으로	영어 1 검토
+forward	pos	adv
+main	ko	주요한; 주된	영어 1 검토
+main	pos	adj
+bear	ko	참다; 견디다; 곰	영어 1 검토
+bear	pos	v
+describe	ko	묘사하다; 설명하다	영어 1 검토
+describe	pos	v
+himself	ko	그 자신; 스스로	영어 1 검토
+himself	pos	pron
+available	ko	이용할 수 있는; 시간이 있는	영어 1 검토
+available	pos	adj
+strong	ko	강한; 튼튼한	영어 1 검토
+strong	pos	adj
+rise	ko	오르다; 일어나다; 상승	영어 1 검토
+rise	pos	v
+girl	ko	소녀; 여자아이	영어 1 검토
+girl	pos	n
+community	ko	공동체; 지역 사회	영어 1 검토
+community	pos	n
+else	ko	그 밖의; 다른	영어 1 검토
+else	pos	adv
+join	ko	가입하다; 함께하다; 합치다	영어 1 검토
+join	pos	v
+particular	ko	특정한; 특별한	영어 1 검토
+particular	pos	adj
+detail	ko	세부 사항; 자세한 내용	영어 1 검토
+detail	pos	n
+action	ko	행동; 조치	영어 1 검토
+action	pos	n
+please	ko	제발; 부디; 기쁘게 하다	영어 1 검토
+please	pos	adv
+step	ko	걸음; 단계	영어 1 검토
+step	pos	n
+true	ko	사실인; 진짜의	영어 1 검토
+true	pos	adj
+phone	ko	전화; 전화하다	영어 1 검토
+phone	pos	n
+themselves	ko	그들 자신	영어 1 검토
+themselves	pos	pron
+draw	ko	그리다; 끌다	영어 1 검토
+draw	pos	v
+white	ko	흰; 흰색	영어 1 검토
+white	pos	adj
+date	ko	날짜; 데이트	영어 1 검토
+date	pos	n
+raise	ko	올리다; 기르다	영어 1 검토
+raise	pos	v
+front	ko	앞; 앞쪽	영어 1 검토
+front	pos	n
+outside	ko	밖; 바깥; ~밖에	영어 1 검토
+outside	pos	n
+economic	ko	경제의; 경제적인	영어 1 검토
+economic	pos	adj
+site	ko	현장; 장소; 사이트	영어 1 검토
+site	pos	n
+teacher	ko	선생님; 교사	영어 1 검토
+teacher	pos	n
+land	ko	땅; 육지; 착륙하다	영어 1 검토
+land	pos	n
+charge	ko	요금; 책임; 충전하다	영어 1 검토
+charge	pos	n
+behind	ko	~뒤에	영어 1 검토
+behind	pos	prep
+sign	ko	표지판; 신호; 서명하다	영어 1 검토
+sign	pos	n
+claim	ko	주장하다; 요구하다	영어 1 검토
+claim	pos	v
+there	ko	거기에; 그곳	영어 1 검토
+there	pos	adv
+here	ko	여기에; 이곳	영어 1 검토
+here	pos	adv
+where	ko	어디에; 어디	영어 1 검토
+where	pos	adv
+know	ko	알다	영어 1 검토
+know	pos	v
+think	ko	생각하다	영어 1 검토
+think	pos	v
+good	ko	좋은; 잘하는	영어 1 검토
+good	pos	adj
+very	ko	매우; 아주	영어 1 검토
+very	pos	adv
+come	ko	오다	영어 1 검토
+come	pos	v
+give	ko	주다	영어 1 검토
+give	pos	v
+find	ko	찾다; 알게 되다	영어 1 검토
+find	pos	v
+really	ko	정말; 진짜로	영어 1 검토
+really	pos	adv
+mean	ko	의미하다; 뜻하다	영어 1 검토
+mean	pos	v
+feel	ko	느끼다	영어 1 검토
+feel	pos	v
+problem	ko	문제	영어 1 검토
+problem	pos	n
+write	ko	쓰다	영어 1 검토
+write	pos	v
+part	ko	부분; 일부	영어 1 검토
+part	pos	n
+ask	ko	묻다; 부탁하다	영어 1 검토
+ask	pos	v
+meet	ko	만나다	영어 1 검토
+meet	pos	v
+become	ko	되다	영어 1 검토
+become	pos	v
+live	ko	살다	영어 1 검토
+live	pos	v
+why	ko	왜	영어 1 검토
+why	pos	adv
+week	ko	주; 일주일	영어 1 검토
+week	pos	n
+again	ko	다시	영어 1 검토
+again	pos	adv
+hear	ko	듣다	영어 1 검토
+hear	pos	v
+always	ko	항상; 언제나	영어 1 검토
+always	pos	adv
+big	ko	큰	영어 1 검토
+big	pos	adj
+small	ko	작은	영어 1 검토
+small	pos	adj
+hand	ko	손	영어 1 검토
+hand	pos	n
+money	ko	돈	영어 1 검토
+money	pos	n
+name	ko	이름	영어 1 검토
+name	pos	n
+read	ko	읽다	영어 1 검토
+read	pos	v
+friend	ko	친구	영어 1 검토
+friend	pos	n
+information	ko	정보	영어 1 검토
+information	pos	n
+government	ko	정부	영어 1 검토
+government	pos	n
+market	ko	시장	영어 1 검토
+market	pos	n
+service	ko	서비스; 봉사	영어 1 검토
+service	pos	n
+believe	ko	믿다	영어 1 검토
+believe	pos	v
+yes	ko	네; 응	영어 1 검토
+yes	pos	intj
+result	ko	결과	영어 1 검토
+result	pos	n
+program	ko	프로그램	영어 1 검토
+program	pos	n
+buy	ko	사다	영어 1 검토
+buy	pos	v
+understand	ko	이해하다	영어 1 검토
+understand	pos	v
+today	ko	오늘	영어 1 검토
+today	pos	n
+student	ko	학생	영어 1 검토
+student	pos	n
+face	ko	얼굴; 마주하다	영어 1 검토
+face	pos	n
+less	ko	더 적은; 덜	영어 1 검토
+less	pos	adv
+room	ko	방; 공간	영어 1 검토
+room	pos	n
+head	ko	머리	영어 1 검토
+head	pos	n
+learn	ko	배우다	영어 1 검토
+learn	pos	v
+experience	ko	경험; 경험하다	영어 1 검토
+experience	pos	n
+bad	ko	나쁜	영어 1 검토
+bad	pos	adj
+city	ko	도시	영어 1 검토
+city	pos	n
+night	ko	밤	영어 1 검토
+night	pos	n
+age	ko	나이	영어 1 검토
+age	pos	n
+low	ko	낮은	영어 1 검토
+low	pos	adj
+often	ko	자주	영어 1 검토
+often	pos	adv
+train	ko	기차; 훈련하다	영어 1 검토
+train	pos	n
+possible	ko	가능한	영어 1 검토
+possible	pos	adj
+together	ko	함께; 같이	영어 1 검토
+together	pos	adv
+price	ko	가격; 값	영어 1 검토
+price	pos	n
+already	ko	이미; 벌써	영어 1 검토
+already	pos	adv
+water	ko	물	영어 1 검토
+water	pos	n
+send	ko	보내다	영어 1 검토
+send	pos	v
+test	ko	시험; 검사	영어 1 검토
+test	pos	n
+center	ko	중심; 센터	영어 1 검토
+center	pos	n
+value	ko	가치; 값	영어 1 검토
+value	pos	n
+remember	ko	기억하다	영어 1 검토
+remember	pos	v
+sit	ko	앉다	영어 1 검토
+sit	pos	v
+letter	ko	편지; 글자	영어 1 검토
+letter	pos	n
+decide	ko	결정하다	영어 1 검토
+decide	pos	v
+language	ko	언어	영어 1 검토
+language	pos	n
+subject	ko	주제; 과목	영어 1 검토
+subject	pos	n
+minute	ko	분	영어 1 검토
+minute	pos	n
+food	ko	음식	영어 1 검토
+food	pos	n
+future	ko	미래	영어 1 검토
+future	pos	n
+period	ko	기간; 시대	영어 1 검토
+period	pos	n
+history	ko	역사	영어 1 검토
+history	pos	n
+eye	ko	눈	영어 1 검토
+eye	pos	n
+music	ko	음악	영어 1 검토
+music	pos	n
+receive	ko	받다	영어 1 검토
+receive	pos	v
+body	ko	몸	영어 1 검토
+body	pos	n
+wait	ko	기다리다	영어 1 검토
+wait	pos	v
+team	ko	팀	영어 1 검토
+team	pos	n
+easy	ko	쉬운	영어 1 검토
+easy	pos	adj
+rule	ko	규칙	영어 1 검토
+rule	pos	n
+sell	ko	팔다	영어 1 검토
+sell	pos	v
+short	ko	짧은	영어 1 검토
+short	pos	adj
+law	ko	법	영어 1 검토
+law	pos	n
+research	ko	연구	영어 1 검토
+research	pos	n
+computer	ko	컴퓨터	영어 1 검토
+computer	pos	n
+activity	ko	활동	영어 1 검토
+activity	pos	n
+film	ko	영화	영어 1 검토
+film	pos	n
+war	ko	전쟁	영어 1 검토
+war	pos	n
+design	ko	디자인; 설계	영어 1 검토
+design	pos	n
+sometimes	ko	가끔	영어 1 검토
+sometimes	pos	adv
+choose	ko	고르다; 선택하다	영어 1 검토
+choose	pos	v
+decision	ko	결정	영어 1 검토
+decision	pos	n
+die	ko	죽다	영어 1 검토
+die	pos	v
+cut	ko	자르다	영어 1 검토
+cut	pos	v
+especially	ko	특히	영어 1 검토
+especially	pos	adv
+maybe	ko	아마	영어 1 검토
+maybe	pos	adv
+role	ko	역할	영어 1 검토
+role	pos	n
+difficult	ko	어려운	영어 1 검토
+difficult	pos	adj
+health	ko	건강	영어 1 검토
+health	pos	n
+eat	ko	먹다	영어 1 검토
+eat	pos	v
+difference	ko	차이	영어 1 검토
+difference	pos	n
+practice	ko	연습; 실천	영어 1 검토
+practice	pos	n
+model	ko	모델; 모형	영어 1 검토
+model	pos	n
+customer	ko	손님; 고객	영어 1 검토
+customer	pos	n
+explain	ko	설명하다	영어 1 검토
+explain	pos	v
+door	ko	문	영어 1 검토
+door	pos	n
+finally	ko	마침내; 드디어	영어 1 검토
+finally	pos	adv
+family	ko	가족	영어 1 검토
+family	pos	n
+woman	ko	여자; 여성	영어 1 검토
+woman	pos	n
+house	ko	집	영어 1 검토
+house	pos	n
+we	ko	우리	영어 1 검토
+we	pos	pron
+I	ko	나; 저	영어 1 검토
+I	pos	pron
+she	ko	그녀	영어 1 검토
+she	pos	pron
+do	ko	하다	영어 1 검토
+do	pos	v
+go	ko	가다	영어 1 검토
+go	pos	v
+nice	ko	좋은; 친절한; 멋진	영어 2 검토
+amount	ko	양; 금액	영어 2 검토
+improve	ko	나아지다; 개선하다	영어 2 검토
+regard	ko	여기다; 간주하다	영어 2 검토
+organization	ko	조직; 단체	영어 2 검토
+couple	ko	한 쌍; 부부; 몇몇	영어 2 검토
+act	ko	행동하다; 연기하다; 행동	영어 2 검토
+range	ko	범위	영어 2 검토
+round	ko	둥근; 한 바퀴	영어 2 검토
+accord	ko	일치; 합의; (according to) ~에 따라	영어 2 검토
+wish	ko	바라다; 소원	영어 2 검토
+fund	ko	기금; 자금	영어 2 검토
+rest	ko	휴식; 나머지; 쉬다	영어 2 검토
+measure	ko	재다; 측정하다; 조치	영어 2 검토
+serve	ko	제공하다; 섬기다; 근무하다	영어 2 검토
+likely	ko	~할 것 같은; 아마	영어 2 검토
+certainly	ko	확실히; 물론	영어 2 검토
+national	ko	국가의; 전국적인	영어 2 검토
+itself	ko	그 자체; 스스로	영어 2 검토
+security	ko	안전; 보안	영어 2 검토
+benefit	ko	이익; 혜택	영어 2 검토
+risk	ko	위험; 위험을 무릅쓰다	영어 2 검토
+standard	ko	표준; 기준	영어 2 검토
+focus	ko	초점; 집중하다	영어 2 검토
+space	ko	공간; 우주	영어 2 검토
+instead	ko	대신에	영어 2 검토
+data	ko	자료; 데이터	영어 2 검토
+single	ko	하나의; 독신의	영어 2 검토
+performance	ko	공연; 성과; 성능	영어 2 검토
+mention	ko	언급하다; 말하다	영어 2 검토
+save	ko	구하다; 아끼다; 저장하다	영어 2 검토
+common	ko	흔한; 공통의	영어 2 검토
+total	ko	전체의; 합계	영어 2 검토
+demand	ko	요구; 수요; 요구하다	영어 2 검토
+material	ko	재료; 자료; 물질	영어 2 검토
+limit	ko	제한; 한계	영어 2 검토
+listen	ko	듣다; 귀 기울이다	영어 2 검토
+due	ko	~때문에; ~하기로 되어 있는; 만기의	영어 2 검토
+due	pos	adj
+wrong	ko	틀린; 잘못된	영어 2 검토
+attention	ko	주의; 관심	영어 2 검토
+upon	ko	~위에; ~하자마자	영어 2 검토
+upon	pos	prep
+check	ko	확인하다; 점검하다	영어 2 검토
+complete	ko	완전한; 완성하다	영어 2 검토
+lie	ko	거짓말; 눕다; 거짓말하다	영어 2 검토
+pick	ko	고르다; 따다; 집다	영어 2 검토
+patient	ko	환자; 참을성 있는	영어 2 검토
+current	ko	현재의; 흐름	영어 2 검토
+current	pos	adj
+fine	ko	좋은; 괜찮은; 벌금	영어 2 검토
+former	ko	이전의; 전	영어 2 검토
+former	pos	adj
+particularly	ko	특히	영어 2 검토
+sport	ko	운동; 스포츠	영어 2 검토
+sport	pos	n
+response	ko	반응; 대답	영어 2 검토
+piece	ko	조각; 한 개	영어 2 검토
+suppose	ko	생각하다; 가정하다	영어 2 검토
+apply	ko	지원하다; 적용하다; 바르다	영어 2 검토
+fire	ko	불; 화재; 해고하다	영어 2 검토
+compare	ko	비교하다	영어 2 검토
+court	ko	법원; 코트	영어 2 검토
+source	ko	원천; 출처	영어 2 검토
+firm	ko	회사; 단단한	영어 2 검토
+firm	pos	n
+foreign	ko	외국의	영어 2 검토
+surprise	ko	놀라움; 놀라게 하다	영어 2 검토
+recently	ko	최근에	영어 2 검토
+affect	ko	영향을 미치다	영어 2 검토
+recent	ko	최근의	영어 2 검토
+recent	pos	adj
+relate	ko	관련시키다; 관련되다	영어 2 검토
+official	ko	공식적인; 공무원	영어 2 검토
+private	ko	개인적인; 사적인; 사립의	영어 2 검토
+private	pos	adj
+pause	ko	잠시 멈추다; 멈춤	영어 2 검토
+everyone	ko	모든 사람; 모두	영어 2 검토
+everyone	pos	pron
+represent	ko	대표하다; 나타내다	영어 2 검토
+manager	ko	관리자; 매니저	영어 2 검토
+international	ko	국제적인	영어 2 검토
+contain	ko	담고 있다; 포함하다	영어 2 검토
+notice	ko	알아차리다; 공지	영어 2 검토
+wonder	ko	궁금하다; 놀라움	영어 2 검토
+wonder	pos	v
+structure	ko	구조	영어 2 검토
+section	ko	부분; 구역	영어 2 검토
+myself	ko	나 자신	영어 2 검토
+myself	pos	pron
+exactly	ko	정확히; 바로	영어 2 검토
+paint	ko	페인트; 칠하다; 그리다	영어 2 검토
+press	ko	누르다; 언론	영어 2 검토
+whatever	ko	무엇이든	영어 2 검토
+whatever	pos	pron
+region	ko	지역	영어 2 검토
+catch	ko	잡다; 받다; (병에) 걸리다	영어 2 검토
+thus	ko	그러므로; 이렇게	영어 2 검토
+skill	ko	기술; 솜씨	영어 2 검토
+attempt	ko	시도; 시도하다	영어 2 검토
+medium	ko	중간의; 매체	영어 2 검토
+stock	ko	주식; 재고	영어 2 검토
+character	ko	성격; 등장인물	영어 2 검토
+establish	ko	설립하다; 확립하다	영어 2 검토
+indeed	ko	정말; 실로	영어 2 검토
+final	ko	마지막의; 결승	영어 2 검토
+final	pos	adj
+economy	ko	경제	영어 2 검토
+fit	ko	맞다; 건강한	영어 2 검토
+guy	ko	남자; 녀석	영어 2 검토
+behavior	ko	행동; 태도	영어 2 검토
+addition	ko	추가; 덧셈	영어 2 검토
+determine	ko	결정하다; 알아내다	영어 2 검토
+production	ko	생산; 제작	영어 2 검토
+comment	ko	논평; 댓글; 말하다	영어 2 검토
+occur	ko	일어나다; 발생하다	영어 2 검토
+significant	ko	중요한; 상당한	영어 2 검토
+drug	ko	약; 마약	영어 2 검토
+direct	ko	직접의; 지도하다; 감독하다	영어 2 검토
+direct	pos	adj
+director	ko	감독; 책임자; 이사	영어 2 검토
+clearly	ko	분명히	영어 2 검토
+review	ko	검토하다; 비평	영어 2 검토
+depend	ko	의존하다; ~에 달려 있다	영어 2 검토
+recognize	ko	알아보다; 인정하다	영어 2 검토
+department	ko	부서; 학과	영어 2 검토
+gain	ko	얻다; 늘다	영어 2 검토
+argue	ko	주장하다; 다투다	영어 2 검토
+board	ko	판; 이사회; 탑승하다	영어 2 검토
+board	pos	n
+mark	ko	표시; 점수; 표시하다	영어 2 검토
+item	ko	물건; 항목	영어 2 검토
+stuff	ko	물건; 것	영어 2 검토
+stuff	pos	n
+wide	ko	넓은	영어 2 검토
+anyone	ko	누구든지; 아무도	영어 2 검토
+anyone	pos	pron
+method	ko	방법	영어 2 검토
+military	ko	군대; 군사의	영어 2 검토
+below	ko	~아래에	영어 2 검토
+below	pos	prep
+sorry	ko	미안한; 유감스러운	영어 2 검토
+statement	ko	진술; 성명	영어 2 검토
+link	ko	연결; 연결하다	영어 2 검토
+link	pos	n
+despite	ko	~에도 불구하고	영어 2 검토
+despite	pos	prep
+advantage	ko	이점; 장점	영어 2 검토
+strike	ko	치다; 파업	영어 2 검토
+seek	ko	찾다; 구하다	영어 2 검토
+ability	ko	능력	영어 2 검토
+ready	ko	준비된	영어 2 검토
+ready	pos	adj
+release	ko	풀어 주다; 발표하다; 출시	영어 2 검토
+solution	ko	해결책; 용액	영어 2 검토
+capital	ko	수도; 자본; 대문자	영어 2 검토
+popular	ko	인기 있는	영어 2 검토
+interview	ko	면접; 인터뷰	영어 2 검토
+specific	ko	구체적인; 특정한	영어 2 검토
+specific	pos	adj
+fear	ko	두려움; 무서워하다	영어 2 검토
+aim	ko	목표; 겨누다	영어 2 검토
+aim	pos	n
+degree	ko	정도; 학위; 도	영어 2 검토
+access	ko	접근; 이용	영어 2 검토
+treat	ko	대하다; 치료하다; 대접	영어 2 검토
+identify	ko	확인하다; 알아보다	영어 2 검토
+loss	ko	손실; 상실	영어 2 검토
+shall	ko	~할 것이다; ~할까요	영어 2 검토
+shall	pos	v
+modern	ko	현대의; 현대적인	영어 2 검토
+yourself	ko	너 자신	영어 2 검토
+yourself	pos	pron
+village	ko	마을	영어 2 검토
+worth	ko	가치; ~할 가치가 있는	영어 2 검토
+attend	ko	참석하다; 다니다	영어 2 검토
+brother	ko	형제; 형; 남동생	영어 2 검토
+organize	ko	조직하다; 정리하다	영어 2 검토
+sleep	ko	자다; 잠	영어 2 검토
+sleep	pos	v
+potential	ko	잠재적인; 가능성	영어 2 검토
+potential	pos	adj
+trouble	ko	문제; 곤란	영어 2 검토
+relation	ko	관계	영어 2 검토
+touch	ko	만지다; 건드리다	영어 2 검토
+middle	ko	중간; 가운데	영어 2 검토
+bar	ko	술집; 막대	영어 2 검토
+suffer	ko	고통받다; 겪다	영어 2 검토
+strategy	ko	전략	영어 2 검토
+except	ko	~을 제외하고	영어 2 검토
+except	pos	prep
+pretty	ko	예쁜; 꽤	영어 2 검토
+worry	ko	걱정; 걱정하다	영어 2 검토
+plant	ko	식물; 공장; 심다	영어 2 검토
+race	ko	경주; 인종	영어 2 검토
+holiday	ko	휴일; 휴가	영어 2 검토
+floor	ko	바닥; 층	영어 2 검토
+nation	ko	국가; 나라	영어 2 검토
+pull	ko	당기다; 끌다	영어 2 검토
+red	ko	빨간; 붉은	영어 2 검토
+indicate	ko	나타내다; 가리키다	영어 2 검토
+beyond	ko	~너머; ~을 넘어서	영어 2 검토
+beyond	pos	prep
+promise	ko	약속; 약속하다	영어 2 검토
+clean	ko	깨끗한; 청소하다	영어 2 검토
+tend	ko	~하는 경향이 있다; 돌보다	영어 2 검토
+tend	pos	v
+advance	ko	나아가다; 발전; 미리	영어 2 검토
+advance	pos	v
+fill	ko	채우다; 메우다	영어 2 검토
+operation	ko	수술; 작동; 작전	영어 2 검토
+match	ko	경기; 성냥; 어울리다	영어 2 검토
+avoid	ko	피하다	영어 2 검토
+associate	ko	연관 짓다; 동료	영어 2 검토
+blue	ko	파란; 파란색	영어 2 검토
+blue	pos	adj
+option	ko	선택; 선택권	영어 2 검토
+huge	ko	거대한; 막대한	영어 2 검토
+instance	ko	사례; 예	영어 2 검토
+instance	pos	n
+refer	ko	언급하다; 참고하다; 가리키다	영어 2 검토
+cold	ko	추운; 차가운; 감기	영어 2 검토
+cold	pos	adj
+quarter	ko	4분의 1; 분기; 15분	영어 2 검토
+assume	ko	가정하다; (책임을) 맡다	영어 2 검토
+doubt	ko	의심; 의심하다	영어 2 검토
+propose	ko	제안하다; 청혼하다	영어 2 검토
+reference	ko	참고; 언급	영어 2 검토
+argument	ko	논쟁; 주장	영어 2 검토
+fly	ko	날다; 비행기로 가다; 파리	영어 2 검토
+application	ko	지원서; 신청; 응용 프로그램	영어 2 검토
+hot	ko	뜨거운; 더운; 매운	영어 2 검토
+obviously	ko	분명히; 명백히	영어 2 검토
+unclear	ko	불분명한	영어 2 검토
+bill	ko	계산서; 청구서; 법안	영어 2 검토
+search	ko	찾다; 검색하다; 수색	영어 2 검토
+separate	ko	분리된; 나누다	영어 2 검토
+separate	pos	adj
+central	ko	중심의; 중앙의	영어 2 검토
+officer	ko	장교; 경찰관; 임원	영어 2 검토
+dress	ko	드레스; 옷; 옷을 입다	영어 2 검토
+guess	ko	추측하다; 짐작	영어 2 검토
+damage	ko	피해; 손상; 손상시키다	영어 2 검토
+basic	ko	기본적인; 기초의	영어 2 검토
+basic	pos	adj
+hair	ko	머리카락; 털	영어 2 검토
+operate	ko	작동하다; 운영하다; 수술하다	영어 2 검토
+exercise	ko	운동; 연습; 운동하다	영어 2 검토
+income	ko	수입; 소득	영어 2 검토
+property	ko	재산; 부동산	영어 2 검토
+previous	ko	이전의	영어 2 검토
+previous	pos	adj
+okay	ko	괜찮은; 좋아	영어 2 검토
+daughter	ko	딸	영어 2 검토
+post	ko	게시하다; 우편; 기둥	영어 2 검토
+post	pos	v
+define	ko	정의하다	영어 2 검토
+everybody	ko	모든 사람; 모두	영어 2 검토
+everybody	pos	pron
+perform	ko	공연하다; 수행하다	영어 2 검토
+professional	ko	전문적인; 직업의; 전문가	영어 2 검토
+professional	pos	adj
+mine	ko	나의 것; 광산	영어 2 검토
+mine	pos	pron
+debate	ko	토론; 논쟁	영어 2 검토
+green	ko	초록색의; 초록색	영어 2 검토
+green	pos	adj
+object	ko	물건; 물체; 목적	영어 2 검토
+credit	ko	신용; 학점; 공로	영어 2 검토
+ring	ko	반지; 울리다; 전화하다	영어 2 검토
+dead	ko	죽은	영어 2 검토
+dead	pos	adj
+extend	ko	연장하다; 늘리다	영어 2 검토
+facility	ko	시설	영어 2 검토
+variety	ko	다양성; 여러 가지	영어 2 검토
+daily	ko	매일의; 일상의	영어 2 검토
+daily	pos	adj
+screen	ko	화면; 칸막이	영어 2 검토
+track	ko	선로; 트랙; 추적하다	영어 2 검토
+dance	ko	춤; 춤추다	영어 2 검토
+female	ko	여성의; 여성	영어 2 검토
+female	pos	adj
+original	ko	원래의; 독창적인; 원본	영어 2 검토
+original	pos	adj
+sister	ko	자매; 언니; 여동생	영어 2 검토
+dream	ko	꿈; 꿈꾸다	영어 2 검토
+dream	pos	n
+nor	ko	~도 아니다	영어 2 검토
+nor	pos	conj
+university	ko	대학교	영어 2 검토
+easily	ko	쉽게	영어 2 검토
+agency	ko	대행사; 기관	영어 2 검토
+fix	ko	고치다; 고정하다	영어 2 검토
+ahead	ko	앞에; 앞으로	영어 2 검토
+ahead	pos	adv
+cross	ko	건너다; 십자가	영어 2 검토
+yeah	ko	응; 그래	영어 2 검토
+legal	ko	법적인; 합법적인	영어 2 검토
+proposal	ko	제안	영어 2 검토
+somebody	ko	누군가	영어 2 검토
+somebody	pos	pron
+pound	ko	파운드; 두드리다	영어 2 검토
+welcome	ko	환영하다; 환영	영어 2 검토
+smile	ko	미소; 웃다	영어 2 검토
+communication	ko	의사소통; 통신	영어 2 검토
+agent	ko	대리인; 요원	영어 2 검토
+herself	ko	그녀 자신	영어 2 검토
+herself	pos	pron
+estimate	ko	추정하다; 견적	영어 2 검토
+favorite	ko	가장 좋아하는	영어 2 검토
+favorite	pos	adj
+replace	ko	대신하다; 교체하다	영어 2 검토
+difficulty	ko	어려움; 곤란	영어 2 검토
+judge	ko	판사; 판단하다; 심판	영어 2 검토
+judge	pos	n
+purchase	ko	구입하다; 구매	영어 2 검토
+announce	ko	발표하다; 알리다	영어 2 검토
+unless	ko	~하지 않는 한	영어 2 검토
+unless	pos	conj
+survey	ko	설문 조사; 조사	영어 2 검토
+majority	ko	대다수; 과반수	영어 2 검토
+stick	ko	붙이다; 막대기; 찌르다	영어 2 검토
+request	ko	요청; 요청하다	영어 2 검토
+rich	ko	부유한; 풍부한	영어 2 검토
+none	ko	아무것도 ~않다; 하나도	영어 2 검토
+none	pos	pron
+exchange	ko	교환; 환전; 교환하다	영어 2 검토
+blood	ko	피; 혈액	영어 2 검토
+block	ko	블록; 막다; 구역	영어 2 검토
+correct	ko	맞는; 정확한; 바로잡다	영어 2 검토
+correct	pos	adj
+medical	ko	의학의; 의료의	영어 2 검토
+admit	ko	인정하다; 입학을 허가하다	영어 2 검토
+copy	ko	복사; 한 부; 베끼다	영어 2 검토
+aware	ko	알고 있는; 의식하는	영어 2 검토
+aware	pos	adj
+trial	ko	재판; 시험	영어 2 검토
+text	ko	글; 본문; 문자를 보내다	영어 2 검토
+directly	ko	직접; 곧장	영어 2 검토
+remove	ko	없애다; 제거하다	영어 2 검토
+conduct	ko	수행하다; 행동	영어 2 검토
+conduct	pos	v
+otherwise	ko	그렇지 않으면; 달리	영어 2 검토
+otherwise	pos	adv
+extra	ko	추가의; 여분의	영어 2 검토
+extra	pos	adj
+executive	ko	임원; 경영진	영어 2 검토
+sample	ko	견본; 샘플	영어 2 검토
+deliver	ko	배달하다; 전달하다	영어 2 검토
+primary	ko	주된; 초등의	영어 2 검토
+primary	pos	adj
+collect	ko	모으다; 수집하다	영어 2 검토
+principle	ko	원리; 원칙	영어 2 검토
+straight	ko	곧은; 똑바로	영어 2 검토
+appeal	ko	호소하다; 매력; 항소	영어 2 검토
+highly	ko	매우; 높이	영어 2 검토
+trust	ko	신뢰; 믿다	영어 2 검토
+wonderful	ko	훌륭한; 멋진	영어 2 검토
+flat	ko	평평한; 아파트	영어 2 검토
+flat	pos	adj
+absolutely	ko	절대적으로; 완전히; 물론	영어 2 검토
+fair	ko	공정한; 박람회	영어 2 검토
+additional	ko	추가의	영어 2 검토
+responsible	ko	책임이 있는	영어 2 검토
+responsible	pos	adj
+farm	ko	농장; 농사짓다	영어 2 검토
+farm	pos	n
+collection	ko	수집; 소장품	영어 2 검토
+hang	ko	걸다; 매달다	영어 2 검토
+band	ko	밴드; 띠	영어 2 검토
+relative	ko	친척; 상대적인	영어 2 검토
+tour	ko	여행; 관광; 순회	영어 2 검토
+alternative	ko	대안; 대체의	영어 2 검토
+pair	ko	한 쌍; 켤레	영어 2 검토
+double	ko	두 배의; 두 배로	영어 2 검토
+double	pos	adj
+observe	ko	관찰하다; 지키다	영어 2 검토
+print	ko	인쇄하다; 출력하다	영어 2 검토
+progress	ko	진전; 진행; 진보	영어 2 검토
+progress	pos	n
+nobody	ko	아무도 (~않다)	영어 2 검토
+nobody	pos	pron
+examine	ko	조사하다; 검사하다	영어 2 검토
+lay	ko	놓다; 눕히다; (알을) 낳다	영어 2 검토
+reply	ko	대답하다; 답장	영어 2 검토
+display	ko	전시하다; 보이다; 화면	영어 2 검토
+transfer	ko	옮기다; 갈아타다; 이체	영어 2 검토
+slightly	ko	약간; 조금	영어 2 검토
+overall	ko	전반적인; 전부	영어 2 검토
+intend	ko	의도하다; ~할 작정이다	영어 2 검토
+regular	ko	규칙적인; 보통의	영어 2 검토
+apart	ko	떨어져; 따로	영어 2 검토
+apart	pos	adv
+suit	ko	정장; 어울리다	영어 2 검토
+federal	ko	연방의	영어 2 검토
+federal	pos	adj
+reveal	ko	드러내다; 밝히다	영어 2 검토
+percentage	ko	백분율; 비율	영어 2 검토
+status	ko	지위; 상태	영어 2 검토
+decline	ko	감소하다; 거절하다; 감소	영어 2 검토
+decline	pos	v
+decade	ko	10년	영어 2 검토
+decade	pos	n
+launch	ko	시작하다; 출시하다; 발사하다	영어 2 검토
+launch	pos	v
+favor	ko	호의; 부탁; 찬성	영어 2 검토
+dry	ko	마른; 건조한; 말리다	영어 2 검토
+dry	pos	adj
+institution	ko	기관; 제도	영어 2 검토
+spot	ko	장소; 점; 발견하다	영어 2 검토
+eventually	ko	결국; 마침내	영어 2 검토
+heat	ko	열; 더위; 데우다	영어 2 검토
+excite	ko	흥분시키다; 신나게 하다	영어 2 검토
+reader	ko	독자	영어 2 검토
+importance	ko	중요성	영어 2 검토
+guide	ko	안내자; 안내하다; 안내서	영어 2 검토
+guide	pos	n
+grant	ko	주다; 허락하다; 보조금	영어 2 검토
+feed	ko	먹이다; 먹이	영어 2 검토
+feed	pos	v
+sector	ko	부문; 분야	영어 2 검토
+ensure	ko	보장하다; 확실히 하다	영어 2 검토
+ensure	pos	v
+satisfy	ko	만족시키다	영어 2 검토
+chief	ko	우두머리; 주요한	영어 2 검토
+cool	ko	시원한; 멋진; 식히다	영어 2 검토
+wave	ko	파도; 물결; 손을 흔들다	영어 2 검토
+labor	ko	노동; 노동자	영어 2 검토
+surface	ko	표면	영어 2 검토
+edge	ko	가장자리; 모서리	영어 2 검토
+camp	ko	캠프; 야영지	영어 2 검토
+lift	ko	들어 올리다; 엘리베이터	영어 2 검토
+procedure	ko	절차	영어 2 검토
+email	ko	이메일; 이메일을 보내다	영어 2 검토
+email	pos	n
+global	ko	세계적인; 전 세계의	영어 2 검토
+struggle	ko	애쓰다; 투쟁하다; 투쟁	영어 2 검토
+struggle	pos	v
+advertise	ko	광고하다	영어 2 검토
+select	ko	고르다; 선택하다	영어 2 검토
+surround	ko	둘러싸다	영어 2 검토
+extent	ko	정도; 범위	영어 2 검토
+annual	ko	매년의; 연례의	영어 2 검토
+fully	ko	완전히; 충분히	영어 2 검토
+contrast	ko	대조; 대조하다	영어 2 검토
+photograph	ko	사진; 사진을 찍다	영어 2 검토
+photograph	pos	n
+roll	ko	구르다; 굴리다; 두루마리	영어 2 검토
+earn	ko	벌다; 얻다	영어 2 검토
+throughout	ko	~내내; ~전체에	영어 2 검토
+throughout	pos	prep
+dog	ko	개	영어 2 검토
+fun	ko	재미; 재미있는	영어 2 검토
+entire	ko	전체의; 온	영어 2 검토
+entire	pos	adj
+presence	ko	존재; 참석	영어 2 검토
+crowd	ko	군중; 무리; 붐비다	영어 2 검토
+shift	ko	옮기다; 바꾸다; 교대 근무	영어 2 검토
+net	ko	그물; 순~	영어 2 검토
+category	ko	범주; 종류	영어 2 검토
+defense	ko	방어; 수비	영어 2 검토
+spread	ko	퍼지다; 펼치다; 바르다	영어 2 검토
+nuclear	ko	핵의; 원자력의	영어 2 검토
+nuclear	pos	adj
+introduction	ko	소개; 도입; 서론	영어 2 검토
+requirement	ko	필요 조건; 요구	영어 2 검토
+senior	ko	연장자; 고위의; 졸업반	영어 2 검토
+senior	pos	adj
+transport	ko	운송; 교통수단; 수송하다	영어 2 검토
+emerge	ko	나타나다; 드러나다	영어 2 검토
+neither	ko	어느 쪽도 ~않다	영어 2 검토
+neither	pos	det
+reform	ko	개혁; 개혁하다	영어 2 검토
+football	ko	축구; 미식축구	영어 2 검토
+football	pos	n
+left	ko	왼쪽; 왼쪽의	영어 2 검토
+consequence	ko	결과	영어 2 검토
+smoke	ko	연기; 담배를 피우다	영어 2 검토
+circumstance	ko	상황; 사정	영어 2 검토
+mass	ko	덩어리; 대량의; 대중	영어 2 검토
+funny	ko	웃기는; 이상한	영어 2 검토
+adopt	ko	입양하다; 채택하다	영어 2 검토
+waste	ko	낭비; 쓰레기; 낭비하다	영어 2 검토
+equal	ko	같은; 평등한	영어 2 검토
+plus	ko	더하기; ~에 더하여	영어 2 검토
+lady	ko	숙녀; 여성	영어 2 검토
+arrange	ko	마련하다; 정리하다; 배열하다	영어 2 검토
+scheme	ko	계획; 제도	영어 2 검토
+payment	ko	지불; 납부	영어 2 검토
+unfortunately	ko	불행히도; 유감스럽게도	영어 2 검토
+brief	ko	짧은; 간단한	영어 2 검토
+demonstrate	ko	보여 주다; 증명하다; 시위하다	영어 2 검토
+appreciate	ko	고마워하다; 진가를 알다	영어 2 검토
+chapter	ko	장(章)	영어 2 검토
+apparently	ko	보아하니; 분명히	영어 2 검토
+apparently	pos	adv
+union	ko	조합; 연합	영어 2 검토
+burn	ko	타다; 태우다; 화상	영어 2 검토
+trend	ko	경향; 유행	영어 2 검토
+initial	ko	처음의; 머리글자	영어 2 검토
+initial	pos	adj
+pleasure	ko	기쁨; 즐거움	영어 2 검토
+critical	ko	비판적인; 중대한	영어 2 검토
+gather	ko	모으다; 모이다	영어 2 검토
+pop	ko	터지다; 대중음악; 불쑥 나타나다	영어 2 검토
+essential	ko	필수적인; 본질적인	영어 2 검토
+desire	ko	욕구; 바라다	영어 2 검토
+promote	ko	홍보하다; 승진시키다; 촉진하다	영어 2 검토
+employ	ko	고용하다; 쓰다	영어 2 검토
+topic	ko	주제; 화제	영어 2 검토
+attract	ko	끌다; 끌어들이다	영어 2 검토
+engage	ko	관여하다; 참여시키다; 약혼시키다	영어 2 검토
+powerful	ko	강력한; 힘 있는	영어 2 검토
+settle	ko	정착하다; 해결하다	영어 2 검토
+aid	ko	도움; 원조; 돕다	영어 2 검토
+fan	ko	팬; 선풍기; 부채	영어 2 검토
+twice	ko	두 번; 두 배로	영어 2 검토
+delay	ko	지연; 미루다	영어 2 검토
+divide	ko	나누다	영어 2 검토
+investigation	ko	조사; 수사	영어 2 검토
+package	ko	소포; 꾸러미	영어 2 검토
+somewhere	ko	어딘가에	영어 2 검토
+somewhere	pos	adv
+expand	ko	확장하다; 넓히다	영어 2 검토
+commit	ko	저지르다; 전념하다	영어 2 검토
+jump	ko	뛰다; 뛰어오르다	영어 2 검토
+host	ko	주최자; 진행자; 주최하다	영어 2 검토
+district	ko	지역; 구역	영어 2 검토
+tire	ko	타이어; 지치게 하다	영어 2 검토
+spring	ko	봄; 용수철; 샘	영어 2 검토
+actual	ko	실제의	영어 2 검토
+pool	ko	수영장; 웅덩이	영어 2 검토
+battle	ko	전투; 싸움	영어 2 검토
+coach	ko	코치; 감독; 지도하다	영어 2 검토
+coach	pos	n
+hardly	ko	거의 ~않다	영어 2 검토
+possibly	ko	아마; 어쩌면	영어 2 검토
+revenue	ko	수입; 세입	영어 2 검토
+enable	ko	~할 수 있게 하다	영어 2 검토
+enable	pos	v
+afraid	ko	두려워하는; 걱정하는	영어 2 검토
+conclude	ko	결론을 내리다; 끝내다	영어 2 검토
+convince	ko	납득시키다; 확신시키다	영어 2 검토
+vary	ko	다르다; 다양하다	영어 2 검토
+vary	pos	v
+volume	ko	부피; 음량; 권	영어 2 검토
+proceed	ko	나아가다; 계속하다	영어 2 검토
+wash	ko	씻다; 빨다	영어 2 검토
+whereas	ko	반면에	영어 2 검토
+whereas	pos	conj
+opposite	ko	반대의; 맞은편의	영어 2 검토
+sum	ko	합계; 액수	영어 2 검토
+finance	ko	재정; 금융; 자금을 대다	영어 2 검토
+finance	pos	n
+usual	ko	보통의; 평소의	영어 2 검토
+carefully	ko	조심스럽게; 주의 깊게	영어 2 검토
+pack	ko	싸다; 챙기다; 꾸러미	영어 2 검토
+recall	ko	기억해 내다; 회수하다	영어 2 검토
+manufacture	ko	제조하다; 제조	영어 2 검토
+cycle	ko	주기; 자전거를 타다	영어 2 검토
+totally	ko	완전히; 전적으로	영어 2 검토
+visitor	ko	방문객; 손님	영어 2 검토
+dear	ko	사랑하는; 친애하는	영어 2 검토
+dear	pos	adj
+objective	ko	목표; 객관적인	영어 2 검토
+objective	pos	n
+moreover	ko	게다가	영어 2 검토
+onto	ko	~위로	영어 2 검토
+onto	pos	prep
+branch	ko	나뭇가지; 지점	영어 2 검토
+vehicle	ko	차량; 탈것	영어 2 검토
+route	ko	길; 노선	영어 2 검토
+bind	ko	묶다; 매다	영어 2 검토
+taste	ko	맛; 맛보다; 취향	영어 2 검토
+taste	pos	n
+tonight	ko	오늘 밤	영어 2 검토
+tonight	pos	n
+army	ko	군대; 육군	영어 2 검토
+decrease	ko	줄다; 감소	영어 2 검토
+hurt	ko	다치게 하다; 아프다	영어 2 검토
+council	ko	의회; 위원회	영어 2 검토
+editor	ko	편집자	영어 2 검토
+normally	ko	보통; 정상적으로	영어 2 검토
+sight	ko	시야; 광경; 시력	영어 2 검토
+generate	ko	만들어 내다; 발생시키다	영어 2 검토
+deny	ko	부인하다; 거절하다	영어 2 검토
+anybody	ko	누구든지; 아무도	영어 2 검토
+anybody	pos	pron
+quote	ko	인용하다; 인용구	영어 2 검토
+basically	ko	기본적으로	영어 2 검토
+minister	ko	장관; 목사	영어 2 검토
+mainly	ko	주로	영어 2 검토
+manner	ko	방식; 태도; 예절	영어 2 검토
+gun	ko	총	영어 2 검토
+square	ko	정사각형; 광장	영어 2 검토
+occasion	ko	때; 경우; 행사	영어 2 검토
+familiar	ko	익숙한; 친숙한	영어 2 검토
+ignore	ko	무시하다	영어 2 검토
+affair	ko	일; 사건; 불륜	영어 2 검토
+civil	ko	시민의; 민간의	영어 2 검토
+locate	ko	위치를 찾다; 위치시키다	영어 2 검토
+gold	ko	금; 금색	영어 2 검토
+domestic	ko	국내의; 가정의	영어 2 검토
+load	ko	짐; 싣다	영어 2 검토
+troop	ko	군대; 병력	영어 2 검토
+remind	ko	상기시키다; 떠올리게 하다	영어 2 검토
+skin	ko	피부; 껍질	영어 2 검토
+switch	ko	스위치; 바꾸다	영어 2 검토
+acquire	ko	얻다; 습득하다	영어 2 검토
+corporate	ko	기업의; 법인의	영어 2 검토
+tough	ko	힘든; 강인한; 질긴	영어 2 검토
+tear	ko	찢다; 눈물	영어 2 검토
+representative	ko	대표; 대표하는	영어 2 검토
+capacity	ko	수용력; 능력; 용량	영어 2 검토
+assessment	ko	평가	영어 2 검토
+shoe	ko	신발	영어 2 검토
+ought	ko	~해야 한다	영어 2 검토
+ought	pos	v
+ad	ko	광고	영어 2 검토
+ad	pos	n
+hall	ko	홀; 회관; 복도	영어 2 검토
+proper	ko	적절한; 제대로 된	영어 2 검토
+relax	ko	쉬다; 긴장을 풀다	영어 2 검토
+component	ko	부품; 구성 요소	영어 2 검토
+afford	ko	~할 여유가 있다	영어 2 검토
+afford	pos	v
+suspect	ko	의심하다; 용의자	영어 2 검토
+suspect	pos	v
+confidence	ko	자신감; 신뢰	영어 2 검토
+industrial	ko	산업의	영어 2 검토
+industrial	pos	adj
+error	ko	오류; 실수	영어 2 검토
+arrest	ko	체포하다; 체포	영어 2 검토
+assess	ko	평가하다	영어 2 검토
+register	ko	등록하다; 기록부	영어 2 검토
+asset	ko	자산; 재산	영어 2 검토
+quick	ko	빠른	영어 2 검토
+cook	ko	요리하다; 요리사	영어 2 검토
+scale	ko	규모; 저울; 등급	영어 2 검토
+driver	ko	운전자; 기사	영어 2 검토
+secretary	ko	비서; 장관	영어 2 검토
+relevant	ko	관련 있는; 적절한	영어 3 검토
+relevant	pos	adj
+explore	ko	탐험하다; 탐구하다	영어 3 검토
+commitment	ko	약속; 헌신	영어 3 검토
+wake	ko	깨다; 깨우다	영어 3 검토
+necessarily	ko	반드시	영어 3 검토
+frame	ko	틀; 액자	영어 3 검토
+hire	ko	고용하다; 빌리다	영어 3 검토
+tie	ko	묶다; 넥타이; 동점	영어 3 검토
+internal	ko	내부의	영어 3 검토
+division	ko	분할; 부서; 나눗셈	영어 3 검토
+secure	ko	안전한; 확보하다	영어 3 검토
+secure	pos	adj
+amaze	ko	놀라게 하다	영어 3 검토
+amaze	pos	v
+label	ko	상표; 라벨; 표시하다	영어 3 검토
+investigate	ko	조사하다	영어 3 검토
+rank	ko	계급; 순위; 순위를 매기다	영어 3 검토
+typical	ko	전형적인; 보통의	영어 3 검토
+friendly	ko	친절한; 친한	영어 3 검토
+provision	ko	공급; 조항; 대비	영어 3 검토
+plenty	ko	많음; 풍부함	영어 3 검토
+plenty	pos	n
+export	ko	수출; 수출하다	영어 3 검토
+entirely	ko	완전히; 전적으로	영어 3 검토
+strongly	ko	강하게; 강력히	영어 3 검토
+consist	ko	(consist of) ~로 이루어지다	영어 3 검토
+consist	pos	v
+insist	ko	주장하다; 고집하다	영어 3 검토
+abuse	ko	남용; 학대; 학대하다	영어 3 검토
+principal	ko	교장; 주요한	영어 3 검토
+master	ko	주인; 대가; 숙달하다	영어 3 검토
+session	ko	시간; 회의; 기간	영어 3 검토
+grade	ko	학년; 성적; 등급	영어 3 검토
+nevertheless	ko	그럼에도 불구하고	영어 3 검토
+previously	ko	이전에	영어 3 검토
+largely	ko	주로; 대부분	영어 3 검토
+wed	ko	결혼하다	영어 3 검토
+rent	ko	집세; 임대하다	영어 3 검토
+shot	ko	발사; 슛; 주사	영어 3 검토
+odd	ko	이상한; 홀수의	영어 3 검토
+definition	ko	정의	영어 3 검토
+atmosphere	ko	분위기; 대기	영어 3 검토
+rely	ko	의지하다; 믿다	영어 3 검토
+identity	ko	신원; 정체성	영어 3 검토
+seriously	ko	심각하게; 진지하게	영어 3 검토
+wild	ko	야생의; 거친	영어 3 검토
+empty	ko	빈; 비우다	영어 3 검토
+empty	pos	adj
+instrument	ko	악기; 기구	영어 3 검토
+investor	ko	투자자	영어 3 검토
+row	ko	줄; 열; 노를 젓다	영어 3 검토
+row	pos	n
+youth	ko	젊음; 청년	영어 3 검토
+fuel	ko	연료	영어 3 검토
+breath	ko	숨; 호흡	영어 3 검토
+increasingly	ko	점점 더	영어 3 검토
+import	ko	수입; 수입하다	영어 3 검토
+ourselves	ko	우리 자신	영어 3 검토
+ourselves	pos	pron
+sheet	ko	시트; 한 장	영어 3 검토
+cast	ko	던지다; 출연진; 깁스	영어 3 검토
+notion	ko	개념; 생각	영어 3 검토
+journey	ko	여행; 여정	영어 3 검토
+opposition	ko	반대; 야당	영어 3 검토
+relief	ko	안도; 구호	영어 3 검토
+outcome	ko	결과	영어 3 검토
+blame	ko	탓하다; 비난하다; 책임	영어 3 검토
+arise	ko	생기다; 발생하다	영어 3 검토
+musical	ko	음악의; 뮤지컬	영어 3 검토
+musical	pos	adj
+stretch	ko	늘이다; 뻗다; 스트레칭하다	영어 3 검토
+tiny	ko	아주 작은	영어 3 검토
+careful	ko	조심하는; 신중한	영어 3 검토
+native	ko	태어난 곳의; 토박이	영어 3 검토
+native	pos	adj
+witness	ko	목격자; 목격하다	영어 3 검토
+anywhere	ko	어디든; 어디에도	영어 3 검토
+anywhere	pos	adv
+mental	ko	정신의; 정신적인	영어 3 검토
+vision	ko	시력; 비전; 환상	영어 3 검토
+specifically	ko	특히; 구체적으로	영어 3 검토
+entry	ko	입장; 입구; 출품작	영어 3 검토
+fellow	ko	동료; 녀석	영어 3 검토
+chemical	ko	화학의; 화학 물질	영어 3 검토
+chemical	pos	adj
+capture	ko	붙잡다; 포착하다	영어 3 검토
+tip	ko	팁; 조언; 끝	영어 3 검토
+peak	ko	정상; 절정	영어 3 검토
+proportion	ko	비율; 부분	영어 3 검토
+shout	ko	외치다; 소리치다	영어 3 검토
+significantly	ko	상당히; 크게	영어 3 검토
+considerable	ko	상당한	영어 3 검토
+instruction	ko	지시; 설명	영어 3 검토
+intelligence	ko	지능; 정보	영어 3 검토
+ideal	ko	이상적인; 이상	영어 3 검토
+ideal	pos	adj
+folk	ko	사람들; 민속의	영어 3 검토
+guard	ko	경비원; 지키다	영어 3 검토
+guard	pos	n
+poll	ko	여론 조사; 투표	영어 3 검토
+complaint	ko	불평; 항의	영어 3 검토
+bore	ko	지루하게 하다	영어 3 검토
+bore	pos	v
+somehow	ko	어떻게든; 왠지	영어 3 검토
+tone	ko	어조; 색조	영어 3 검토
+thin	ko	얇은; 마른	영어 3 검토
+rush	ko	서두르다; 급히 하다	영어 3 검토
+formal	ko	공식적인; 격식을 차린	영어 3 검토
+employer	ko	고용주	영어 3 검토
+ban	ko	금지; 금지하다	영어 3 검토
+protest	ko	항의; 시위; 항의하다	영어 3 검토
+index	ko	색인; 지수	영어 3 검토
+circle	ko	원; 동그라미; 모임	영어 3 검토
+helpful	ko	도움이 되는	영어 3 검토
+sick	ko	아픈; 메스꺼운	영어 3 검토
+unable	ko	~할 수 없는	영어 3 검토
+electronic	ko	전자의	영어 3 검토
+electronic	pos	adj
+impose	ko	부과하다; 강요하다	영어 3 검토
+criminal	ko	범죄자; 범죄의	영어 3 검토
+besides	ko	게다가; ~외에	영어 3 검토
+properly	ko	제대로; 적절히	영어 3 검토
+ancient	ko	고대의; 아주 오래된	영어 3 검토
+ill	ko	아픈; 병든	영어 3 검토
+ill	pos	adj
+closely	ko	면밀히; 가까이	영어 3 검토
+multiple	ko	여러; 다수의	영어 3 검토
+multiple	pos	adj
+yield	ko	산출하다; 양보하다; 수확량	영어 3 검토
+via	ko	~을 거쳐; ~을 통해	영어 3 검토
+via	pos	prep
+legislation	ko	법률; 입법	영어 3 검토
+county	ko	군(郡); 주	영어 3 검토
+unlike	ko	~와 달리	영어 3 검토
+unlike	pos	prep
+mobile	ko	이동식의; 휴대 전화	영어 3 검토
+mobile	pos	adj
+implement	ko	실행하다; 도구	영어 3 검토
+implement	pos	v
+attach	ko	붙이다; 첨부하다	영어 3 검토
+everywhere	ko	어디에나	영어 3 검토
+everywhere	pos	adv
+household	ko	가정; 가구	영어 3 검토
+acknowledge	ko	인정하다	영어 3 검토
+reward	ko	보상; 보상하다	영어 3 검토
+academic	ko	학업의; 학문의	영어 3 검토
+furthermore	ko	게다가; 더욱이	영어 3 검토
+furthermore	pos	adv
+accuse	ko	고발하다; 비난하다	영어 3 검토
+wage	ko	임금	영어 3 검토
+construct	ko	건설하다; 구성하다	영어 3 검토
+remark	ko	말; 발언; 말하다	영어 3 검토
+intention	ko	의도	영어 3 검토
+dozen	ko	12개; 다스	영어 3 검토
+settlement	ko	합의; 정착; 정착지	영어 3 검토
+gap	ko	틈; 차이	영어 3 검토
+northern	ko	북쪽의	영어 3 검토
+northern	pos	adj
+estate	ko	토지; 재산	영어 3 검토
+alive	ko	살아 있는	영어 3 검토
+alive	pos	adj
+sweet	ko	달콤한; 사탕	영어 3 검토
+permanent	ko	영구적인	영어 3 검토
+pursue	ko	추구하다; 뒤쫓다	영어 3 검토
+tall	ko	키가 큰; 높은	영어 3 검토
+urge	ko	촉구하다; 충동	영어 3 검토
+prior	ko	이전의; 사전의	영어 3 검토
+prior	pos	adj
+priority	ko	우선순위; 우선	영어 3 검토
+phrase	ko	구; 표현	영어 3 검토
+stable	ko	안정된; 마구간	영어 3 검토
+merely	ko	단지; 그저	영어 3 검토
+resolution	ko	결심; 해결; 해상도	영어 3 검토
+communicate	ko	의사소통하다; 전하다	영어 3 검토
+vast	ko	거대한; 광대한	영어 3 검토
+regional	ko	지역의	영어 3 검토
+immediate	ko	즉각적인	영어 3 검토
+childhood	ko	어린 시절	영어 3 검토
+draft	ko	초안; 징병	영어 3 검토
+accompany	ko	동반하다; 반주하다	영어 3 검토
+angry	ko	화난	영어 3 검토
+angry	pos	adj
+illustrate	ko	설명하다; 삽화를 넣다	영어 3 검토
+imply	ko	암시하다; 의미하다	영어 3 검토
+temporary	ko	일시적인; 임시의	영어 3 검토
+liberal	ko	진보적인; 자유주의의; 너그러운	영어 3 검토
+qualify	ko	자격을 얻다; 자격을 주다	영어 3 검토
+qualify	pos	v
+truly	ko	진정으로; 정말	영어 3 검토
+hi	ko	안녕	영어 3 검토
+core	ko	핵심; 중심	영어 3 검토
+emotional	ko	감정적인; 감동적인	영어 3 검토
+panel	ko	패널; 위원단; 판	영어 3 검토
+prime	ko	주요한; 최고의	영어 3 검토
+prime	pos	adj
+maximum	ko	최대; 최대의	영어 3 검토
+effectively	ko	효과적으로	영어 3 검토
+effectively	pos	adv
+elsewhere	ko	다른 곳에서	영어 3 검토
+elsewhere	pos	adv
+bother	ko	신경 쓰이게 하다; 귀찮게 하다	영어 3 검토
+initiative	ko	계획; 주도권	영어 3 검토
+complicate	ko	복잡하게 만들다	영어 3 검토
+discipline	ko	규율; 훈련; 징계하다	영어 3 검토
+extreme	ko	극도의; 극단적인	영어 3 검토
+passage	ko	통로; 구절	영어 3 검토
+forth	ko	앞으로; 밖으로	영어 3 검토
+forth	pos	adv
+negotiation	ko	협상	영어 3 검토
+mechanism	ko	기계 장치; 구조	영어 3 검토
+lucky	ko	운이 좋은	영어 3 검토
+crash	ko	충돌; 추락하다	영어 3 검토
+implication	ko	영향; 함축	영어 3 검토
+deserve	ko	~을 받을 만하다	영어 3 검토
+unusual	ko	특이한; 드문	영어 3 검토
+classic	ko	고전; 대표적인	영어 3 검토
+interaction	ko	상호 작용; 교류	영어 3 검토
+repair	ko	수리; 수리하다	영어 3 검토
+fundamental	ko	근본적인; 기본적인	영어 3 검토
+dish	ko	접시; 요리	영어 3 검토
+abroad	ko	해외에; 해외로	영어 3 검토
+abroad	pos	adv
+defeat	ko	패배시키다; 패배	영어 3 검토
+presidential	ko	대통령의	영어 3 검토
+presidential	pos	adj
+perfectly	ko	완벽하게	영어 3 검토
+enhance	ko	높이다; 향상시키다	영어 3 검토
+distinguish	ko	구별하다	영어 3 검토
+substantial	ko	상당한	영어 3 검토
+nearby	ko	근처의; 근처에	영어 3 검토
+nearby	pos	adj
+personally	ko	개인적으로	영어 3 검토
+cope	ko	대처하다; 극복하다	영어 3 검토
+cope	pos	v
+accommodation	ko	숙소; 숙박	영어 3 검토
+accommodation	pos	n
+winner	ko	우승자; 승자	영어 3 검토
+encounter	ko	마주치다; 만남	영어 3 검토
+excuse	ko	변명; 용서하다	영어 3 검토
+partly	ko	부분적으로	영어 3 검토
+partly	pos	adv
+urban	ko	도시의	영어 3 검토
+urban	pos	adj
+southern	ko	남쪽의	영어 3 검토
+southern	pos	adj
+beauty	ko	아름다움; 미인	영어 3 검토
+massive	ko	거대한; 엄청난	영어 3 검토
+upper	ko	위쪽의; 상부의	영어 3 검토
+upper	pos	adj
+occupy	ko	차지하다; 점령하다	영어 3 검토
+outline	ko	개요; 윤곽	영어 3 검토
+luck	ko	운; 행운	영어 3 검토
+split	ko	나누다; 쪼개다	영어 3 검토
+consistent	ko	일관된; 한결같은	영어 3 검토
+aside	ko	옆에; 따로	영어 3 검토
+aside	pos	adv
+comfort	ko	편안함; 위로; 위로하다	영어 3 검토
+proud	ko	자랑스러워하는; 자랑스러운	영어 3 검토
+emergency	ko	비상; 응급	영어 3 검토
+secondly	ko	둘째로	영어 3 검토
+secondly	pos	adv
+prospect	ko	전망; 가능성	영어 3 검토
+plot	ko	줄거리; 음모; 작은 땅	영어 3 검토
+criteria	ko	기준(복수)	영어 3 검토
+criteria	pos	n
+primarily	ko	주로	영어 3 검토
+integrate	ko	통합하다	영어 3 검토
+convention	ko	관습; 대회; 협약	영어 3 검토
+bet	ko	내기하다; 틀림없다; 내기	영어 3 검토
+retain	ko	유지하다; 보유하다	영어 3 검토
+plain	ko	평범한; 분명한; 평원	영어 3 검토
+volunteer	ko	자원봉사자; 자원하다	영어 3 검토
+volunteer	pos	n
+rural	ko	시골의; 농촌의	영어 3 검토
+rural	pos	adj
+examination	ko	시험; 검사	영어 3 검토
+delight	ko	기쁨; 기쁘게 하다	영어 3 검토
+spell	ko	철자를 쓰다; 주문	영어 3 검토
+spell	pos	v
+premise	ko	전제; 부지	영어 3 검토
+lean	ko	기대다; 기울다; 마른	영어 3 검토
+dramatic	ko	극적인	영어 3 검토
+differ	ko	다르다	영어 3 검토
+bike	ko	자전거	영어 3 검토
+bike	pos	n
+distribute	ko	나누어 주다; 배포하다	영어 3 검토
+intellectual	ko	지적인; 지식인	영어 3 검토
+intellectual	pos	adj
+derive	ko	얻다; 유래하다	영어 3 검토
+crucial	ko	중대한; 결정적인	영어 3 검토
+origin	ko	기원; 출신	영어 3 검토
+landscape	ko	풍경; 경치	영어 3 검토
+educate	ko	교육하다	영어 3 검토
+fault	ko	잘못; 결점	영어 3 검토
+exhibit	ko	전시하다; 전시품	영어 3 검토
+minor	ko	작은; 사소한; 미성년자	영어 3 검토
+negotiate	ko	협상하다	영어 3 검토
+dominate	ko	지배하다; 우세하다	영어 3 검토
+prize	ko	상; 상품	영어 3 검토
+typically	ko	보통; 일반적으로	영어 3 검토
+typically	pos	adv
+peer	ko	또래; 동료	영어 3 검토
+pension	ko	연금	영어 3 검토
+acquisition	ko	습득; 인수	영어 3 검토
+assistance	ko	도움; 지원	영어 3 검토
+respectively	ko	각각	영어 3 검토
+respectively	pos	adv
+variation	ko	변화; 변형	영어 3 검토
+ultimately	ko	결국; 궁극적으로	영어 3 검토
+smart	ko	똑똑한; 영리한	영어 3 검토
+upset	ko	속상한; 화난; 뒤엎다	영어 3 검토
+tooth	ko	이; 치아	영어 3 검토
+representation	ko	표현; 대표	영어 3 검토
+dispute	ko	분쟁; 논쟁	영어 3 검토
+agenda	ko	안건; 의제	영어 3 검토
+emphasis	ko	강조	영어 3 검토
+edition	ko	판; 호	영어 3 검토
+honest	ko	정직한; 솔직한	영어 3 검토
+undertake	ko	맡다; 착수하다	영어 3 검토
+retail	ko	소매	영어 3 검토
+wire	ko	철사; 전선	영어 3 검토
+unlikely	ko	~할 것 같지 않은	영어 3 검토
+unlikely	pos	adj
+gay	ko	동성애자의; 명랑한	영어 3 검토
+publication	ko	출판; 출판물	영어 3 검토
+slight	ko	약간의; 사소한	영어 3 검토
+unknown	ko	알려지지 않은	영어 3 검토
+restrict	ko	제한하다	영어 3 검토
+equivalent	ko	같은; 상당하는 것	영어 3 검토
+equivalent	pos	adj
+solid	ko	단단한; 고체	영어 3 검토
+elderly	ko	나이가 지긋한; 노인들	영어 3 검토
+owe	ko	빚지다; ~덕분이다	영어 3 검토
+pitch	ko	던지다; 음높이; 경기장	영어 3 검토
+contemporary	ko	동시대의; 현대의	영어 3 검토
+contemporary	pos	adj
+ease	ko	쉬움; 덜어 주다	영어 3 검토
+assure	ko	보장하다; 안심시키다	영어 3 검토
+episode	ko	에피소드; 회	영어 3 검토
+crack	ko	금; 틈; 금이 가다	영어 3 검토
+virtually	ko	사실상; 거의	영어 3 검토
+virtually	pos	adv
+era	ko	시대	영어 3 검토
+coverage	ko	보도; 보장 범위	영어 3 검토
+sensitive	ko	민감한; 예민한	영어 3 검토
+tight	ko	꽉 끼는; 단단한	영어 3 검토
+wet	ko	젖은	영어 3 검토
+wet	pos	adj
+secondary	ko	부차적인; 중등의	영어 3 검토
+nervous	ko	긴장한; 불안해하는	영어 3 검토
+inspire	ko	영감을 주다; 고무하다	영어 3 검토
+grand	ko	웅장한; 큰	영어 3 검토
+hence	ko	그러므로; 따라서	영어 3 검토
+crew	ko	승무원; 작업반	영어 3 검토
+pupil	ko	학생; 눈동자	영어 3 검토
+restore	ko	회복시키다; 복원하다	영어 3 검토
+alter	ko	바꾸다	영어 3 검토
+perceive	ko	인식하다; 감지하다	영어 3 검토
+routine	ko	일과; 일상적인	영어 3 검토
+routine	pos	n
+anymore	ko	더 이상	영어 3 검토
+anymore	pos	adv
+convert	ko	바꾸다; 개종하다	영어 3 검토
+beside	ko	~옆에	영어 3 검토
+beside	pos	prep
+sail	ko	항해하다; 돛	영어 3 검토
+disaster	ko	재난; 재해	영어 3 검토
+pace	ko	속도	영어 3 검토
+heavily	ko	심하게; 많이	영어 3 검토
+devote	ko	바치다; 헌신하다	영어 3 검토
+vital	ko	매우 중요한; 생명의	영어 3 검토
+fascinate	ko	매혹하다	영어 3 검토
+external	ko	외부의	영어 3 검토
+spare	ko	여분의; 할애하다	영어 3 검토
+spare	pos	adj
+whenever	ko	~할 때마다; 언제든지	영어 3 검토
+whenever	pos	conj
+guilty	ko	죄책감이 드는; 유죄의	영어 3 검토
+underlie	ko	~의 밑바탕이 되다	영어 3 검토
+incorporate	ko	포함하다; 통합하다	영어 3 검토
+sweep	ko	쓸다	영어 3 검토
+sir	ko	선생님; ~님(남자)	영어 3 검토
+evaluate	ko	평가하다	영어 3 검토
+anger	ko	화; 분노	영어 3 검토
+pub	ko	술집	영어 3 검토
+perception	ko	인식; 지각	영어 3 검토
+naturally	ko	자연스럽게; 당연히	영어 3 검토
+initially	ko	처음에	영어 3 검토
+initially	pos	adv
+rarely	ko	드물게; 거의 ~않다	영어 3 검토
+rarely	pos	adv
+apparent	ko	명백한; 겉보기의	영어 3 검토
+western	ko	서쪽의; 서양의	영어 3 검토
+constantly	ko	끊임없이; 항상	영어 3 검토
+scare	ko	겁주다; 놀라게 하다	영어 3 검토
+badly	ko	나쁘게; 심하게	영어 3 검토
+everyday	ko	일상의; 매일의	영어 3 검토
+everyday	pos	adj
+scream	ko	비명; 비명을 지르다	영어 3 검토
+disorder	ko	장애; 무질서	영어 3 검토
+demonstration	ko	시위; 시연	영어 3 검토
+analyst	ko	분석가	영어 3 검토
+platform	ko	승강장; 플랫폼; 연단	영어 3 검토
+transform	ko	변형시키다; 바꾸다	영어 3 검토
+restriction	ko	제한	영어 3 검토
+foundation	ko	토대; 재단; 설립	영어 3 검토
+strain	ko	부담; 긴장; 무리하다	영어 3 검토
+trail	ko	오솔길; 자국	영어 3 검토
+loose	ko	느슨한; 헐거운	영어 3 검토
+wealth	ko	부; 재산	영어 3 검토
+evil	ko	악; 사악한	영어 3 검토
+remarkable	ko	놀라운; 주목할 만한	영어 3 검토
+tune	ko	곡조; 조율하다	영어 3 검토
+frighten	ko	겁먹게 하다	영어 3 검토
+bid	ko	입찰; 시도; 입찰하다	영어 3 검토
+breed	ko	번식하다; 기르다; 품종	영어 3 검토
+extraordinary	ko	놀라운; 비범한	영어 3 검토
+brilliant	ko	훌륭한; 눈부신	영어 3 검토
+adviser	ko	고문; 조언자	영어 3 검토
+stem	ko	줄기; 비롯되다	영어 3 검토
+reverse	ko	뒤집다; 반대의	영어 3 검토
+awful	ko	끔찍한; 지독한	영어 3 검토
+creative	ko	창의적인	영어 3 검토
+agricultural	ko	농업의	영어 3 검토
+agricultural	pos	adj
+confident	ko	자신 있는; 확신하는	영어 3 검토
+curve	ko	곡선; 커브	영어 3 검토
+giant	ko	거대한; 거인	영어 3 검토
+god	ko	신; 하느님	영어 3 검토
+portion	ko	부분; 1인분	영어 3 검토
+substance	ko	물질; 실체	영어 3 검토
+extensive	ko	광범위한; 넓은	영어 3 검토
+inner	ko	내부의; 안쪽의	영어 3 검토
+inner	pos	adj
+consult	ko	상담하다; 참고하다	영어 3 검토
+pink	ko	분홍색의; 분홍색	영어 3 검토
+pink	pos	adj
+strip	ko	벗기다; 가느다란 조각	영어 3 검토
+intervention	ko	개입; 간섭	영어 3 검토
+impress	ko	감명을 주다; 깊은 인상을 주다	영어 3 검토
+vice	ko	부~; 악덕	영어 3 검토
+radical	ko	급진적인; 근본적인	영어 3 검토
+radical	pos	adj
+similarly	ko	비슷하게; 마찬가지로	영어 3 검토
+dimension	ko	차원; 크기	영어 3 검토
+subsequent	ko	그다음의; 이후의	영어 3 검토
+subsequent	pos	adj
+statistic	ko	통계	영어 3 검토
+statistic	pos	n
+regularly	ko	규칙적으로; 정기적으로	영어 3 검토
+iron	ko	철; 다리미	영어 3 검토
+membership	ko	회원 자격; 회원	영어 3 검토
+blind	ko	눈먼; 맹목적인; 블라인드	영어 3 검토
+blind	pos	adj
+bloody	ko	피투성이의; 잔인한	영어 3 검토
+ally	ko	동맹국; 협력자	영어 3 검토
+sustain	ko	지속하다; 유지하다; (피해를) 입다	영어 3 검토
+crazy	ko	미친; 열광하는	영어 3 검토
+crazy	pos	adj
+parallel	ko	평행한; 유사한	영어 3 검토
+desert	ko	사막; 버리다	영어 3 검토
+desert	pos	n
+mate	ko	친구; 짝	영어 3 검토
+occasionally	ko	가끔	영어 3 검토
+bowl	ko	그릇; 사발	영어 3 검토
+frequency	ko	빈도; 주파수	영어 3 검토
+lip	ko	입술	영어 3 검토
+lip	pos	n
+attribute	ko	~탓으로 돌리다; 속성	영어 3 검토
+grab	ko	움켜잡다; 붙잡다	영어 3 검토
+entitle	ko	자격을 주다; 제목을 붙이다	영어 3 검토
+entitle	pos	v
+conventional	ko	전통적인; 관습적인	영어 3 검토
+digital	ko	디지털의	영어 3 검토
+digital	pos	adj
+formation	ko	형성; 구성	영어 3 검토
+deposit	ko	예금; 보증금; 맡기다	영어 3 검토
+overseas	ko	해외의; 해외로	영어 3 검토
+advocate	ko	옹호하다; 지지자	영어 3 검토
+establishment	ko	설립; 기관	영어 3 검토
+pen	ko	펜	영어 3 검토
+seal	ko	봉하다; 도장; 물개	영어 3 검토
+exact	ko	정확한	영어 3 검토
+spin	ko	돌다; 돌리다	영어 3 검토
+operator	ko	운영자; 교환원	영어 3 검토
+infant	ko	유아; 아기	영어 3 검토
+mount	ko	오르다; 올라타다; 증가하다	영어 3 검토
+anticipate	ko	예상하다; 기대하다	영어 3 검토
+dependent	ko	의존하는	영어 3 검토
+dependent	pos	adj
+specialize	ko	전문으로 하다	영어 3 검토
+chicken	ko	닭; 닭고기	영어 3 검토
+anxiety	ko	불안; 걱정	영어 3 검토
+precisely	ko	정확히; 바로	영어 3 검토
+offense	ko	범죄; 공격; 불쾌함	영어 3 검토
+detect	ko	감지하다; 발견하다	영어 3 검토
+admire	ko	존경하다; 감탄하다	영어 3 검토
+moderate	ko	적당한; 온건한	영어 3 검토
+illegal	ko	불법의	영어 3 검토
+universal	ko	보편적인; 전 세계의	영어 3 검토
+constitute	ko	구성하다; ~이 되다	영어 3 검토
+adequate	ko	적절한; 충분한	영어 3 검토
+visual	ko	시각의; 시각적인	영어 3 검토
+keen	ko	열심인; 예리한	영어 3 검토
+clinical	ko	임상의	영어 3 검토
+clinical	pos	adj
+eastern	ko	동쪽의; 동양의	영어 3 검토
+eastern	pos	adj
+segment	ko	부분; 조각	영어 3 검토
+cap	ko	모자; 뚜껑	영어 3 검토
+prompt	ko	즉각적인; 촉발하다	영어 3 검토
+charm	ko	매력; 부적	영어 3 검토
+venture	ko	모험; 벤처; 과감히 하다	영어 3 검토
+compound	ko	화합물; 복합의	영어 3 검토
+rescue	ko	구조; 구조하다	영어 3 검토
+mess	ko	엉망; 어질러진 상태	영어 3 검토
+comprehensive	ko	포괄적인; 종합적인	영어 3 검토
+incentive	ko	장려책; 인센티브	영어 3 검토
+dialog	ko	대화	영어 3 검토
+dialog	pos	n
+regret	ko	후회하다; 후회	영어 3 검토
+regret	pos	v
+dismiss	ko	해고하다; 묵살하다	영어 3 검토
+margin	ko	여백; 차이; 이윤	영어 3 검토
+beneath	ko	~아래에	영어 3 검토
+beneath	pos	prep
+opponent	ko	상대; 반대자	영어 3 검토
+resist	ko	저항하다; 참다	영어 3 검토
+correspond	ko	일치하다; 해당하다; 편지를 주고받다	영어 3 검토
+stroke	ko	뇌졸중; 쓰다듬다; 획	영어 3 검토
+dare	ko	감히 ~하다	영어 3 검토
+dare	pos	v
+barrier	ko	장벽	영어 3 검토
+rid	ko	(get rid of) 없애다	영어 3 검토
+rid	pos	v
+ruin	ko	망치다; 폐허	영어 3 검토
+counsel	ko	조언하다; 변호인	영어 3 검토
+counter	ko	계산대; 반대의	영어 3 검토
+possess	ko	소유하다; 가지다	영어 3 검토
+float	ko	뜨다; 떠다니다	영어 3 검토
+mad	ko	화난; 미친	영어 3 검토
+greatly	ko	크게; 매우	영어 3 검토
+visible	ko	눈에 보이는	영어 3 검토
+electric	ko	전기의	영어 3 검토
+electric	pos	adj
+awareness	ko	인식; 의식	영어 3 검토
+slave	ko	노예	영어 3 검토
+acceptable	ko	받아들일 수 있는	영어 3 검토
+journal	ko	학술지; 일기	영어 3 검토
+measurement	ko	측정; 치수	영어 3 검토
+random	ko	무작위의	영어 3 검토
+random	pos	adj
+successfully	ko	성공적으로	영어 3 검토
+successfully	pos	adv
+depress	ko	우울하게 하다	영어 3 검토
+depress	pos	v
+burst	ko	터지다; 터뜨리다	영어 3 검토
+buyer	ko	구매자	영어 3 검토
+mutual	ko	서로의; 상호의	영어 3 검토
+mutual	pos	adj
+motivate	ko	동기를 부여하다	영어 3 검토
+motivate	pos	v
+mortgage	ko	주택 담보 대출	영어 3 검토
+fulfill	ko	이루다; 이행하다	영어 3 검토
+dedicate	ko	바치다; 헌신하다	영어 3 검토
+province	ko	지방; 주(州)	영어 3 검토
+province	pos	n
+march	ko	행진하다; 3월	영어 3 검토
+march	pos	v
+evaluation	ko	평가	영어 3 검토
+accomplish	ko	이루다; 성취하다	영어 3 검토
+compromise	ko	타협; 타협하다	영어 3 검토
+glance	ko	흘끗 보다; 흘끗 봄	영어 3 검토
+glance	pos	v
+brush	ko	솔; 붓; 솔질하다	영어 3 검토
+embarrass	ko	당황하게 하다	영어 3 검토
+embarrass	pos	v
+genetic	ko	유전의	영어 3 검토
+genetic	pos	adj
+embrace	ko	껴안다; 받아들이다	영어 3 검토
+praise	ko	칭찬; 칭찬하다	영어 3 검토
+silent	ko	조용한; 말없는	영어 3 검토
+weigh	ko	무게가 나가다; 무게를 달다	영어 3 검토
+versus	ko	~대	영어 3 검토
+versus	pos	prep
+deficit	ko	적자; 부족	영어 3 검토
+flash	ko	번쩍이다; 섬광	영어 3 검토
+literally	ko	문자 그대로; 정말로	영어 3 검토
+literally	pos	adv
+equation	ko	방정식; 등식	영어 3 검토
+gesture	ko	몸짓; 제스처	영어 3 검토
+gesture	pos	n
+entertain	ko	즐겁게 하다; 접대하다	영어 3 검토
+assign	ko	맡기다; 배정하다	영어 3 검토
+inflation	ko	물가 상승; 인플레이션	영어 3 검토
+injure	ko	다치게 하다	영어 3 검토
+remote	ko	먼; 외딴; 리모컨	영어 3 검토
+orange	ko	오렌지; 주황색의	영어 3 검토
+twist	ko	비틀다; 꼬다	영어 3 검토
+personnel	ko	직원들; 인사	영어 3 검토
+disagree	ko	동의하지 않다	영어 3 검토
+insight	ko	통찰력; 이해	영어 3 검토
+tackle	ko	다루다; 태클하다	영어 3 검토
+pregnant	ko	임신한	영어 3 검토
+pregnant	pos	adj
+reliable	ko	믿을 수 있는	영어 3 검토
+gear	ko	기어; 장비	영어 3 검토
+click	ko	클릭하다; 딸깍 소리	영어 3 검토
+pile	ko	더미; 쌓다	영어 3 검토
+mixture	ko	혼합물; 섞인 것	영어 3 검토
+automatically	ko	자동으로	영어 3 검토
+dramatically	ko	극적으로	영어 3 검토
+stake	ko	지분; 말뚝; 걸다	영어 3 검토
+creature	ko	생물; 존재	영어 3 검토
+penalty	ko	벌금; 처벌; 페널티	영어 3 검토
+chamber	ko	방; 의회	영어 3 검토
+chamber	pos	n
+fancy	ko	화려한; 원하다	영어 3 검토
+fancy	pos	adj
+chat	ko	수다; 이야기하다	영어 3 검토
+clothing	ko	옷; 의류	영어 3 검토
+sake	ko	(for the sake of) ~을 위해	영어 3 검토
+sake	pos	n
+boost	ko	높이다; 북돋우다	영어 3 검토
+possession	ko	소유; 소지품	영어 3 검토
+curious	ko	궁금한; 호기심 많은	영어 3 검토
+wooden	ko	나무로 된	영어 3 검토
+wooden	pos	adj
+boom	ko	호황; 쾅 하는 소리	영어 3 검토
+tale	ko	이야기	영어 3 검토
+maintenance	ko	유지; 정비	영어 3 검토
+consequently	ko	그 결과	영어 3 검토
+consequently	pos	adv
+pot	ko	냄비; 화분	영어 3 검토
+strengthen	ko	강화하다	영어 3 검토
+whilst	ko	~하는 동안	영어 3 검토
+whilst	pos	conj
+bin	ko	쓰레기통; 통	영어 3 검토
+bin	pos	n
+potentially	ko	잠재적으로	영어 3 검토
+potentially	pos	adv
+pretend	ko	~인 척하다	영어 3 검토
+allege	ko	주장하다	영어 3 검토
+allege	pos	v
+intense	ko	강렬한; 극심한	영어 3 검토
+resign	ko	사직하다; 물러나다	영어 3 검토
+craft	ko	공예; 기술	영어 3 검토
+concrete	ko	구체적인; 콘크리트	영어 3 검토
+concrete	pos	adj
+distinct	ko	뚜렷한; 별개의	영어 3 검토
+limitation	ko	한계; 제한	영어 3 검토
+indication	ko	암시; 징후	영어 3 검토
+neglect	ko	소홀히 하다; 방치	영어 3 검토
+compose	ko	작곡하다; 구성하다	영어 3 검토
+jail	ko	감옥; 투옥하다	영어 3 검토
+jail	pos	n
+mere	ko	단지 ~에 불과한	영어 3 검토
+regulate	ko	규제하다; 조절하다	영어 3 검토
+trigger	ko	촉발시키다; 방아쇠	영어 3 검토
+whisper	ko	속삭이다; 속삭임	영어 3 검토
+rear	ko	뒤쪽; 기르다	영어 3 검토
+presumably	ko	아마	영어 3 검토
+presumably	pos	adv
+bless	ko	축복하다	영어 3 검토
+amendment	ko	개정; 수정안	영어 3 검토
+jury	ko	배심원단	영어 3 검토
+jury	pos	n
+civilian	ko	민간인	영어 3 검토
+regardless	ko	~에 상관없이	영어 3 검토
+regardless	pos	adv
+scan	ko	훑어보다; 스캔하다	영어 3 검토
+bunch	ko	다발; 송이; 무리	영어 3 검토
+greet	ko	인사하다; 맞이하다	영어 3 검토
+hopefully	ko	바라건대	영어 3 검토
+trick	ko	속임수; 묘기; 속이다	영어 3 검토
+paragraph	ko	단락	영어 3 검토
+maker	ko	제조사; 만드는 사람	영어 3 검토
+tissue	ko	조직; 화장지	영어 3 검토
+barely	ko	간신히; 거의 ~않다	영어 3 검토
+pro	ko	프로; 찬성	영어 3 검토
+pro	pos	n
+stair	ko	계단	영어 3 검토
+motivation	ko	동기; 의욕	영어 3 검토
+motivation	pos	n
+firmly	ko	단단히; 확고히	영어 3 검토
+interior	ko	내부; 실내	영어 3 검토
+stomach	ko	위; 배	영어 3 검토
+nowhere	ko	아무 데도 (~않다)	영어 3 검토
+nowhere	pos	adv
+pray	ko	기도하다; 빌다	영어 3 검토
+excess	ko	과잉; 초과	영어 3 검토
+liability	ko	법적 책임; 부채	영어 3 검토
+liability	pos	n
+surprisingly	ko	놀랍게도	영어 3 검토
+implementation	ko	실행; 이행	영어 3 검토
+implementation	pos	n
+differently	ko	다르게	영어 3 검토
+differently	pos	adv
+continuous	ko	계속되는; 연속적인	영어 3 검토
+golden	ko	금빛의; 귀중한	영어 3 검토
+stamp	ko	우표; 도장; 찍다	영어 3 검토
+weekly	ko	매주의; 주간의	영어 3 검토
+wherever	ko	어디든지	영어 3 검토
+wherever	pos	conj
+firstly	ko	첫째로	영어 3 검토
+firstly	pos	adv
+fence	ko	울타리	영어 3 검토
+fence	pos	n
+exhaust	ko	지치게 하다; 다 써 버리다; 배기가스	영어 3 검토
+attraction	ko	매력; 명소	영어 3 검토
+veteran	ko	베테랑; 참전 용사	영어 3 검토
+reflection	ko	반영; 반사; 숙고	영어 3 검토
+determination	ko	결심; 투지	영어 3 검토
+altogether	ko	완전히; 전부	영어 3 검토
+cluster	ko	무리; 송이	영어 3 검토
+confusion	ko	혼란; 혼동	영어 3 검토
+hurry	ko	서두르다; 서두름	영어 3 검토
+controversial	ko	논란이 많은	영어 3 검토
+controversial	pos	adj
+raw	ko	날것의; 가공하지 않은	영어 3 검토
+raw	pos	adj
+revise	ko	수정하다; 개정하다	영어 3 검토
+hint	ko	암시; 힌트	영어 3 검토
+hook	ko	갈고리; 걸다	영어 3 검토
+genuine	ko	진짜의; 진심의	영어 3 검토
+vessel	ko	선박; 그릇; 혈관	영어 3 검토
+reckon	ko	생각하다; 추정하다	영어 3 검토
+universe	ko	우주	영어 3 검토
+innocent	ko	무죄의; 순진한	영어 3 검토
+substitute	ko	대신하다; 대체물	영어 3 검토
+supplement	ko	보충; 보충제	영어 3 검토
+reasonably	ko	합리적으로; 꽤	영어 3 검토
+abstract	ko	추상적인; 요약	영어 3 검토
+abstract	pos	adj
+precise	ko	정확한; 정밀한	영어 3 검토
+stranger	ko	낯선 사람	영어 3 검토
+situate	ko	위치시키다	영어 3 검토
+situate	pos	v
+leap	ko	뛰다; 도약	영어 3 검토
+snap	ko	딱 부러지다; 딱 소리 내다	영어 3 검토
+probability	ko	확률; 가능성	영어 3 검토
+uncertainty	ko	불확실성	영어 3 검토
+swear	ko	맹세하다; 욕하다	영어 3 검토
+shore	ko	해안; 물가	영어 3 검토
+comprise	ko	구성하다; 이루어지다	영어 3 검토
+subsequently	ko	그 후에	영어 3 검토
+subsequently	pos	adv
+gentle	ko	온화한; 부드러운	영어 3 검토
+qualification	ko	자격; 자격증	영어 3 검토
+suspend	ko	중단하다; 정학시키다; 매달다	영어 3 검토
+voluntary	ko	자발적인	영어 3 검토
+stain	ko	얼룩; 얼룩지게 하다	영어 3 검토
+organic	ko	유기농의; 유기적인	영어 3 검토
+server	ko	서버; 서빙하는 사람	영어 3 검토
+server	pos	n
+alongside	ko	~옆에; ~와 함께	영어 3 검토
+alongside	pos	prep
+unite	ko	통합하다; 단결하다	영어 3 검토
+gently	ko	부드럽게; 살살	영어 3 검토
+compute	ko	계산하다	영어 3 검토
+weird	ko	이상한; 기묘한	영어 3 검토
+fade	ko	바래다; 희미해지다	영어 3 검토
+royal	ko	왕의; 왕실의	영어 3 검토
+royal	pos	adj
+theoretical	ko	이론적인	영어 3 검토
+tournament	ko	토너먼트; 시합	영어 3 검토
+tournament	pos	n
+fragment	ko	조각; 파편	영어 3 검토
+immigration	ko	이민; 출입국	영어 3 검토
+immigration	pos	n
+tender	ko	부드러운; 다정한	영어 3 검토
+ugly	ko	못생긴; 추한	영어 3 검토
+module	ko	모듈; 단위	영어 3 검토
+module	pos	n
+faithfully	ko	충실하게; 성실히	영어 3 검토
+autumn	ko	가을	영어 3 검토
+holder	ko	소유자; 받침	영어 3 검토
+solar	ko	태양의	영어 3 검토
+solar	pos	adj
+grin	ko	활짝 웃다; 씩 웃음	영어 3 검토
+fortunate	ko	운이 좋은	영어 3 검토
+alright	ko	괜찮은; 좋아	영어 3 검토
+insure	ko	보험에 들다; 보장하다	영어 3 검토
+insure	pos	v
+found	ko	설립하다; 세우다	영어 3 검토
+hunger	ko	배고픔; 굶주림	영어 3 검토
+rose	ko	장미	영어 3 검토
+wander	ko	돌아다니다; 헤매다	영어 3 검토
+till	ko	~까지	영어 3 검토
+till	pos	prep

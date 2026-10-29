@@ -1,0 +1,1263 @@
+# 중국어 묶음 덧쓰기(build_packs.py Overrides). 사람이 한 줄씩 검토한 고침이다(2026-10-28, Saybit 단어장 품질 라운드).
+# 줄 = 표기 <TAB> 칸 <TAB> 값 <TAB> 근거. 칸: drop · keep · ko(한국어 뜻) · en(영어 뜻) · pos · ex(Tatoeba 문장 번호 · none)
+#      · reading(숫자 성조 병음 = 그 병음의 CC-CEDICT 항목을 고른다, 사전에 없는 병음이면 빌드가 멈춘다).
+# 뜻 기준 = 한국어기초사전 중국어 대역어 · CC-CEDICT 풀이의 일상 뜻(是 = ~이다, 在 = ~에 있다). 한국어 뜻은 기본형(크다 · 먹다).
+# 근거가 비면 '사전 후보 순위 · 풀이 순서가 일상 뜻이 아니어서 고침'이다. 기능어(조사 · 개사)는 쓰임을 괄호로 적는다.
+我	ko	나; 저	중국어 1 검토
+我	en	I; me	중국어 1 검토
+是	ko	~이다; 맞다	중국어 1 검토
+是	en	to be; yes	중국어 1 검토
+是	pos	v
+在	ko	~에 있다; ~에서; ~하고 있다	중국어 1 검토
+在	en	to be at; in; at	중국어 1 검토
+你	ko	너; 당신	중국어 1 검토
+不	ko	아니; ~않다	중국어 1 검토
+不	en	not; no	중국어 1 검토
+有	ko	있다; 가지다	중국어 1 검토
+有	en	to have; there is	중국어 1 검토
+人	ko	사람	중국어 1 검토
+这	ko	이; 이것	중국어 1 검토
+这	en	this; these	중국어 1 검토
+都	ko	모두; 다	중국어 1 검토
+都	en	all; both	중국어 1 검토
+他	ko	그; 그 사람	중국어 1 검토
+他	en	he; him	중국어 1 검토
+也	ko	~도; 또한	중국어 1 검토
+也	en	also; too	중국어 1 검토
+一个	ko	한 개; 하나	중국어 1 검토
+一个	en	one; a	중국어 1 검토
+我们	ko	우리	중국어 1 검토
+很	ko	매우; 아주	중국어 1 검토
+很	en	very; quite	중국어 1 검토
+很	pos	adv
+什么	ko	무엇; 무슨	중국어 1 검토
+什么	en	what	중국어 1 검토
+会	ko	~할 줄 알다; ~할 것이다	중국어 1 검토
+会	en	can; to know how to; will	중국어 1 검토
+就	ko	곧; 바로; 그러면	중국어 1 검토
+就	en	right away; then; just	중국어 1 검토
+对	ko	맞다; ~에 대해	중국어 1 검토
+对	en	right; correct; towards	중국어 1 검토
+对	pos	adj
+去	ko	가다	중국어 1 검토
+她	ko	그녀	중국어 1 검토
+上	ko	위; 오르다; 지난	중국어 1 검토
+上	en	on; up; to go up; last	중국어 1 검토
+上	pos	n
+没有	ko	없다; ~하지 않았다	중국어 1 검토
+没有	en	to not have; there is not; did not	중국어 1 검토
+要	ko	원하다; ~하려고 하다; 필요하다	중국어 1 검토
+要	en	to want; will; to need	중국어 1 검토
+来	ko	오다	중국어 1 검토
+他们	ko	그들	중국어 1 검토
+他们	en	they; them	중국어 1 검토
+为	reading	wei4	중국어 1 검토
+为	ko	~을 위해; ~때문에	중국어 1 검토
+为	en	for; because of	중국어 1 검토
+为	pos	prep
+到	ko	도착하다; ~까지	중국어 1 검토
+到	en	to arrive; to; until	중국어 1 검토
+这个	ko	이것; 이	중국어 1 검토
+这个	en	this; this one	중국어 1 검토
+做	ko	하다; 만들다	중국어 1 검토
+做	en	to do; to make	중국어 1 검토
+被	ko	~에게 ~당하다(피동)	중국어 1 검토
+被	en	by (passive marker)	중국어 1 검토
+被	pos	prep
+好	ko	좋다; 잘	중국어 1 검토
+好	en	good; well; OK	중국어 1 검토
+想	ko	생각하다; ~하고 싶다; 그리워하다	중국어 1 검토
+想	en	to think; to want to; to miss	중국어 1 검토
+可以	ko	~할 수 있다; ~해도 된다	중국어 1 검토
+可以	en	can; may	중국어 1 검토
+可以	pos	v
+中	ko	가운데; ~중에	중국어 1 검토
+中	en	middle; in; among	중국어 1 검토
+能	ko	~할 수 있다	중국어 1 검토
+能	en	can; to be able to	중국어 1 검토
+给	ko	주다; ~에게	중국어 1 검토
+给	en	to give; for; to	중국어 1 검토
+还	ko	아직; 또; 더	중국어 1 검토
+还	en	still; also; even more	중국어 1 검토
+让	ko	~하게 하다; 양보하다	중국어 1 검토
+让	en	to let; to make (sb do); to yield	중국어 1 검토
+知道	ko	알다	중국어 1 검토
+没	ko	없다; ~않았다	중국어 1 검토
+没	en	not; to not have	중국어 1 검토
+自己	ko	자기; 스스로	중국어 1 검토
+自己	en	oneself; one's own	중국어 1 검토
+不是	ko	~이 아니다	중국어 1 검토
+不是	en	is not; no	중국어 1 검토
+多	ko	많다; 얼마나	중국어 1 검토
+多	en	many; much; how (much)	중국어 1 검토
+多	pos	adj
+那	ko	그; 저; 그러면	중국어 1 검토
+那	en	that; then	중국어 1 검토
+那	pos	pron
+与	reading	yu3	중국어 1 검토
+与	ko	~와; 함께	중국어 1 검토
+与	en	and; with	중국어 1 검토
+与	pos	prep
+看	ko	보다; 읽다	중국어 1 검토
+看	en	to see; to look at; to read	중국어 1 검토
+里	ko	안; 속	중국어 1 검토
+里	en	inside; in	중국어 1 검토
+从	ko	~에서; ~부터	중국어 1 검토
+从	en	from; since	중국어 1 검토
+现在	ko	지금; 현재	중국어 1 검토
+现在	en	now; at present	중국어 1 검토
+年	ko	해; 년	중국어 1 검토
+年	en	year	중국어 1 검토
+年	pos	n
+工作	ko	일하다; 일; 직업	중국어 1 검토
+工作	en	to work; job	중국어 1 검토
+一	ko	하나; 일	중국어 1 검토
+一	en	one	중국어 1 검토
+喜欢	ko	좋아하다	중국어 1 검토
+但	ko	그러나; 단지	중국어 1 검토
+但	en	but; only	중국어 1 검토
+问题	ko	문제; 질문	중국어 1 검토
+问题	en	problem; question	중국어 1 검토
+而	ko	그리고; 그러나	중국어 1 검토
+而	en	and; but	중국어 1 검토
+怎么	ko	어떻게; 왜	중국어 1 검토
+怎么	en	how; why	중국어 1 검토
+已经	ko	이미; 벌써	중국어 1 검토
+用	ko	쓰다; 사용하다; ~로	중국어 1 검토
+用	en	to use; with	중국어 1 검토
+时候	ko	때; 시간	중국어 1 검토
+时候	en	time; moment	중국어 1 검토
+大	ko	크다; 나이가 많다	중국어 1 검토
+大	en	big; large; old	중국어 1 검토
+后	ko	뒤; 후	중국어 1 검토
+后	en	after; behind; later	중국어 1 검토
+它	ko	그것	중국어 1 검토
+它	en	it	중국어 1 검토
+需要	ko	필요하다; 필요	중국어 1 검토
+需要	en	to need; to require	중국어 1 검토
+下	ko	아래; 내리다; 다음	중국어 1 검토
+下	en	below; to go down; next	중국어 1 검토
+事	ko	일	중국어 1 검토
+事	en	matter; thing	중국어 1 검토
+不能	ko	~할 수 없다; ~해서는 안 된다	중국어 1 검토
+不能	en	cannot; must not	중국어 1 검토
+将	ko	~할 것이다; ~을	중국어 1 검토
+将	en	will; shall	중국어 1 검토
+可能	ko	아마; 가능하다	중국어 1 검토
+可能	en	maybe; possible	중국어 1 검토
+可能	pos	adv
+请	ko	~하세요; 청하다; 초대하다	중국어 1 검토
+请	en	please; to ask; to invite	중국어 1 검토
+就是	ko	바로 ~이다; 그냥	중국어 1 검토
+就是	en	exactly; just	중국어 1 검토
+月	ko	달; 월	중국어 1 검토
+月	en	month; moon	중국어 1 검토
+月	pos	n
+新	ko	새롭다; 새	중국어 1 검토
+新	en	new	중국어 1 검토
+开始	ko	시작하다; 처음	중국어 1 검토
+开始	en	to start; to begin	중국어 1 검토
+最	ko	가장; 제일	중국어 1 검토
+最	en	most; -est	중국어 1 검토
+如果	ko	만약; 만일	중국어 1 검토
+如果	en	if; in case	중국어 1 검토
+不会	ko	~하지 않을 것이다; ~할 줄 모르다	중국어 1 검토
+不会	en	will not; can't	중국어 1 검토
+吃	ko	먹다	중국어 1 검토
+吃	en	to eat	중국어 1 검토
+应该	ko	마땅히 ~해야 한다	중국어 1 검토
+应该	en	should; ought to	중국어 1 검토
+更	ko	더; 더욱	중국어 1 검토
+更	en	more; even more	중국어 1 검토
+谁	ko	누구	중국어 1 검토
+谁	en	who	중국어 1 검토
+因为	ko	왜냐하면; ~때문에	중국어 1 검토
+因为	en	because	중국어 1 검토
+比	ko	~보다; 비교하다	중국어 1 검토
+比	en	than; to compare	중국어 1 검토
+于	ko	~에; ~에서	중국어 1 검토
+于	en	in; at; from	중국어 1 검토
+时	ko	때; 시	중국어 1 검토
+时	en	time; when	중국어 1 검토
+再	ko	다시; 더	중국어 1 검토
+再	en	again; once more	중국어 1 검토
+并	ko	그리고; 결코	중국어 1 검토
+并	en	and; (not) at all	중국어 1 검토
+为什么	ko	왜	중국어 1 검토
+这些	ko	이것들; 이런	중국어 1 검토
+这些	en	these	중국어 1 검토
+跟	ko	~와; 따라가다	중국어 1 검토
+跟	en	with; and; to follow	중국어 1 검토
+跟	pos	prep
+时间	ko	시간	중국어 1 검토
+认为	ko	여기다; 생각하다	중국어 1 검토
+认为	en	to think; to believe	중국어 1 검토
+不要	ko	~하지 마라; 원하지 않다	중국어 1 검토
+不要	en	don't; not want	중국어 1 검토
+国家	ko	나라; 국가	중국어 1 검토
+国家	en	country; nation	중국어 1 검토
+你们	ko	너희	중국어 1 검토
+你们	en	you (plural)	중국어 1 검토
+该	ko	~해야 한다; 이	중국어 1 검토
+该	en	should; this	중국어 1 검토
+该	pos	v
+今天	ko	오늘	중국어 1 검토
+又	ko	또; 다시	중국어 1 검토
+又	en	again; also	중국어 1 검토
+真的	ko	정말; 진짜	중국어 1 검토
+真的	en	really; truly	중국어 1 검토
+啊	drop		감탄 · 어기 조사(조사 빼기 규칙)
+以	ko	~로써; ~에 따라	중국어 1 검토
+以	en	with; by; according to	중국어 1 검토
+以	pos	prep
+世界	ko	세계; 세상	중국어 1 검토
+世界	en	world	중국어 1 검토
+觉得	ko	~라고 느끼다; 생각하다	중국어 1 검토
+觉得	en	to feel; to think	중국어 1 검토
+只	ko	단지; 오직	중국어 1 검토
+只	en	only; just	중국어 1 검토
+必须	ko	반드시 ~해야 한다	중국어 1 검토
+必须	en	must; to have to	중국어 1 검토
+您	ko	당신(높임)	중국어 1 검토
+您	en	you (polite)	중국어 1 검토
+您	pos	pron
+这样	ko	이렇게; 이런	중국어 1 검토
+这样	en	like this; this way	중국어 1 검토
+这里	ko	여기; 이곳	중국어 1 검토
+这里	en	here	중국어 1 검토
+前	ko	앞; 전	중국어 1 검토
+前	en	front; before; ago	중국어 1 검토
+爱	ko	사랑하다; 좋아하다	중국어 1 검토
+爱	en	to love; to like	중국어 1 검토
+钱	ko	돈	중국어 1 검토
+钱	en	money	중국어 1 검토
+买	ko	사다	중국어 1 검토
+买	en	to buy	중국어 1 검토
+向	ko	~을 향해; ~에게	중국어 1 검토
+向	en	towards; to	중국어 1 검토
+向	pos	prep
+还是	ko	아니면; 여전히	중국어 1 검토
+还是	en	or; still	중국어 1 검토
+还是	pos	conj
+走	ko	걷다; 가다; 떠나다	중국어 1 검토
+走	en	to walk; to go; to leave	중국어 1 검토
+朋友	ko	친구	중국어 1 검토
+希望	ko	바라다; 희망	중국어 1 검토
+希望	en	to hope; hope	중국어 1 검토
+生活	ko	생활; 살다	중국어 1 검토
+生活	en	life; to live	중국어 1 검토
+小	ko	작다; 어리다	중국어 1 검토
+小	en	small; young	중국어 1 검토
+非常	ko	매우; 대단히	중국어 1 검토
+非常	en	very; extremely	중국어 1 검토
+那么	ko	그렇게; 그러면	중국어 1 검토
+那么	en	so; then; in that case	중국어 1 검토
+日	ko	날; 일	중국어 1 검토
+日	en	day; date	중국어 1 검토
+日	pos	n
+发生	ko	일어나다; 생기다	중국어 1 검토
+但是	ko	그러나; 하지만	중국어 1 검토
+快	ko	빠르다; 곧	중국어 1 검토
+快	en	fast; quick; soon	중국어 1 검토
+一起	ko	함께; 같이	중국어 1 검토
+一起	en	together	중국어 1 검토
+一起	pos	adv
+公司	ko	회사	중국어 1 검토
+所	drop		문어 기능어(所以 · 所有 로 배운다)
+地方	ko	곳; 장소	중국어 1 검토
+地方	en	place	중국어 1 검토
+所有	ko	모든; 소유하다	중국어 1 검토
+所有	en	all; to own	중국어 1 검토
+孩子	ko	아이; 자식	중국어 1 검토
+孩子	en	child	중국어 1 검토
+一样	ko	같다; 마찬가지	중국어 1 검토
+一样	en	same; alike	중국어 1 검토
+一样	pos	adj
+太	ko	너무	중국어 1 검토
+太	en	too; extremely	중국어 1 검토
+点	ko	시; 조금; 점; 주문하다	중국어 1 검토
+点	en	o'clock; a little; dot; to order	중국어 1 검토
+点	pos	n
+那个	ko	그것; 저것	중국어 1 검토
+那个	en	that; that one	중국어 1 검토
+一些	ko	약간; 몇몇	중국어 1 검토
+一些	en	some; a few	중국어 1 검토
+一些	pos	det
+当	ko	~할 때; ~이 되다	중국어 1 검토
+当	en	when; to be; to act as	중국어 1 검토
+当	pos	prep
+这么	ko	이렇게	중국어 1 검토
+这么	en	so; like this	중국어 1 검토
+告诉	ko	알리다; 말하다	중국어 1 검토
+告诉	en	to tell; to inform	중국어 1 검토
+高	ko	높다; 키가 크다	중국어 1 검토
+高	en	high; tall	중국어 1 검토
+才	ko	비로소; 겨우; 막	중국어 1 검토
+才	en	only then; just; only	중국어 1 검토
+东西	ko	물건; 것	중국어 1 검토
+东西	en	thing; stuff	중국어 1 검토
+计划	ko	계획; 계획하다	중국어 1 검토
+听	ko	듣다	중국어 1 검토
+由	ko	~에 의해; ~에서	중국어 1 검토
+由	en	by; from	중국어 1 검토
+由	pos	prep
+像	ko	닮다; ~와 같다	중국어 1 검토
+像	en	to resemble; like	중국어 1 검토
+出	ko	나가다; 나오다	중국어 1 검토
+出	en	to go out; to come out	중국어 1 검토
+成为	ko	~이 되다	중국어 1 검토
+成为	en	to become	중국어 1 검토
+学生	ko	학생	중국어 1 검토
+这种	ko	이런; 이런 종류	중국어 1 검토
+这种	en	this kind of	중국어 1 검토
+可	ko	~할 수 있다; 그러나	중국어 1 검토
+可	en	can; may; but	중국어 1 검토
+起来	ko	일어나다; ~하기 시작하다	중국어 1 검토
+起来	en	to get up; to stand up	중국어 1 검토
+叫	ko	부르다; ~라고 하다	중국어 1 검토
+叫	en	to call; to be called	중국어 1 검토
+三	ko	셋; 삼	중국어 1 검토
+三	en	three	중국어 1 검토
+学校	ko	학교	중국어 1 검토
+写	ko	쓰다	중국어 1 검토
+写	en	to write	중국어 1 검토
+打	ko	치다; 때리다; 걸다	중국어 1 검토
+打	en	to hit; to play (ball); to make (a call)	중국어 1 검토
+哪里	ko	어디	중국어 1 검토
+哪里	en	where	중국어 1 검토
+看到	ko	보다; 보이다	중국어 1 검토
+看到	en	to see	중국어 1 검토
+一直	ko	줄곧; 곧장	중국어 1 검토
+一直	en	always; all along; straight	중국어 1 검토
+重要	ko	중요하다	중국어 1 검토
+住	ko	살다; 묵다	중국어 1 검토
+住	en	to live; to stay	중국어 1 검토
+死	ko	죽다	중국어 1 검토
+所以	ko	그래서; 그러므로	중국어 1 검토
+决定	ko	결정하다; 결정	중국어 1 검토
+决定	en	to decide; decision	중국어 1 검토
+任何	ko	어떠한; 아무	중국어 1 검토
+任何	en	any; whatever	중국어 1 검토
+或	ko	또는; 혹은	중국어 1 검토
+或	en	or; maybe	중국어 1 검토
+学习	ko	공부하다; 배우다	중국어 1 검토
+学习	en	to study; to learn	중국어 1 검토
+一下	ko	좀; 한번; 잠깐	중국어 1 검토
+一下	en	a little; once; for a moment	중국어 1 검토
+一下	pos	adv
+一点	ko	조금; 약간	중국어 1 검토
+一点	en	a little; a bit	중국어 1 검토
+一点	pos	n
+问	ko	묻다; 물어보다	중국어 1 검토
+家	ko	집; 가정	중국어 1 검토
+家	en	home; family	중국어 1 검토
+家	pos	n
+为了	ko	~을 위하여	중국어 1 검토
+为了	en	in order to; for	중국어 1 검토
+只是	ko	단지; 다만	중국어 1 검토
+只是	en	just; only	중국어 1 검토
+电影	ko	영화	중국어 1 검토
+城市	ko	도시	중국어 1 검토
+正在	ko	~하고 있는 중이다	중국어 1 검토
+正在	en	in the middle of (doing)	중국어 1 검토
+正在	pos	adv
+真	ko	정말; 진짜	중국어 1 검토
+真	en	really; real	중국어 1 검토
+别	ko	~하지 마라; 다른	중국어 1 검토
+别	en	don't; other	중국어 1 검토
+别	pos	adv
+发现	ko	발견하다; 알아차리다	중국어 1 검토
+有人	ko	누군가; 어떤 사람	중국어 1 검토
+有人	en	someone	중국어 1 검토
+找	ko	찾다	중국어 1 검토
+还有	ko	그리고; 아직 있다	중국어 1 검토
+还有	en	also; there is still	중국어 1 검토
+一定	ko	꼭; 반드시	중국어 1 검토
+一定	en	surely; definitely	중국어 1 검토
+书	ko	책	중국어 1 검토
+多少	ko	얼마; 몇	중국어 1 검토
+多少	en	how much; how many	중국어 1 검토
+起	ko	일어나다; 시작하다	중국어 1 검토
+起	en	to rise; to get up	중국어 1 검토
+带	ko	가지고 가다; 데리고 가다	중국어 1 검토
+带	en	to bring; to take along	중국어 1 검토
+如何	ko	어떻게	중국어 1 검토
+如何	en	how	중국어 1 검토
+学	ko	배우다	중국어 1 검토
+学	en	to learn; to study	중국어 1 검토
+情况	ko	상황; 사정	중국어 1 검토
+无法	ko	~할 수 없다	중국어 1 검토
+无法	en	unable to	중국어 1 검토
+无法	pos	v
+话	ko	말; 이야기	중국어 1 검토
+话	en	words; speech	중국어 1 검토
+想要	ko	~하고 싶다; 원하다	중국어 1 검토
+想要	en	to want to	중국어 1 검토
+大家	ko	모두; 여러분	중국어 1 검토
+大家	en	everyone	중국어 1 검토
+大家	pos	pron
+许多	ko	많은	중국어 1 검토
+许多	en	many; a lot of	중국어 1 검토
+许多	pos	adj
+长	ko	길다	중국어 1 검토
+长	en	long	중국어 1 검토
+使用	ko	사용하다	중국어 1 검토
+见	ko	보다; 만나다	중국어 1 검토
+见	en	to see; to meet	중국어 1 검토
+只有	ko	~만 있다; ~해야만	중국어 1 검토
+只有	en	only; only if	중국어 1 검토
+只有	pos	adv
+内	ko	안; 속	중국어 1 검토
+内	en	inside; within	중국어 1 검토
+开	ko	열다; 운전하다; 켜다	중국어 1 검토
+开	en	to open; to drive; to turn on	중국어 1 검토
+天	ko	날; 하늘	중국어 1 검토
+天	en	day; sky	중국어 1 검토
+天	pos	n
+号	ko	일; 번호	중국어 1 검토
+号	en	date; number	중국어 1 검토
+号	pos	n
+通过	ko	통과하다; ~을 통해	중국어 1 검토
+通过	en	to pass; through; by means of	중국어 1 검토
+已	ko	이미	중국어 1 검토
+已	en	already	중국어 1 검토
+人们	ko	사람들	중국어 1 검토
+人们	en	people	중국어 1 검토
+事情	ko	일; 사건	중국어 1 검토
+事情	en	thing; matter	중국어 1 검토
+不想	ko	~하고 싶지 않다	중국어 1 검토
+不想	en	not want to	중국어 1 검토
+一切	ko	모든 것; 일체	중국어 1 검토
+一切	en	everything; all	중국어 1 검토
+出来	ko	나오다	중국어 1 검토
+出来	en	to come out	중국어 1 검토
+一次	ko	한 번	중국어 1 검토
+一次	en	once; one time	중국어 1 검토
+一次	pos	n
+相信	ko	믿다	중국어 1 검토
+老师	ko	선생님	중국어 1 검토
+最后	ko	마지막; 결국	중국어 1 검토
+最后	en	last; finally	중국어 1 검토
+历史	ko	역사	중국어 1 검토
+其他	ko	다른; 기타	중국어 1 검토
+其他	en	other; else	중국어 1 검토
+完成	ko	완성하다; 끝내다	중국어 1 검토
+完成	en	to complete; to finish	중국어 1 검토
+完全	ko	완전히; 완전하다	중국어 1 검토
+完全	en	completely; complete	중국어 1 검토
+完全	pos	adv
+明天	ko	내일	중국어 1 검토
+认识	ko	알다; 인식하다	중국어 1 검토
+认识	en	to know (sb); to recognize	중국어 1 검토
+站	ko	서다; 역	중국어 1 검토
+站	en	to stand; station	중국어 1 검토
+却	ko	그러나; 오히려	중국어 1 검토
+却	en	but; yet	중국어 1 검토
+两	ko	둘; 두	중국어 1 검토
+两	en	two	중국어 1 검토
+一种	ko	일종; 한 가지	중국어 1 검토
+一种	en	a kind of; one type of	중국어 1 검토
+哪	ko	어느	중국어 1 검토
+哪	en	which	중국어 1 검토
+男人	ko	남자	중국어 1 검토
+之前	ko	~전; 이전	중국어 1 검토
+之前	en	before	중국어 1 검토
+父亲	ko	아버지	중국어 1 검토
+准备	ko	준비하다; ~할 계획이다	중국어 1 검토
+准备	en	to prepare; to plan to	중국어 1 검토
+小时	ko	시간	중국어 1 검토
+小时	en	hour	중국어 1 검토
+使	ko	~하게 하다; 쓰다	중국어 1 검토
+使	en	to make; to cause; to use	중국어 1 검토
+成功	ko	성공하다; 성공	중국어 1 검토
+成功	en	to succeed; success	중국어 1 검토
+岁	ko	살; 세	중국어 1 검토
+岁	en	years old	중국어 1 검토
+岁	pos	cl
+拿	ko	잡다; 가지다	중국어 1 검토
+拿	en	to take; to hold	중국어 1 검토
+狗	ko	개	중국어 1 검토
+帮助	ko	돕다; 도움	중국어 1 검토
+成	ko	이루다; ~이 되다	중국어 1 검토
+成	en	to become; to succeed	중국어 1 검토
+回来	ko	돌아오다	중국어 1 검토
+参加	ko	참가하다	중국어 1 검토
+政府	ko	정부	중국어 1 검토
+发展	ko	발전하다; 발전	중국어 1 검토
+正	ko	바로; 마침; 바르다	중국어 1 검토
+正	en	just; exactly; straight	중국어 1 검토
+语言	ko	언어; 말	중국어 1 검토
+语言	en	language	중국어 1 검토
+无	ko	없다	중국어 1 검토
+无	en	not to have; no	중국어 1 검토
+离开	ko	떠나다	중국어 1 검토
+帮	ko	돕다	중국어 1 검토
+玩	ko	놀다	중국어 1 검토
+玩	en	to play; to have fun	중국어 1 검토
+每天	ko	매일	중국어 1 검토
+每天	en	every day	중국어 1 검토
+每天	pos	adv
+要求	ko	요구하다; 요구	중국어 1 검토
+要求	en	to request; to demand	중국어 1 검토
+结果	ko	결과	중국어 1 검토
+结果	en	result; as a result	중국어 1 검토
+关于	ko	~에 관하여	중국어 1 검토
+关于	en	about; concerning	중국어 1 검토
+过去	ko	과거; 지나가다	중국어 1 검토
+过去	en	past; to go over	중국어 1 검토
+车	ko	차; 자동차	중국어 1 검토
+车	en	car; vehicle	중국어 1 검토
+感觉	ko	느낌; 느끼다	중국어 1 검토
+感觉	en	feeling; to feel	중국어 1 검토
+大学	ko	대학	중국어 1 검토
+那些	ko	그것들; 그런	중국어 1 검토
+那些	en	those	중국어 1 검토
+社会	ko	사회	중국어 1 검토
+及	ko	및; ~와	중국어 1 검토
+及	en	and	중국어 1 검토
+会议	ko	회의	중국어 1 검토
+进行	ko	진행하다	중국어 1 검토
+进行	en	to carry out; to be in progress	중국어 1 검토
+每个	ko	각각의; 모든	중국어 1 검토
+每个	en	each; every	중국어 1 검토
+每个	pos	det
+水	ko	물	중국어 1 검토
+女人	ko	여자	중국어 1 검토
+女人	en	woman	중국어 1 검토
+故事	ko	이야기	중국어 1 검토
+不同	ko	다르다	중국어 1 검토
+经济	ko	경제	중국어 1 검토
+讲	ko	말하다; 설명하다	중국어 1 검토
+讲	en	to speak; to explain	중국어 1 검토
+怎么样	ko	어떻다; 어때	중국어 1 검토
+怎么样	en	how; how about	중국어 1 검토
+关系	ko	관계	중국어 1 검토
+关系	en	relationship; relation	중국어 1 검토
+名字	ko	이름	중국어 1 검토
+最好	ko	제일 좋다; ~하는 편이 낫다	중국어 1 검토
+最好	en	best; had better	중국어 1 검토
+电话	ko	전화	중국어 1 검토
+有些	ko	어떤; 약간	중국어 1 검토
+有些	en	some; somewhat	중국어 1 검토
+得到	ko	얻다; 받다	중국어 1 검토
+老	ko	늙다; 오래되다	중국어 1 검토
+老	en	old	중국어 1 검토
+昨天	ko	어제	중국어 1 검토
+那里	ko	거기; 저기	중국어 1 검토
+那里	en	there	중국어 1 검토
+继续	ko	계속하다	중국어 1 검토
+找到	ko	찾아내다	중국어 1 검토
+找到	en	to find	중국어 1 검토
+地区	ko	지역	중국어 1 검토
+地区	en	region; area	중국어 1 검토
+以前	ko	이전; 예전	중국어 1 검토
+以前	en	before; formerly	중국어 1 검토
+不过	ko	그러나; 다만	중국어 1 검토
+不过	en	but; however	중국어 1 검토
+妈妈	ko	엄마; 어머니	중국어 1 검토
+妈妈	en	mom; mother	중국어 1 검토
+提供	ko	제공하다	중국어 1 검토
+特别	ko	특히; 특별하다	중국어 1 검토
+特别	en	especially; special	중국어 1 검토
+照片	ko	사진	중국어 1 검토
+进	ko	들어가다; 들어오다	중국어 1 검토
+进	en	to enter	중국어 1 검토
+其	ko	그; 그의	중국어 1 검토
+其	en	his; her; its	중국어 1 검토
+努力	ko	노력하다; 노력	중국어 1 검토
+努力	en	to try hard; effort	중국어 1 검토
+努力	pos	v
+花	ko	꽃; (돈 · 시간을) 쓰다	중국어 1 검토
+花	en	flower; to spend	중국어 1 검토
+花	pos	n
+干	reading	gan4	중국어 1 검토
+干	ko	하다; 일하다	중국어 1 검토
+干	en	to do; to work	중국어 1 검토
+干	pos	v
+虽然	ko	비록 ~이지만	중국어 1 검토
+虽然	en	although	중국어 1 검토
+方式	ko	방식	중국어 1 검토
+儿子	ko	아들	중국어 1 검토
+总是	ko	늘; 언제나	중국어 1 검토
+总是	en	always	중국어 1 검토
+总是	pos	adv
+人民	ko	국민; 인민	중국어 1 검토
+人民	en	the people	중국어 1 검토
+出现	ko	나타나다; 출현하다	중국어 1 검토
+最近	ko	요즘; 최근	중국어 1 검토
+最近	en	recently; lately	중국어 1 검토
+跑	ko	달리다; 뛰다	중국어 1 검토
+跑	en	to run	중국어 1 검토
+发	ko	보내다; 생기다	중국어 1 검토
+发	en	to send; to emit	중국어 1 검토
+说话	ko	말하다; 이야기하다	중국어 1 검토
+说话	en	to talk; to speak	중국어 1 검토
+文化	ko	문화	중국어 1 검토
+容易	ko	쉽다	중국어 1 검토
+回家	ko	집에 돌아가다	중국어 1 검토
+回家	en	to go home	중국어 1 검토
+当时	ko	당시; 그때	중국어 1 검토
+自	ko	~부터; 스스로	중국어 1 검토
+自	en	from; self	중국어 1 검토
+安全	ko	안전하다; 안전	중국어 1 검토
+安全	en	safe; safety	중국어 1 검토
+安全	pos	adj
+主要	ko	주요하다; 주로	중국어 1 검토
+主要	en	main; mainly	중국어 1 검토
+之后	ko	~후; 그 뒤	중국어 1 검토
+之后	en	after; afterwards	중국어 1 검토
+以为	ko	~인 줄 알다	중국어 1 검토
+以为	en	to think (wrongly); to assume	중국어 1 검토
+间	ko	칸; 사이	중국어 1 검토
+间	en	room (classifier); between	중국어 1 검토
+间	pos	cl
+是不是	ko	~이 아닌가?	중국어 1 검토
+是不是	en	is it (or not)	중국어 1 검토
+母亲	ko	어머니	중국어 1 검토
+影响	ko	영향; 영향을 주다	중국어 1 검토
+影响	en	influence; to affect	중국어 1 검토
+影响	pos	n
+感到	ko	느끼다	중국어 1 검토
+穿	ko	입다; 신다	중국어 1 검토
+穿	en	to wear; to put on	중국어 1 검토
+喝	ko	마시다	중국어 1 검토
+条	ko	줄기; 가늘고 긴 것을 세는 말	중국어 1 검토
+条	en	strip; classifier for long thin things	중국어 1 검토
+条	pos	cl
+能够	ko	~할 수 있다	중국어 1 검토
+能够	en	can; to be able to	중국어 1 검토
+了解	ko	이해하다; 알다	중국어 1 검토
+了解	en	to understand; to know about	중국어 1 검토
+明白	ko	이해하다; 분명하다	중국어 1 검토
+明白	en	to understand; clear	중국어 1 검토
+经常	ko	자주; 늘	중국어 1 검토
+经常	en	often; frequently	중국어 1 검토
+选择	ko	선택하다; 선택	중국어 1 검토
+选择	en	to choose; choice	중국어 1 검토
+选择	pos	v
+研究	ko	연구; 연구하다	중국어 1 검토
+种	reading	zhong3	중국어 1 검토
+种	ko	종류; 가지	중국어 1 검토
+种	en	kind; type	중국어 1 검토
+种	pos	cl
+游戏	ko	게임; 놀이	중국어 1 검토
+政治	ko	정치	중국어 1 검토
+国际	ko	국제	중국어 1 검토
+马	ko	말	중국어 1 검토
+马	en	horse	중국어 1 검토
+完	ko	끝나다; 다 ~하다	중국어 1 검토
+完	en	to finish; to be over	중국어 1 검토
+网站	ko	웹사이트	중국어 1 검토
+永远	ko	영원히; 언제까지나	중국어 1 검토
+永远	en	forever	중국어 1 검토
+总	ko	늘; 모두	중국어 1 검토
+总	en	always; total	중국어 1 검토
+总	pos	adv
+建议	ko	제안하다; 제안	중국어 1 검토
+看见	ko	보다; 보이다	중국어 1 검토
+看见	en	to see	중국어 1 검토
+先生	ko	선생님; ~씨; 남편	중국어 1 검토
+先生	en	sir; Mr.; husband	중국어 1 검토
+美	ko	아름답다	중국어 1 검토
+美	en	beautiful	중국어 1 검토
+美	pos	adj
+真是	ko	정말; 참	중국어 1 검토
+真是	en	truly; really	중국어 1 검토
+活动	ko	활동; 행사	중국어 1 검토
+活动	en	activity; event	중국어 1 검토
+医生	ko	의사	중국어 1 검토
+由于	ko	~때문에	중국어 1 검토
+由于	en	due to; because of	중국어 1 검토
+注意	ko	주의하다	중국어 1 검토
+意思	ko	뜻; 의미	중국어 1 검토
+意思	en	meaning; idea	중국어 1 검토
+运动	ko	운동; 운동하다	중국어 1 검토
+运动	en	exercise; sports	중국어 1 검토
+运动	pos	n
+几个	ko	몇 개; 몇	중국어 1 검토
+几个	en	a few; how many	중국어 1 검토
+方法	ko	방법	중국어 1 검토
+分	ko	나누다; 분	중국어 1 검토
+分	en	to divide; minute	중국어 1 검토
+其中	ko	그중	중국어 1 검토
+其中	en	among them	중국어 1 검토
+确定	ko	확정하다; 확실하다	중국어 1 검토
+确定	en	to make sure; certain	중국어 1 검토
+如	ko	~와 같다; 만약	중국어 1 검토
+如	en	like; as; if	중국어 1 검토
+警察	ko	경찰	중국어 1 검토
+警察	pos	n
+结束	ko	끝나다; 마치다	중국어 1 검토
+当然	ko	물론	중국어 1 검토
+拉	ko	끌다; 당기다	중국어 1 검토
+拉	en	to pull; to drag	중국어 1 검토
+每	ko	매; 마다	중국어 1 검토
+每	en	every; each	중국어 1 검토
+每	pos	det
+别人	ko	남; 다른 사람	중국어 1 검토
+别人	en	other people	중국어 1 검토
+路	ko	길; 도로	중국어 1 검토
+路	en	road; way	중국어 1 검토
+有点	ko	조금; 약간	중국어 1 검토
+有点	en	a little; somewhat	중국어 1 검토
+有点	pos	adv
+然后	ko	그다음에; 그러고 나서	중국어 1 검토
+然后	en	then; after that	중국어 1 검토
+是否	ko	~인지 아닌지	중국어 1 검토
+是否	en	whether; if	중국어 1 검토
+是否	pos	adv
+因	ko	~때문에; 원인	중국어 1 검토
+因	en	because of; cause	중국어 1 검토
+接受	ko	받아들이다	중국어 1 검토
+战争	ko	전쟁	중국어 1 검토
+教育	ko	교육; 교육하다	중국어 1 검토
+音乐	ko	음악	중국어 1 검토
+而且	ko	게다가; 또한	중국어 1 검토
+而且	en	moreover; and also	중국어 1 검토
+先	ko	먼저; 우선	중국어 1 검토
+门	ko	문	중국어 1 검토
+门	en	door; gate	중국어 1 검토
+读	ko	읽다; 공부하다	중국어 1 검토
+读	en	to read; to study	중국어 1 검토
+根据	ko	~에 따르면; 근거	중국어 1 검토
+根据	en	according to; basis	중국어 1 검토
+存在	ko	존재하다	중국어 1 검토
+改变	ko	바꾸다; 변하다	중국어 1 검토
+改变	en	to change	중국어 1 검토
+系统	ko	시스템; 체계	중국어 1 검토
+系统	en	system	중국어 1 검토
+原因	ko	원인; 이유	중국어 1 검토
+原因	en	reason; cause	중국어 1 검토
+银行	ko	은행	중국어 1 검토
+手	ko	손	중국어 1 검토
+来自	ko	~에서 오다	중국어 1 검토
+来自	en	to come from	중국어 1 검토
+另	ko	다른; 따로	중국어 1 검토
+另	en	another; other	중국어 1 검토
+父母	ko	부모	중국어 1 검토
+语	drop		구속 형태소(语言 · 汉语 로 배운다)
+谢谢	ko	고맙다; 감사합니다	중국어 1 검토
+谢谢	en	thank you; thanks	중국어 1 검토
+谢谢	pos	v
+自由	ko	자유; 자유롭다	중국어 1 검토
+自由	en	freedom; free	중국어 1 검토
+自由	pos	n
+健康	ko	건강하다; 건강	중국어 1 검토
+看看	ko	좀 보다	중국어 1 검토
+看看	en	to take a look	중국어 1 검토
+道	ko	길; 도리; 말하다	중국어 1 검토
+道	en	road; way; to say	중국어 1 검토
+道	pos	n
+代表	ko	대표하다; 대표	중국어 1 검토
+解决	ko	해결하다	중국어 1 검토
+笑	ko	웃다	중국어 1 검토
+比赛	ko	시합; 경기	중국어 1 검토
+杀	ko	죽이다	중국어 1 검토
+电视	ko	텔레비전	중국어 1 검토
+不到	ko	~에 못 미치다	중국어 1 검토
+不到	en	less than; not reaching	중국어 1 검토
+医院	ko	병원	중국어 1 검토
+手机	ko	휴대폰	중국어 1 검토
+高兴	ko	기쁘다	중국어 1 검토
+送	ko	보내다; 주다; 바래다주다	중국어 1 검토
+送	en	to send; to give; to see off	중국어 1 검토
+组织	ko	조직; 조직하다	중국어 1 검토
+组织	en	organization; to organize	중국어 1 검토
+组织	pos	n
+件	ko	건; 벌(옷 · 일을 세는 말)	중국어 1 검토
+件	en	item; classifier for clothes, matters	중국어 1 검토
+件	pos	cl
+之间	ko	~사이	중국어 1 검토
+之间	en	between; among	중국어 1 검토
+几乎	ko	거의	중국어 1 검토
+比较	ko	비교적; 비교하다	중국어 1 검토
+比较	en	relatively; to compare	중국어 1 검토
+变	ko	변하다; 바뀌다	중국어 1 검토
+变	en	to change; to become	중국어 1 검토
+回	ko	돌아가다; 번	중국어 1 검토
+回	en	to return; time (classifier)	중국어 1 검토
+早上	ko	아침	중국어 1 검토
+早上	en	morning	중국어 1 검토
+以后	ko	이후; 나중에	중국어 1 검토
+以后	en	after; later	중국어 1 검토
+同意	ko	동의하다	중국어 1 검토
+信	ko	편지; 믿다	중국어 1 검토
+信	en	letter; to believe	중국어 1 검토
+办法	ko	방법; 수단	중국어 1 검토
+办法	en	way; method	중국어 1 검토
+消息	ko	소식	중국어 1 검토
+曾	ko	일찍이; 이전에	중국어 1 검토
+曾	en	once; ever (before)	중국어 1 검토
+早	ko	이르다; 일찍	중국어 1 검토
+早	en	early	중국어 1 검토
+房子	ko	집	중국어 1 검토
+担心	ko	걱정하다	중국어 1 검토
+一般	ko	일반적이다; 보통	중국어 1 검토
+一般	en	general; ordinary; usually	중국어 1 검토
+晚上	ko	저녁; 밤	중국어 1 검토
+晚上	en	evening; night	중국어 1 검토
+只要	ko	~하기만 하면	중국어 1 검토
+只要	en	as long as	중국어 1 검토
+行为	ko	행위; 행동	중국어 1 검토
+行为	en	behavior; action	중국어 1 검토
+行为	pos	n
+那样	ko	그렇게; 그런	중국어 1 검토
+那样	en	like that; that kind	중국어 1 검토
+爸爸	ko	아빠; 아버지	중국어 1 검토
+爸爸	en	dad; father	중국어 1 검토
+简单	ko	간단하다	중국어 1 검토
+肯定	ko	틀림없이; 확실하다	중국어 1 검토
+肯定	en	definitely; sure	중국어 1 검토
+肯定	pos	adv
+心	ko	마음; 심장	중국어 1 검토
+心	en	heart; mind	중국어 1 검토
+房间	ko	방	중국어 1 검토
+卖	ko	팔다	중국어 1 검토
+错	ko	틀리다; 잘못	중국어 1 검토
+错	en	wrong; mistake	중국어 1 검토
+错	pos	adj
+人口	ko	인구	중국어 1 검토
+睡	ko	자다	중국어 1 검토
+行	ko	좋다; 괜찮다; 가다	중국어 1 검토
+行	en	OK; all right; to go	중국어 1 검토
+行	pos	adj
+唯一	ko	유일하다	중국어 1 검토
+唯一	en	only; sole	중국어 1 검토
+连	ko	~조차; 잇다	중국어 1 검토
+连	en	even; to connect	중국어 1 검토
+连	pos	prep
+电脑	ko	컴퓨터	중국어 1 검토
+解释	ko	설명하다; 해석하다	중국어 1 검토
+解释	en	to explain; explanation	중국어 1 검토
+作	ko	하다; 짓다	중국어 1 검토
+作	en	to do; to make; to write	중국어 1 검토
+懂	ko	알다; 이해하다	중국어 1 검토
+懂	en	to understand	중국어 1 검토
+目前	ko	현재; 지금	중국어 1 검토
+目前	en	at present	중국어 1 검토
+作为	ko	~로서	중국어 1 검토
+作为	en	as; in the capacity of	중국어 1 검토
+作为	pos	prep
+机会	ko	기회	중국어 1 검토
+女孩	ko	여자아이; 소녀	중국어 1 검토
+女孩	en	girl	중국어 1 검토
+忙	ko	바쁘다	중국어 1 검토
+忙	en	busy	중국어 1 검토
+忙	pos	adj
+除了	ko	~을 제외하고	중국어 1 검토
+除了	en	except; besides	중국어 1 검토
+元	ko	위안(중국 돈 단위)	중국어 1 검토
+元	en	yuan (unit of money)	중국어 1 검토
+元	pos	cl
+教	ko	가르치다	중국어 1 검토
+信息	ko	정보; 소식	중국어 1 검토
+信息	en	information; message	중국어 1 검토
+有没有	ko	있나요?	중국어 1 검토
+有没有	en	is there; do (you) have	중국어 1 검토
+汽车	ko	자동차	중국어 1 검토
+女	ko	여자; 여성	중국어 1 검토
+女	en	female; woman	중국어 1 검토
+女	pos	n
+支持	ko	지지하다; 지원하다	중국어 1 검토
+支持	en	to support	중국어 1 검토
+名	ko	이름; 명	중국어 1 검토
+名	en	name; classifier for people	중국어 1 검토
+名	pos	n
+能力	ko	능력	중국어 1 검토
+对于	ko	~에 대하여	중국어 1 검토
+对于	en	regarding; for	중국어 1 검토
+女儿	ko	딸	중국어 1 검토
+甚至	ko	심지어; ~조차	중국어 1 검토
+甚至	en	even	중국어 1 검토
+年轻	ko	젊다	중국어 1 검토
+生	ko	낳다; 태어나다; 날것의	중국어 1 검토
+生	en	to give birth; to be born; raw	중국어 1 검토
+之一	ko	~중의 하나	중국어 1 검토
+之一	en	one of	중국어 1 검토
+处理	ko	처리하다	중국어 1 검토
+听到	ko	들리다; 듣다	중국어 1 검토
+听到	en	to hear	중국어 1 검토
+个人	ko	개인; 개인적인	중국어 1 검토
+个人	en	individual; personal	중국어 1 검토
+漂亮	ko	예쁘다	중국어 1 검토
+市场	ko	시장	중국어 1 검토
+放	ko	놓다; 두다; 풀어 주다	중국어 1 검토
+放	en	to put; to let go	중국어 1 검토
+才能	ko	재능	중국어 1 검토
+才能	en	talent; ability	중국어 1 검토
+才能	pos	n
+睡觉	ko	자다	중국어 1 검토
+讨论	ko	토론하다; 의논하다	중국어 1 검토
+讨论	en	to discuss	중국어 1 검토
+结婚	ko	결혼하다	중국어 1 검토
+家庭	ko	가정; 가족	중국어 1 검토
+总统	ko	대통령	중국어 1 검토
+动物	ko	동물	중국어 1 검토
+意见	ko	의견	중국어 1 검토
+任务	ko	임무; 과제	중국어 1 검토
+猫	ko	고양이	중국어 1 검토
+猫	en	cat	중국어 1 검토
+坐	ko	앉다; 타다	중국어 1 검토
+坐	en	to sit; to ride (a vehicle)	중국어 1 검토
+愿意	ko	~하기를 원하다	중국어 1 검토
+愿意	en	to be willing to; to want to	중국어 1 검토
+待	ko	머물다; 기다리다	중국어 1 검토
+待	en	to stay; to wait	중국어 1 검토
+错误	ko	잘못; 착오	중국어 1 검토
+错误	en	mistake; error	중국어 1 검토
+里面	ko	안; 내부	중국어 1 검토
+里面	en	inside	중국어 1 검토
+回答	ko	대답하다; 대답	중국어 1 검토
+理解	ko	이해하다	중국어 1 검토
+表示	ko	나타내다; 표시하다	중국어 1 검토
+好像	ko	마치 ~같다	중국어 1 검토
+好像	en	to seem; as if	중국어 1 검토
+美元	ko	달러	중국어 1 검토
+美元	pos	n
+飞机	ko	비행기	중국어 1 검토
+出去	ko	나가다	중국어 1 검토
+天气	ko	날씨	중국어 1 검토
+项目	ko	항목; 프로젝트	중국어 1 검토
+项目	en	item; project	중국어 1 검토
+受	ko	받다; 당하다	중국어 1 검토
+受	en	to receive; to suffer	중국어 1 검토
+目标	ko	목표	중국어 1 검토
+记得	ko	기억하다	중국어 1 검토
+记得	en	to remember	중국어 1 검토
+报告	ko	보고하다; 보고서	중국어 1 검토
+报告	en	to report; report	중국어 1 검토
+约	ko	약속하다; 약	중국어 1 검토
+约	en	to make an appointment; about	중국어 1 검토
+约	pos	v
+加	ko	더하다	중국어 1 검토
+超过	ko	넘다; 초과하다	중국어 1 검토
+考虑	ko	고려하다	중국어 1 검토
+法律	ko	법률	중국어 1 검토
+怎样	ko	어떻게; 어떠한	중국어 1 검토
+怎样	en	how; what kind	중국어 1 검토
+生产	ko	생산하다	중국어 1 검토
+难	ko	어렵다	중국어 1 검토
+下来	ko	내려오다	중국어 1 검토
+和	reading	he2	중국어 1 검토
+和	ko	~와; 그리고	중국어 1 검토
+和	en	and; with	중국어 1 검토
+和	pos	conj
+把	ko	~을(를)	중국어 1 검토
+把	en	(object marker); to hold	중국어 1 검토
+把	pos	prep
+它们	ko	그것들	중국어 2 검토
+离	ko	~에서 (떨어져); 떠나다	중국어 2 검토
+离	en	away from; to leave	중국어 2 검토
+离	pos	prep
+则	ko	그러면; 규칙	중국어 2 검토
+则	en	then; rule	중국어 2 검토
+则	pos	conj
+以及	ko	및; 그리고	중국어 2 검토
+今晚	ko	오늘 밤	중국어 2 검토
+多久	ko	얼마나 오래	중국어 2 검토
+往	ko	~쪽으로; 가다	중국어 2 검토
+往	en	towards; to go	중국어 2 검토
+往	pos	prep
+不了	ko	~할 수 없다; 괜찮아요(사양)	중국어 2 검토
+不了	en	unable to; no thanks	중국어 2 검토
+不再	ko	더 이상 ~않다	중국어 2 검토
+而是	ko	~이 아니라 ~이다	중국어 2 검토
+而是	en	but rather	중국어 2 검토
+未	ko	아직 ~않다	중국어 2 검토
+未	en	not yet	중국어 2 검토
+图	ko	그림; 도표	중국어 2 검토
+图	en	picture; chart	중국어 2 검토
+词	ko	단어; 말	중국어 2 검토
+词	en	word	중국어 2 검토
+过来	ko	다가오다; 건너오다	중국어 2 검토
+过来	en	to come over	중국어 2 검토
+在家	ko	집에 있다	중국어 2 검토
+只能	ko	~할 수밖에 없다	중국어 2 검토
+只能	en	can only	중국어 2 검토
+身上	ko	몸; 몸에	중국어 2 검토
+身上	en	on one's body; on (one's person)	중국어 2 검토
+图片	ko	그림; 사진	중국어 2 검토
+省	ko	아끼다; 성(행정 구역)	중국어 2 검토
+省	en	to save; province	중국어 2 검토
+她们	ko	그녀들	중국어 2 검토
+应	ko	마땅히 ~해야 한다	중국어 2 검토
+应	en	should	중국어 2 검토
+法	ko	법; 방법	중국어 2 검토
+法	en	law; method	중국어 2 검토
+直到	ko	~까지; ~이 될 때까지	중국어 2 검토
+仍	ko	여전히; 아직	중국어 2 검토
+若	ko	만약	중국어 2 검토
+若	en	if	중국어 2 검토
+下雨	ko	비가 오다	중국어 2 검토
+斯	drop		문어 · 음역 글자(이 · 사)
+且	ko	게다가; 또한	중국어 2 검토
+且	en	and; moreover	중국어 2 검토
+另外	ko	그 밖에; 따로	중국어 2 검토
+另外	en	besides; in addition	중국어 2 검토
+县	ko	현(행정 구역)	중국어 2 검토
+请问	ko	실례지만 여쭙겠습니다	중국어 2 검토
+请问	en	excuse me, may I ask	중국어 2 검토
+制	drop		구속 형태소(制度 · 制造 로 배운다)
+女朋友	ko	여자 친구	중국어 2 검토
+改	ko	고치다; 바꾸다	중국어 2 검토
+不该	ko	~해서는 안 된다	중국어 2 검토
+全球	ko	전 세계; 세계적인	중국어 2 검토
+亚	drop		중국어 2 검토
+尔	drop		음역 · 문어 글자
+特	drop		구속 형태소(特别 로 배운다)
+科技	ko	과학 기술	중국어 2 검토
+较	ko	비교적; ~보다	중국어 2 검토
+较	en	relatively; compared to	중국어 2 검토
+将会	ko	~할 것이다	중국어 2 검토
+需	ko	필요하다	중국어 2 검토
+员	drop		접미 형태소(-원: 店员 · 演员 으로 배운다)
+不必	ko	~할 필요 없다	중국어 2 검토
+力	ko	힘	중국어 2 검토
+言	ko	말; 말하다	중국어 2 검토
+令人	ko	~하게 만들다	중국어 2 검토
+令人	en	to make one (feel)	중국어 2 검토
+原	ko	원래의; 본래	중국어 2 검토
+原	en	original; former	중국어 2 검토
+面前	ko	앞; 눈앞	중국어 2 검토
+化	drop		접미 형태소(-화: 现代化 로 배운다)
+据	ko	~에 따르면	중국어 2 검토
+据	en	according to	중국어 2 검토
+男朋友	ko	남자 친구	중국어 2 검토
+一块	ko	함께; 한 덩어리; 1위안	중국어 2 검토
+一块	en	together; a piece; one yuan	중국어 2 검토
+有时候	ko	가끔; 때로는	중국어 2 검토
+祝	ko	빌다; 축하하다	중국어 2 검토
+祝	en	to wish	중국어 2 검토
+没法	ko	어쩔 수 없다; ~할 수 없다	중국어 2 검토
+没法	en	can't; no way to	중국어 2 검토
+俩	ko	두 사람; 둘	중국어 2 검토
+街	ko	거리	중국어 2 검토
+座	ko	자리; 동(건물 · 산을 세는 말)	중국어 2 검토
+座	en	seat; classifier for buildings, mountains	중국어 2 검토
+房	ko	방; 집	중국어 2 검토
+陪	ko	모시다; 함께 있어 주다	중국어 2 검토
+陪	en	to accompany	중국어 2 검토
+明	ko	밝다; 다음의	중국어 2 검토
+明	en	bright; next	중국어 2 검토
+身	ko	몸	중국어 2 검토
+再说	ko	게다가; 다시 말하다	중국어 2 검토
+再说	en	besides; to say again	중국어 2 검토
+用来	ko	~하는 데 쓰다	중국어 2 검토
+用来	en	to be used for	중국어 2 검토
+轮	ko	차례; 바퀴	중국어 2 검토
+轮	en	turn; wheel	중국어 2 검토
+网上	ko	온라인; 인터넷에서	중국어 2 검토
+有钱	ko	부유하다	중국어 2 검토
+快点	ko	빨리 (해)	중국어 2 검토
+快点	en	hurry up	중국어 2 검토
+几点	ko	몇 시	중국어 2 검토
+李	drop		주로 성씨(李) · 자두는 李子
+不得	ko	~해서는 안 된다	중국어 2 검토
+纯	ko	순수하다	중국어 2 검토
+知	ko	알다	중국어 2 검토
+否则	ko	그렇지 않으면	중국어 2 검토
+皆	ko	모두 (문어)	중국어 3 검토
+好多	ko	아주 많은; 훨씬 낫다	중국어 3 검토
+好多	en	a lot of; much better	중국어 3 검토
+哪些	ko	어떤 것들	중국어 3 검토
+哪些	en	which ones	중국어 3 검토
+吓	ko	놀라게 하다; 겁주다	중국어 3 검토
+并非	ko	결코 ~이 아니다	중국어 3 검토
+计算机	ko	컴퓨터	중국어 3 검토
+从没	ko	한 번도 ~한 적이 없다	중국어 3 검토
+什么样	ko	어떤; 어떠한	중국어 3 검토
+不见	ko	보이지 않다; 만나지 못하다	중국어 3 검토
+亦	ko	~도 역시 (문어)	중국어 3 검토
+试着	ko	~해 보다	중국어 3 검토
+州	ko	주(州)	중국어 3 검토
+干嘛	ko	뭐 해; 왜	중국어 3 검토
+楼	ko	건물; 층	중국어 3 검토
+一遍	ko	한 번 (처음부터 끝까지)	중국어 3 검토
+在于	ko	~에 있다	중국어 3 검토
+从不	ko	절대 ~하지 않다	중국어 3 검토
+巴士	ko	버스	중국어 3 검토
+属	ko	~에 속하다	중국어 3 검토
+肯	ko	기꺼이 ~하다	중국어 3 검토
+罗	drop		음역 글자
+一会	ko	잠시; 잠깐	중국어 3 검토
+不然	ko	그렇지 않으면	중국어 3 검토
+不然	en	otherwise; or else	중국어 3 검토
+此外	ko	이 밖에; 게다가	중국어 3 검토
+自从	ko	~부터; ~한 뒤로	중국어 3 검토
+于是	ko	그래서; 그리하여	중국어 3 검토
+今	ko	지금; 오늘	중국어 3 검토
+走路	ko	걷다; 길을 걷다	중국어 3 검토
+送给	ko	선물로 주다	중국어 3 검토
+史	drop		구속 형태소(历史 로 배운다)
+不停	ko	끊임없이	중국어 3 검토
+几次	ko	몇 번	중국어 3 검토
+贸易	ko	무역	중국어 3 검토
+月份	ko	월; 달	중국어 3 검토
+木	ko	나무; 목재	중국어 3 검토
+木	en	tree; wood	중국어 3 검토
+如今	ko	요즘; 지금	중국어 3 검토
+器	drop		접미 형태소(-기: 机器 로 배운다)
+有着	ko	가지고 있다	중국어 3 검토
+而言	ko	~에 대해 말하자면	중국어 3 검토
+莱	drop		음역 글자
+球员	ko	선수	중국어 3 검토
+凭	ko	~에 근거하여; 기대다	중국어 3 검토
+凭	en	based on; to lean on	중국어 3 검토
+鞋子	ko	신발	중국어 3 검토
+操	drop		구속 형태소 · 비속 용법
+整体	ko	전체	중국어 3 검토
+显然	ko	분명히; 명백하다	중국어 3 검토
+影片	ko	영화	중국어 3 검토
+宁愿	ko	차라리 ~하겠다	중국어 3 검토
+奇	drop		구속 형태소(奇怪 로 배운다)
+坐下	ko	앉다	중국어 3 검토
+除非	ko	~하지 않으면; ~해야만	중국어 3 검토
+为止	ko	~까지	중국어 3 검토
+为止	en	until; up to	중국어 3 검토
+字典	ko	사전; 자전	중국어 3 검토
+海滩	ko	해변; 모래사장	중국어 3 검토
+尼	drop		음역 글자
+供	drop		구속 형태소(提供 로 배운다)
+巴	drop		음역 글자
+居然	ko	뜻밖에도; 놀랍게도	중국어 3 검토
+治	drop		구속 형태소(治疗 · 政治 로 배운다)
+从来不	ko	여태껏 ~한 적이 없다	중국어 3 검토
+波	ko	파도; 물결	중국어 3 검토
+波	en	wave	중국어 3 검토
+至于	ko	~에 관해서는	중국어 3 검토
+谈谈	ko	이야기해 보다	중국어 3 검토
+等到	ko	~할 때까지 기다리다; ~할 때	중국어 3 검토
+必	ko	반드시	중국어 3 검토
+三次	ko	세 번	중국어 3 검토
+有权	ko	~할 권리가 있다	중국어 3 검토
+小镇	ko	작은 마을	중국어 3 검토
+某些	ko	어떤; 일부	중국어 3 검토
+夫	drop		구속 형태소(丈夫 로 배운다)
+上课	ko	수업을 듣다; 수업하다	중국어 3 검토
+事儿	ko	일	중국어 3 검토
+事儿	en	thing; matter	중국어 3 검토
+一套	ko	한 벌; 한 세트	중국어 3 검토
+一套	en	a set; a suit	중국어 3 검토
+城镇	ko	도시와 마을; 소도시	중국어 3 검토
+多大	ko	몇 살; 얼마나 큰	중국어 3 검토
+多大	en	how old; how big	중국어 3 검토
+风暴	ko	폭풍	중국어 3 검토
+星	ko	별	중국어 3 검토
+从未	ko	한 번도 ~않다	중국어 3 검토
+雅	drop		구속 형태소 · 음역 글자
+城堡	ko	성	중국어 3 검토
+不怕	ko	두려워하지 않다	중국어 3 검토
+人群	ko	사람들; 군중	중국어 3 검토
+司	drop		구속 형태소(公司 로 배운다)
+受不了	ko	견딜 수 없다	중국어 3 검토
+妮	drop		음역 글자
+伊	drop		음역 글자
+准时	ko	제시간에; 정각에	중국어 3 검토
+战	ko	싸우다; 전쟁	중국어 3 검토
+战	en	to fight; war	중국어 3 검토
+艾	drop		음역 글자
+率	drop		구속 형태소(效率 로 배운다)
+堂	drop		구속 형태소 · 분류사
+有限公司	ko	유한 회사	중국어 3 검토
+门口	ko	문 앞; 입구	중국어 3 검토
+使得	ko	~하게 하다	중국어 3 검토
+使得	en	to make; to cause	중국어 3 검토
+写信	ko	편지를 쓰다	중국어 3 검토
+宁	drop		宁愿 과 같은 뜻의 문어
+欲	drop		문어 형태소
+保	ko	지키다; 보호하다	중국어 3 검토
+拍照	ko	사진을 찍다	중국어 3 검토
+爱上	ko	사랑에 빠지다	중국어 3 검토
+预计	ko	예상하다	중국어 3 검토
+伞	ko	우산	중국어 3 검토
+食	ko	먹다; 음식	중국어 3 검토
+欧	drop		음역 글자(欧洲 로 배운다)
+之内	ko	~안에; ~이내	중국어 3 검토
+陌生人	ko	낯선 사람	중국어 3 검토
+车子	ko	차	중국어 3 검토
+共有	ko	모두 ~이 있다	중국어 3 검토
+共有	en	in total there are	중국어 3 검토
+专门	ko	전문적인; 일부러	중국어 3 검토
+专门	en	specialized; specially	중국어 3 검토
+喝茶	ko	차를 마시다	중국어 3 검토
+小孩子	ko	어린아이	중국어 3 검토
+田	ko	밭; 논	중국어 3 검토
+过得	ko	지내다	중국어 3 검토
+过得	en	to get along; to live (well or not)	중국어 3 검토
+兵	ko	군인; 병사	중국어 3 검토
+蕾	drop		음역 글자
+提到	ko	언급하다	중국어 3 검토
+名叫	ko	이름이 ~이다	중국어 3 검토
+上床	ko	잠자리에 들다	중국어 3 검토
+年前	ko	~년 전	중국어 3 검토
+年前	en	years ago	중국어 3 검토
+晚安	ko	잘 자	중국어 3 검토
+手臂	ko	팔	중국어 3 검토
+太好了	ko	정말 잘됐다	중국어 3 검토
+没错	ko	맞아; 틀림없다	중국어 3 검토
+看不见	ko	보이지 않다	중국어 3 검토
+果	ko	과일; 열매; 결과	중국어 3 검토
+果	en	fruit; result	중국어 3 검토
+车祸	ko	교통사고	중국어 3 검토
+谋杀	ko	살인; 살해하다	중국어 3 검토
+做法	ko	방법; 하는 방식	중국어 3 검토
+简	drop		구속 형태소(简单 로 배운다)
+案	ko	사건; 안건	중국어 3 검토
+案	en	case; proposal	중국어 3 검토
+品	drop		구속 형태소(产品 로 배운다)
+苏	drop		음역 글자
+象	ko	코끼리	중국어 3 검토
+象	en	elephant	중국어 3 검토
+跨	ko	건너다; 넘다	중국어 3 검토
+与其	ko	~하느니 (차라리)	중국어 3 검토
+最为	ko	가장	중국어 3 검토
+橙	ko	오렌지	중국어 3 검토
+谢	ko	감사하다	중국어 3 검토
+服务器	ko	서버	중국어 3 검토
+被迫	ko	어쩔 수 없이 ~하다	중국어 3 검토
+谷	ko	골짜기	중국어 3 검토
+屋子	ko	방; 집	중국어 3 검토
+古老	ko	오래되다	중국어 3 검토
+显得	ko	~처럼 보이다	중국어 3 검토
+英	drop		구속 형태소(英语 · 英国 로 배운다)
+练	ko	연습하다	중국어 3 검토
+厅	ko	홀; 거실	중국어 3 검토
+喝醉	ko	술에 취하다	중국어 3 검토
+日元	ko	엔(일본 돈)	중국어 3 검토
+兰	drop		음역 글자
+观	drop		구속 형태소(观看 · 参观 로 배운다)
+偷偷	ko	몰래	중국어 3 검토
+上网	ko	인터넷을 하다	중국어 3 검토
+恩	ko	은혜	중국어 3 검토
+恩	en	favor; grace	중국어 3 검토
+微	drop		구속 형태소(微笑 로 배운다)
+绝不	ko	결코 ~않다	중국어 3 검토
+士	drop		구속 형태소(护士 · 博士 로 배운다)
+聊	ko	이야기하다; 수다 떨다	중국어 3 검토
+麦克	drop		중국어 3 검토
+报警	ko	경찰에 신고하다	중국어 3 검토
+复	drop		구속 형태소(复杂 로 배운다)
+前来	ko	오다; 찾아오다	중국어 3 검토
+有所	ko	어느 정도	중국어 3 검토
+有所	en	somewhat; to some extent	중국어 3 검토
+档案	ko	파일; 기록	중국어 3 검토
+福	ko	복; 행운	중국어 3 검토
+市区	ko	시내	중국어 3 검토
+沙	ko	모래	중국어 3 검토
+好事	ko	좋은 일	중국어 3 검토
+好事	en	good thing	중국어 3 검토
+种族	ko	인종; 종족	중국어 3 검토
+瞎	ko	눈이 멀다; 함부로	중국어 3 검토
+瞎	en	blind; aimlessly	중국어 3 검토
+批	drop		분류사 · 구속 형태소
+澡	drop		구속 형태소(洗澡 로 배운다)
+自私	ko	이기적이다	중국어 3 검토
+穷人	ko	가난한 사람	중국어 3 검토
+却是	ko	그러나 ~이다; 오히려	중국어 3 검토
+丹	drop		음역 · 구속 글자(丹麦 등)
+明显	ko	분명하다; 뚜렷하다	중국어 표본 검토
+一辈子	ko	평생; 일생	중국어 표본 검토
+一辈子	pos	n
+运行	ko	작동하다; 운행하다	중국어 표본 검토
+运行	en	to run; to operate	중국어 표본 검토
+九	ko	아홉; 구	중국어 표본 검토

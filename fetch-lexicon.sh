@@ -26,7 +26,7 @@
 set -euo pipefail
 cd "$(dirname "$0")"
 
-DATA_VERSION="2026-10-30.2"
+DATA_VERSION="2026-10-30.3"
 ROOT="${VOCAB_LEXICON_CACHE:-$HOME/Library/Caches/vocab-lexicon}"
 SRC="$ROOT/src"
 PY="${PYTHON:-python3}"

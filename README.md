@@ -16,7 +16,8 @@ The data files are in [`data/`](data), one folder per data version, with the sam
 
 | Data version | Shipped in | Folder |
 |---|---|---|
-| 2026-10-30.2 | Saybit 1.0.0 (25) for iPhone and 1.0.0 (2) for Android (test builds, onward) | [`data/2026-10-30.2`](data/2026-10-30.2) |
+| 2026-10-30.3 | Saybit 1.0.0 (26) for iPhone and 1.0.0 (3) for Android (test builds, onward) | [`data/2026-10-30.3`](data/2026-10-30.3) |
+| 2026-10-30.2 | Saybit 1.0.0 (25) for iPhone and 1.0.0 (2) for Android (test builds only) | [`data/2026-10-30.2`](data/2026-10-30.2) |
 | 2026-10-29.2 | Saybit 1.0.0 (18) to (24) for iPhone and 1.0.0 (1) for Android (test builds) | [`data/2026-10-29.2`](data/2026-10-29.2) |
 | 2026-10-29.1 | TestFlight builds 1.0.0 (11) to (17) only | [`data/2026-10-29.1`](data/2026-10-29.1) |
 
@@ -52,7 +53,7 @@ versions, and runs `Tools/build_lexicon.py` and `Tools/build_packs.py`. Outputs 
 `Vocab/Resources/Packs`. `Vocab/Packs/PackManifest.json` is the list of word lists the app shows.
 
 The scripts here match the newest data version. The scripts for an earlier version are in this repository's git
-history (2026-10-29.1 = commit `4b22d6a`, 2026-10-29.2 = commit `c418edd`).
+history (2026-10-29.1 = commit `4b22d6a`, 2026-10-29.2 = commit `c418edd`, 2026-10-30.2 = commit `7192c3a`).
 
 - CC-CEDICT and Tatoeba publish only their latest export, so a rebuild today may differ from a release here. The
   editions used are listed above.

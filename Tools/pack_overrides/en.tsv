@@ -2433,3 +2433,6 @@ rose	ko	장미	영어 3 검토
 wander	ko	돌아다니다; 헤매다	영어 3 검토
 till	ko	~까지	영어 3 검토
 till	pos	prep
+# 2026-10-30 C3 점검.
+medicine	ko	약; 의학	C3 점검(일상 뜻 약 먼저)
+cart	ko	카트; 손수레; 수레	C3 점검(달구지 = 옛말)

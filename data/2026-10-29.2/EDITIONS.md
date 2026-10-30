@@ -1,6 +1,6 @@
 # Data version 2026-10-29.2
 
-Shipped in Saybit 1.0.0 (20) for iPhone. Built by the app's `fetch-lexicon.sh` from the sources below.
+Shipped in Saybit 1.0.0 (21) for iPhone (the same files were in TestFlight builds (18) to (20)). Built by the app's `fetch-lexicon.sh` from the sources below.
 The dictionaries (`cedict`, `jmdict`, `krdict`) are the same files as in 2026-10-29.1. `examples.sqlite` and the word
 lists are new: conversation and exam-prep lists were added.
 

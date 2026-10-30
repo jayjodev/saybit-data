@@ -16,7 +16,7 @@ The data files are in [`data/`](data), one folder per data version, with the sam
 
 | Data version | Shipped in | Folder |
 |---|---|---|
-| 2026-10-29.2 | Saybit 1.0.0 (20) | [`data/2026-10-29.2`](data/2026-10-29.2) |
+| 2026-10-29.2 | Saybit 1.0.0 (21) (also TestFlight (18) to (20)) | [`data/2026-10-29.2`](data/2026-10-29.2) |
 | 2026-10-29.1 | TestFlight builds 1.0.0 (11) to (17) only | [`data/2026-10-29.1`](data/2026-10-29.1) |
 
 ## Sources, licenses and what we changed

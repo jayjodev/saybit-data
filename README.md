@@ -62,6 +62,11 @@ history (2026-10-29.1 = commit `4b22d6a`, 2026-10-29.2 = commit `c418edd`, 2026-
 
 The scripts are under the [MIT license](licenses/MIT.txt). They contain no dictionary data.
 
+## Oneul Chinese (오늘 중국어)
+
+The same app ID now ships as Oneul Chinese, a Mandarin speaking app for Korean speakers. Its HSK word list, derived
+from CC-CEDICT, is in [`oneul-chinese/`](oneul-chinese) under CC BY-SA 4.0.
+
 ## Contact
 
 contact@vivory.app
